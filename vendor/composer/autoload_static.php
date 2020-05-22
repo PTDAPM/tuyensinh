@@ -458,6 +458,7 @@ class ComposerStaticInitb861e10d81835415601d3cbcadaee0ac
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\HoSo' => __DIR__ . '/../..' . '/app/HoSo.php',
+        'App\\HosoNguyenvong' => __DIR__ . '/../..' . '/app/HosoNguyenvong.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
