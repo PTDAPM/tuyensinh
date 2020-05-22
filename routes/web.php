@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::post('hoso','PageController@luuHoso');
+Route::get('multiuploads','PageController@uploadForm');
+Route::post('multiuploads','PageController@uploadSubmit');
