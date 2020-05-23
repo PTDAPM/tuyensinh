@@ -16,6 +16,24 @@ class PageController extends Controller
 		echo $request->cmnd."<br>";
 		echo $request->ngaycap."<br>";
 		echo $request->noicap."<br>";
+		echo $request->hokhau."<br>";
+		echo $request->matinh."<br>";
+		echo $request->mahuyen."<br>";
+		echo $request->maxa."<br>";
+		echo $request->lop10ten."<br>";
+		echo $request->lop10diachi."<br>";
+		echo $request->lop10tinh."<br>";
+		echo $request->lop10truong."<br>";
+		echo $request->lop11ten."<br>";
+		echo $request->lop11diachi."<br>";
+		echo $request->lop11tinh."<br>";
+		echo $request->lop11truong."<br>";
+		echo $request->lop12ten."<br>";
+		echo $request->lop12diachi."<br>";
+		echo $request->lop12tinh."<br>";
+		echo $request->lop12truong."<br>";
+		echo $request->sdt."<br>";
+		echo $request->email."<br>";
 		//echo $request->hoten."<br>";
 		//echo $request->hoten."<br>";
 		// xu lý upload anh
@@ -76,7 +94,7 @@ class PageController extends Controller
 			if($value['id'] == $request->ten)
 			{
 				print_r($value);
-				echo "<option value=".$value['districtCode'].">".$value['address']."</option>|<option value=".$value['provinceCode'].">".$value['provinceCode']."</option>|<option value=".$value['code'].">".$value['code']."</option>";
+				echo "<option value=".$value['address'].">".$value['address']."</option>|<option value=".$value['provinceCode'].">".$value['provinceCode']."</option>|<option value=".$value['code'].">".$value['code']."</option>";
 				break;
 			}
 			// echo "<pre>";
