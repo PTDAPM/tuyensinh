@@ -234,77 +234,117 @@ $data = json_decode($data);
           <div class="form-group">
             <div class="col-md-4">
                 <label>Năm tốt nghệp</label>
-                <input type="text" class="form-control" name="namtotnghiep">
+                <input type="number" class="form-control" name="namtotnghiep">
             </div>
             <div class="col-md-4">
                 <label>Kv ưu tiên</label>
-                <input type="text" class="form-control">
+                <select class="form-control" id="lop12tinh" readonly="readonly" name="lop12tinh">
+                  <option value="KV1">KV1</option>
+                  <option value="KV2">KV2</option>
+                  <option value="KV2-NT">KV2-NT</option>
+                  <option value="KV3">KV3</option>
+                
+                </select>
             </div>
             <div class="col-md-4">
-                <label>Đối tượng ưu tiên</label>
-                <input type="text" class="form-control">
+                <label>Đối tượng ưu tiên (nếu có)</label>
+                <select class="form-control" id="lop12tinh" readonly="readonly" name="lop12tinh">
+                  @for($i = 0; $i < 7; $i++)
+                  <option value="{{ $i+1 }}">0{{ $i+1 }}</option>
+                  @endfor
+                
+                </select>
             </div>
           </div>
           <div class="col-md-12">
               <h2>Thông tin đkxt</h2>
           </div>
           <div class="form-group">
-            <div class="col-md-3">
-                <label>NV1</label>
+              <div class="col-md-12"><b>Nguyện vọng 1</b></div>
+              <div class="col-md-4">
+                <label>Ngành/nhóm ngành/chuyên ngành</label>
+                <select class="form-control" id="lop12tinh" readonly="readonly" name="lop12tinh">
+                  <option value="KV1">KV1</option>
+                  <option value="KV2">KV2</option>
+                  <option value="KV2-NT">KV2-NT</option>
+                  <option value="KV3">KV3</option>
+                
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label>Mã xét tuyển</label>
                 <input type="text" class="form-control">
+              </div>
+              <div class="col-md-4">
+                <label>Tổ hợp xét tuyển</label>
+                <select class="form-control" id="lop12tinh" readonly="readonly" name="lop12tinh">
+                  <option value="KV1">KV1</option>
+                  <option value="KV2">KV2</option>
+                  <option value="KV2-NT">KV2-NT</option>
+                  <option value="KV3">KV3</option>
+                
+                </select>
+              </div>
             </div>
-            <div class="col-md-3">
-                <label>Ngành</label>
+            <div class="col-md-12"><hr></div>
+         <div class="form-group">
+              <div class="col-md-12"><b>Nguyện vọng 2</b></div>
+              <div class="col-md-4">
+                <label>Ngành/nhóm ngành/chuyên ngành</label>
+                <select class="form-control" id="lop12tinh" readonly="readonly" name="lop12tinh">
+                  <option value="KV1">KV1</option>
+                  <option value="KV2">KV2</option>
+                  <option value="KV2-NT">KV2-NT</option>
+                  <option value="KV3">KV3</option>
+                
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label>Mã xét tuyển</label>
                 <input type="text" class="form-control">
+              </div>
+              <div class="col-md-4">
+                <label>Tổ hợp xét tuyển</label>
+                <select class="form-control" id="lop12tinh" readonly="readonly" name="lop12tinh">
+                  <option value="KV1">KV1</option>
+                  <option value="KV2">KV2</option>
+                  <option value="KV2-NT">KV2-NT</option>
+                  <option value="KV3">KV3</option>
+                
+                </select>
+              </div>
             </div>
-            <div class="col-md-3">
-                <label>Mã</label>
-                <input type="text" class="form-control">
-            </div>
-            <div class="col-md-3">
-                <label>Tổ hợp</label>
-                <input type="text" class="form-control">
-            </div>
-          </div>
+            <div class="col-md-12"><hr></div>
           <div class="form-group">
-            <div class="col-md-3">
-                <label>NV2</label>
+              <div class="col-md-12"><b>Nguyện vọng 3</b></div>
+              <div class="col-md-4">
+                <label>Ngành/nhóm ngành/chuyên ngành</label>
+                <select class="form-control" id="lop12tinh" readonly="readonly" name="lop12tinh">
+                  <option value="KV1">KV1</option>
+                  <option value="KV2">KV2</option>
+                  <option value="KV2-NT">KV2-NT</option>
+                  <option value="KV3">KV3</option>
+                
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label>Mã xét tuyển</label>
                 <input type="text" class="form-control">
+              </div>
+              <div class="col-md-4">
+                <label>Tổ hợp xét tuyển</label>
+                <select class="form-control" id="lop12tinh" readonly="readonly" name="lop12tinh">
+                  <option value="KV1">KV1</option>
+                  <option value="KV2">KV2</option>
+                  <option value="KV2-NT">KV2-NT</option>
+                  <option value="KV3">KV3</option>
+                
+                </select>
+              </div>
             </div>
-            <div class="col-md-3">
-                <label>Ngành</label>
-                <input type="text" class="form-control">
-            </div>
-            <div class="col-md-3">
-                <label>Mã</label>
-                <input type="text" class="form-control">
-            </div>
-            <div class="col-md-3">
-                <label>Tổ hợp</label>
-                <input type="text" class="form-control">
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-md-3">
-                <label>NV3</label>
-                <input type="text" class="form-control">
-            </div>
-            <div class="col-md-3">
-                <label>Ngành</label>
-                <input type="text" class="form-control">
-            </div>
-            <div class="col-md-3">
-                <label>Mã</label>
-                <input type="text" class="form-control">
-            </div>
-            <div class="col-md-3">
-                <label>Tổ hợp</label>
-                <input type="text" class="form-control">
-            </div>
-          </div>
+            <div class="col-md-12"><hr></div>
           <div class="col-md-12">
-              Điểm tb3 năm thpt
-              <hr>
+              </b>Điểm tb3 năm thpt</b>
           </div>
           <div class="form-group">
               <div class="col-md-12">Lớp 10</div>
@@ -351,21 +391,28 @@ $data = json_decode($data);
                 <input type="text" class="form-control">
               </div>
             </div>
-
+          <div class="col-md-12"><hr></div>
           <div class="form-group">
             <label for="exampleFormControlFile1">Nộp kèm file minh chứng (ảnh chụp/scan: Phiếu ĐKXT, Học bạ hoặc Đơn xác nhận KQ học tập, Giấy xác nhận hưởng chế độ ưu tiên nếu có).
             Lưu ý: Chỉ chấp nhận file pdf, jpg, jpeg, png. Có thể đính kèm nhiều file</label>
             <input type="file" class="form-control" name="photos[]" multiple />
           </div>
           <div class="clo-md-12">
-            <div class="col-md-1">
+            <div class="col-md-1" style="margin-top:5px">
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-2" style="margin-top:5px">
               <button onClick="window.location.reload();" class="btn btn-danger">Refresh Page</button>
             </div>
         </div>
         </form>
+        <div class="col-md-12">
+          <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+            <div class="container text-center">
+              <small>Copyright &copy; Your Website</small>
+            </div>
+          </footer>
+        </div>
     </div>  
     @yield('script')
     <script>

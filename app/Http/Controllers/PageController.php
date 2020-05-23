@@ -35,6 +35,7 @@ class PageController extends Controller
 		echo $request->sdt."<br>";
 		echo $request->email."<br>";
 		echo $request->diachi."<br>";
+		echo $request->namtotnghiep."<br>";
 		//echo $request->hoten."<br>";
 		//xu lý upload anh
 		$this->validate($request, [
