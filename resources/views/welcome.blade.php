@@ -123,7 +123,7 @@ $data = json_decode($data);
                 <select class="form-control" id="lop10ten" name="lop10ten">
                   <option value="">---------</option>
                     @foreach ($data->highSchools as $value)
-                      <option value="{{ $value->id }}">{{ $value->code }} - {{ $value->name }}</option>
+                      <option value="{{ $value->id }}|{{ $value->name }}">{{ $value->code }} - {{ $value->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -156,7 +156,7 @@ $data = json_decode($data);
                 <select class="form-control" id="lop11ten" name="lop11ten">
                   <option value="">---------</option>
                     @foreach ($data->highSchools as $value)
-                      <option value="{{ $value->id }}">{{ $value->code }} - {{ $value->name }}</option>
+                      <option value="{{ $value->id }}|{{ $value->name }}">{{ $value->code }} - {{ $value->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -189,7 +189,7 @@ $data = json_decode($data);
                 <select class="form-control" id="lop12ten" name="lop12ten">
                   <option value="">---------</option>
                     @foreach ($data->highSchools as $value)
-                      <option value="{{ $value->id }}">{{ $value->code }} - {{ $value->name }}</option>
+                      <option value="{{ $value->id }}|{{ $value->name }}">{{ $value->code }} - {{ $value->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -374,8 +374,6 @@ $data = json_decode($data);
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
-
         $( document ).ready(function() {
             $('#matinh').change(function(){
                 $.ajax({
@@ -393,12 +391,14 @@ $data = json_decode($data);
                 //http://xettuyen.utc.edu.vn/api/districts?province=52
             });
             $('#lop10ten').change(function(){
+           
+              //console.log($('#lop10ten').val().split("|")[0]);
                 $.ajax({
                     url : "./api/test1",
                     type : "get", 
                     dateType:"text", 
                     data : { 
-                      ten : $('#lop10ten').val()
+                      ten : $('#lop10ten').val().split("|")[0]
                     },
                     success : function (result){
                         var result = result.split("|");
@@ -415,7 +415,7 @@ $data = json_decode($data);
                     type : "get", 
                     dateType:"text", 
                     data : { 
-                      ten : $('#lop11ten').val()
+                      ten : $('#lop11ten').val().split("|")[0]
                     },
                     success : function (result){
                         var result = result.split("|");
@@ -432,7 +432,7 @@ $data = json_decode($data);
                     type : "get", 
                     dateType:"text", 
                     data : { 
-                      ten : $('#lop12ten').val()
+                      ten : $('#lop12ten').val().split("|")[0]
                     },
                     success : function (result){
                         var result = result.split("|");

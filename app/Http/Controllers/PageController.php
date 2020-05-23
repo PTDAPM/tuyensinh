@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     //
-	public function luuHoso(Request $request) {
+	public function luuHoso(Request $request) {	
 		echo $request->hoten."<br>";
 		echo $request->gioitinh."<br>";
 		echo $request->ntns."<br>";
@@ -34,9 +34,9 @@ class PageController extends Controller
 		echo $request->lop12truong."<br>";
 		echo $request->sdt."<br>";
 		echo $request->email."<br>";
+		echo $request->diachi."<br>";
 		//echo $request->hoten."<br>";
-		//echo $request->hoten."<br>";
-		// xu lý upload anh
+		//xu lý upload anh
 		$this->validate($request, [
 			'photos'=>'required',]
 		);
@@ -93,8 +93,8 @@ class PageController extends Controller
 		foreach ($arr_dt as $value) {
 			if($value['id'] == $request->ten)
 			{
-				print_r($value);
-				echo "<option value=".$value['address'].">".$value['address']."</option>|<option value=".$value['provinceCode'].">".$value['provinceCode']."</option>|<option value=".$value['code'].">".$value['code']."</option>";
+				//print_r($value);
+				echo "<option value=".str_replace(' ','_',$value['address']).">".$value['address']."</option>|<option value=".$value['provinceCode'].">".$value['provinceCode']."</option>|<option value=".$value['code'].">".$value['code']."</option>";
 				break;
 			}
 			// echo "<pre>";
