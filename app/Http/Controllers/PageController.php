@@ -26,20 +26,16 @@ class PageController extends Controller
 		if($request->hasFile('photos')) {
 			$allowedfileExtension=['jpg','png','jpeg','pdf'];
 			$files = $request->file('photos');
-            // flag xem có thực hiện lưu DB không. Mặc định là có
 			$exe_flg = true;
-			// kiểm tra tất cả các files xem có đuôi mở rộng đúng không
 			foreach($files as $file) {
 				$extension = $file->getClientOriginalExtension();
 				$check=in_array($extension,$allowedfileExtension);
 
 				if(!$check) {
-                    // nếu có file nào không đúng đuôi mở rộng thì đổi flag thành false
 					$exe_flg = false;
 					break;
 				}
 			} 
-			// nếu không có file nào vi phạm validate thì tiến hành lưu DB
 			if($exe_flg) {
 				foreach ($request->photos as $photo) {
 					$filename = $photo->store('photos');
@@ -57,60 +53,51 @@ class PageController extends Controller
 		
 		
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public function uploadForm()
-	{
-		return view('image');
-	}
-
-	public function uploadSubmit(Request $request)
-	{
-		$this->validate($request, [
-			'photos'=>'required',]
-		);
-        // kiểm tra có files sẽ xử lý
-		if($request->hasFile('photos')) {
-			$allowedfileExtension=['jpg','png','jpeg'];
-			$files = $request->file('photos');
-            // flag xem có thực hiện lưu DB không. Mặc định là có
-			$exe_flg = true;
-			// kiểm tra tất cả các files xem có đuôi mở rộng đúng không
-			foreach($files as $file) {
-				$extension = $file->getClientOriginalExtension();
-				$check=in_array($extension,$allowedfileExtension);
-
-				if(!$check) {
-                    // nếu có file nào không đúng đuôi mở rộng thì đổi flag thành false
-					$exe_flg = false;
-					break;
-				}
-			} 
-			// nếu không có file nào vi phạm validate thì tiến hành lưu DB
-			if($exe_flg) {
-				foreach ($request->photos as $photo) {
-					$filename = $photo->store('photos');
-				//chuyển file vào mục images
-					$photo->move(public_path('images'),$filename);
-				//Lưu db
-					////////////////
-					////////////////
-				}
-				echo "Upload successfully";
-			} else {
-				echo "Falied to upload. Only accept jpg, png, jpeg photos.";
-			}
+	public function getHuyen(Request $request) {
+		$data = file_get_contents('http://xettuyen.utc.edu.vn/api/districts?province='.$request->maTinh);
+		$data = json_decode($data);
+		foreach ($data as $value) {
+			echo "<option value='".$value->code."'>".$value->name."</option>";
 		}
 	}
+	public function getTruong(Request $request) {
+		$arr_dt = array();
+		$data = file_get_contents('http://xettuyen.utc.edu.vn/api/enrollment');
+		$data = json_decode($data);
+		foreach ($data->highSchools as $value) {
+			array_push($arr_dt, array('id' => $value->id, 'districtCode' => $value->districtCode,'address' =>$value->address, 'provinceCode' => $value->provinceCode,  'code' => $value->code));
+		}
+
+		// echo $request->ten;
+		// echo "<pre>";
+		// print_r($arr_dt);
+		// echo "</pre>";
+		foreach ($arr_dt as $value) {
+			if($value['id'] == $request->ten)
+			{
+				print_r($value);
+				echo "<option value=".$value['districtCode'].">".$value['address']."</option>|<option value=".$value['provinceCode'].">".$value['provinceCode']."</option>|<option value=".$value['code'].">".$value['code']."</option>";
+				break;
+			}
+			// echo "<pre>";
+			// print_r($value['id']);
+			// echo "</pre>";
+		}
+		
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+	
 }

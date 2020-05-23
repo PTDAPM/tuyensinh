@@ -1,3 +1,10 @@
+<?php
+$data = file_get_contents("http://xettuyen.utc.edu.vn/api/enrollment");
+$data = json_decode($data);
+{{-- foreach ($data->provinces as $value) {
+    echo $value->code;
+} --}}
+?>
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -11,6 +18,7 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"       integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -24,8 +32,8 @@
 </head>
 <body>
     <div class="container">
-        <div class="col-md-12">Nộp Hồ Sơ Trực Tuyến</div>
-        <hr>
+        <div class="col-md-12"><h2>Nộp Hồ Sơ Trực Tuyến</h2></div>
+        <hr><hr><hr>
         @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <ul>
@@ -35,6 +43,7 @@
                 </ul>
             </div>
         @endif
+    </div>
         <form action="./hoso" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
@@ -85,11 +94,18 @@
             </div>
             <div class="col-md-4">
                 <label>Mã tỉnh</label>
-                <input type="text" class="form-control">
+                <select class="form-control" id="matinh">
+                    <option value="">---------</option>
+                    @foreach ($data->provinces as $value)
+                      <option value="{{ $value->code }}">{{ $value->code }} - {{ $value->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="col-md-4">
                 <label>Mã huyện (quận)</label>
-                <input type="text" class="form-control">
+                <select class="form-control" id="mahuyen" readonly="readonly">
+                  
+                </select>
             </div>
             <div class="col-md-4">
                 <label>Mã xã (phường) (nếu có)</label>
@@ -104,67 +120,109 @@
             <div class="col-md-12">Lớp 10</div>
             <div class="col-md-4">
                 <label>Tên trường</label>
-                <input type="text" class="form-control">
+                <select class="form-control" id="lop10ten">
+                  <option value="">---------</option>
+                    @foreach ($data->highSchools as $value)
+                      <option value="{{ $value->id }}">{{ $value->code }} - {{ $value->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="col-md-4">
                 <label>Địa chỉ</label>
-                <input type="text" class="form-control">
+                <select class="form-control" id="lop10diachi" readonly="readonly">
+                  <option value="">---------</option>
+                   
+                </select>
             </div>
             <div class="col-md-2">
                 <label>Mã tỉnh</label>
-                <input type="text" class="form-control">
+                <select class="form-control" id="lop10tinh" readonly="readonly">
+                  <option value=""
+                  readonly="readonly">---------</option>
+                
+                </select>
             </div>
             <div class="col-md-2">
                 <label>Mã trường</label>
-                <input type="text" class="form-control">
+                <select class="form-control" id="lop10truong" readonly="readonly">
+                  <option value="" readonly="readonly">---------</option>
+                </select>
             </div>
           </div>
           <div class="form-group">
             <div class="col-md-12">Lớp 11</div>
             <div class="col-md-4">
                 <label>Tên trường</label>
-                <input type="text" class="form-control">
+                <select class="form-control" id="lop11ten">
+                  <option value="">---------</option>
+                    @foreach ($data->highSchools as $value)
+                      <option value="{{ $value->id }}">{{ $value->code }} - {{ $value->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="col-md-4">
                 <label>Địa chỉ</label>
-                <input type="text" class="form-control">
+                <select class="form-control" id="lop11diachi" readonly="readonly">
+                  <option value="">---------</option>
+                   
+                </select>
             </div>
             <div class="col-md-2">
                 <label>Mã tỉnh</label>
-                <input type="text" class="form-control">
+                <select class="form-control" id="lop11tinh" readonly="readonly">
+                  <option value=""
+                  readonly="readonly">---------</option>
+                
+                </select>
             </div>
             <div class="col-md-2">
                 <label>Mã trường</label>
-                <input type="text" class="form-control">
+                <select class="form-control" id="lop11truong" readonly="readonly">
+                  <option value="" readonly="readonly">---------</option>
+                </select>
             </div>
           </div>
           <div class="form-group">
             <div class="col-md-12">Lớp 12</div>
             <div class="col-md-4">
                 <label>Tên trường</label>
-                <input type="text" class="form-control">
+                <select class="form-control" id="lop12ten">
+                  <option value="">---------</option>
+                    @foreach ($data->highSchools as $value)
+                      <option value="{{ $value->id }}">{{ $value->code }} - {{ $value->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="col-md-4">
                 <label>Địa chỉ</label>
-                <input type="text" class="form-control">
+                <select class="form-control" id="lop12diachi" readonly="readonly">
+                  <option value="">---------</option>
+                   
+                </select>
             </div>
             <div class="col-md-2">
                 <label>Mã tỉnh</label>
-                <input type="text" class="form-control">
+                <select class="form-control" id="lop12tinh" readonly="readonly">
+                  <option value=""
+                  readonly="readonly">---------</option>
+                
+                </select>
             </div>
             <div class="col-md-2">
                 <label>Mã trường</label>
-                <input type="text" class="form-control">
+                <select class="form-control" id="lop12truong" readonly="readonly">
+                  <option value="" readonly="readonly">---------</option>
+                </select>
             </div>
           </div>
           <div class="form-group">
             <div class="col-md-6">
                 <label>Điện thoại</label>
-                <input type="text" class="form-control">
+                <input type="number" class="form-control">
             </div>
             <div class="col-md-6">
                 <label>Email</label>
-                <input type="text" class="form-control">
+                <input type="email" class="form-control">
             </div>
           </div>
           <div class="form-group">
@@ -308,25 +366,84 @@
             </div>
         </div>
         </form>
-    </div>
+    </div>  
+    @yield('script')
+    <script>
+         $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
-    <script>       
 
-    $.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $.ajax({
-        type: 'GET',
-        url: 'http://xettuyen.utc.edu.vn/api/enrollment',
-        success: data => {
-            console.log(data);
-        },
-        error: () => {
-            console.log('Error');
-        }
-    })
+        $( document ).ready(function() {
+            $('#matinh').change(function(){
+                $.ajax({
+                    url : "./api/test",
+                    type : "get", 
+                    dateType:"text", 
+                    data : { 
+                         maTinh : $('#matinh').val()
+                    },
+                    success : function (result){
+                        
+                        $('#mahuyen').html(result);
+                    }
+                    });
+                //http://xettuyen.utc.edu.vn/api/districts?province=52
+            });
+            $('#lop10ten').change(function(){
+                $.ajax({
+                    url : "./api/test1",
+                    type : "get", 
+                    dateType:"text", 
+                    data : { 
+                      ten : $('#lop10ten').val()
+                    },
+                    success : function (result){
+                        var result = result.split("|");
+                        console.log(result);
+                        $('#lop10diachi').html(result[0]);
+                        $('#lop10tinh').html(result[1]);
+                        $('#lop10truong').html(result[2]);
+                    }
+                    });
+            })
+            $('#lop11ten').change(function(){
+                $.ajax({
+                    url : "./api/test1",
+                    type : "get", 
+                    dateType:"text", 
+                    data : { 
+                      ten : $('#lop11ten').val()
+                    },
+                    success : function (result){
+                        var result = result.split("|");
+                        console.log(result);
+                        $('#lop11diachi').html(result[0]);
+                        $('#lop11tinh').html(result[1]);
+                        $('#lop11truong').html(result[2]);
+                    }
+                    });
+            })
+            $('#lop12ten').change(function(){
+                $.ajax({
+                    url : "./api/test1",
+                    type : "get", 
+                    dateType:"text", 
+                    data : { 
+                      ten : $('#lop12ten').val()
+                    },
+                    success : function (result){
+                        var result = result.split("|");
+                        console.log(result);
+                        $('#lop12diachi').html(result[0]);
+                        $('#lop12tinh').html(result[1]);
+                        $('#lop12truong').html(result[2]);
+                    }
+                    });
+            })
+        });
 
     </script>
     
