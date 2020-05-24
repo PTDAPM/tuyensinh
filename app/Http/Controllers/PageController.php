@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Nganh;
 
 class PageController extends Controller
 {
@@ -104,19 +105,10 @@ class PageController extends Controller
 		}
 		
 	}
+	public function getNganh() {
+		$nganh = Nganh::all();
+		return view('welcome',['nganhs' => $nganh]);
+	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
 	
 }

@@ -238,7 +238,7 @@ $data = json_decode($data);
             </div>
             <div class="col-md-4">
                 <label>Kv ưu tiên</label>
-                <select class="form-control" id="lop12tinh" readonly="readonly" name="lop12tinh">
+                <select class="form-control" id=""  name="">
                   <option value="KV1">KV1</option>
                   <option value="KV2">KV2</option>
                   <option value="KV2-NT">KV2-NT</option>
@@ -248,7 +248,7 @@ $data = json_decode($data);
             </div>
             <div class="col-md-4">
                 <label>Đối tượng ưu tiên (nếu có)</label>
-                <select class="form-control" id="lop12tinh" readonly="readonly" name="lop12tinh">
+                <select class="form-control" id=""  name="">
                   @for($i = 0; $i < 7; $i++)
                   <option value="{{ $i+1 }}">0{{ $i+1 }}</option>
                   @endfor
@@ -263,26 +263,22 @@ $data = json_decode($data);
               <div class="col-md-12"><b>Nguyện vọng 1</b></div>
               <div class="col-md-4">
                 <label>Ngành/nhóm ngành/chuyên ngành</label>
-                <select class="form-control" id="lop12tinh" readonly="readonly" name="lop12tinh">
-                  <option value="KV1">KV1</option>
-                  <option value="KV2">KV2</option>
-                  <option value="KV2-NT">KV2-NT</option>
-                  <option value="KV3">KV3</option>
+                <select class="form-control" id="nganh"  name="nganh">
+
+                  @foreach ($nganhs as $nganh)
+                      <option value="{{ $nganh->id }}">{{ $nganh->ten }}</option>
+                  @endforeach
                 
                 </select>
               </div>
               <div class="col-md-4">
                 <label>Mã xét tuyển</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" id="maxettuyen" name="maxettuyen">
               </div>
               <div class="col-md-4">
                 <label>Tổ hợp xét tuyển</label>
-                <select class="form-control" id="lop12tinh" readonly="readonly" name="lop12tinh">
-                  <option value="KV1">KV1</option>
-                  <option value="KV2">KV2</option>
-                  <option value="KV2-NT">KV2-NT</option>
-                  <option value="KV3">KV3</option>
-                
+                <select class="form-control" id="tohopxettuyen"  name="tohopxettuyen">
+                      <option value=" ">A00, A01, A02</option>
                 </select>
               </div>
             </div>
@@ -291,7 +287,7 @@ $data = json_decode($data);
               <div class="col-md-12"><b>Nguyện vọng 2</b></div>
               <div class="col-md-4">
                 <label>Ngành/nhóm ngành/chuyên ngành</label>
-                <select class="form-control" id="lop12tinh" readonly="readonly" name="lop12tinh">
+                <select class="form-control" id=""  name="">
                   <option value="KV1">KV1</option>
                   <option value="KV2">KV2</option>
                   <option value="KV2-NT">KV2-NT</option>
@@ -305,7 +301,7 @@ $data = json_decode($data);
               </div>
               <div class="col-md-4">
                 <label>Tổ hợp xét tuyển</label>
-                <select class="form-control" id="lop12tinh" readonly="readonly" name="lop12tinh">
+                <select class="form-control" id=""  name="lop12tinh">
                   <option value="KV1">KV1</option>
                   <option value="KV2">KV2</option>
                   <option value="KV2-NT">KV2-NT</option>
@@ -319,7 +315,7 @@ $data = json_decode($data);
               <div class="col-md-12"><b>Nguyện vọng 3</b></div>
               <div class="col-md-4">
                 <label>Ngành/nhóm ngành/chuyên ngành</label>
-                <select class="form-control" id="lop12tinh" readonly="readonly" name="lop12tinh">
+                <select class="form-control" id=""  name="">
                   <option value="KV1">KV1</option>
                   <option value="KV2">KV2</option>
                   <option value="KV2-NT">KV2-NT</option>
@@ -333,7 +329,7 @@ $data = json_decode($data);
               </div>
               <div class="col-md-4">
                 <label>Tổ hợp xét tuyển</label>
-                <select class="form-control" id="lop12tinh" readonly="readonly" name="lop12tinh">
+                <select class="form-control" id=""  name="">
                   <option value="KV1">KV1</option>
                   <option value="KV2">KV2</option>
                   <option value="KV2-NT">KV2-NT</option>
@@ -487,6 +483,19 @@ $data = json_decode($data);
                         $('#lop12diachi').html(result[0]);
                         $('#lop12tinh').html(result[1]);
                         $('#lop12truong').html(result[2]);
+                    }
+                    });
+            })
+            $('#nganh').change(function(){
+                $.ajax({
+                    url : "./ajax/maxettuyen",
+                    type : "get", 
+                    dateType:"text", 
+                    data : { 
+                      ten : $('#nganh').val()
+                    },
+                    success : function (result){
+                        $('')
                     }
                     });
             })
