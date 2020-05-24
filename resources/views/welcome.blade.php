@@ -19,7 +19,8 @@ $data = json_decode($data);
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"       integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="/resources/js/validation.js"></script>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <base href="{{asset('')}}">
@@ -44,7 +45,7 @@ $data = json_decode($data);
             </div>
         @endif
     </div>
-        <form action="./hoso" method="post" enctype="multipart/form-data">
+        <form action="./hoso" method="post" enctype="multipart/form-data" id="info">
             @csrf
             <div class="form-group">
                 <div class="col-md-9">
