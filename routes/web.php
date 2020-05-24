@@ -15,5 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','PageController@getNganh');
 Route::post('hoso','PageController@luuHoso');
+Route::get('ajax/maxettuyen','PageController@ajaxGetMa');
 //Route::get('multiuploads','PageController@uploadForm');
 //Route::post('multiuploads','PageController@uploadSubmit');

@@ -238,7 +238,7 @@ $data = json_decode($data);
             </div>
             <div class="col-md-4">
                 <label>Kv ưu tiên</label>
-                <select class="form-control" id=""  name="">
+                <select class="form-control" id="kvuutien"  name="kvuutien">
                   <option value="KV1">KV1</option>
                   <option value="KV2">KV2</option>
                   <option value="KV2-NT">KV2-NT</option>
@@ -248,7 +248,7 @@ $data = json_decode($data);
             </div>
             <div class="col-md-4">
                 <label>Đối tượng ưu tiên (nếu có)</label>
-                <select class="form-control" id=""  name="">
+                <select class="form-control" id="dtuutien"  name="dtuutien">
                   @for($i = 0; $i < 7; $i++)
                   <option value="{{ $i+1 }}">0{{ $i+1 }}</option>
                   @endfor
@@ -263,8 +263,8 @@ $data = json_decode($data);
               <div class="col-md-12"><b>Nguyện vọng 1</b></div>
               <div class="col-md-4">
                 <label>Ngành/nhóm ngành/chuyên ngành</label>
-                <select class="form-control" id="nganh"  name="nganh">
-
+                <select class="form-control" id="nganh1"  name="nganh1">
+                  <option value="">---------</option>
                   @foreach ($nganhs as $nganh)
                       <option value="{{ $nganh->id }}">{{ $nganh->ten }}</option>
                   @endforeach
@@ -273,12 +273,12 @@ $data = json_decode($data);
               </div>
               <div class="col-md-4">
                 <label>Mã xét tuyển</label>
-                <input type="text" class="form-control" id="maxettuyen" name="maxettuyen">
+                <input type="text" class="form-control" id="maxettuyen1" name="maxettuyen1" value="" readonly="readonly">
               </div>
               <div class="col-md-4">
                 <label>Tổ hợp xét tuyển</label>
-                <select class="form-control" id="tohopxettuyen"  name="tohopxettuyen">
-                      <option value=" ">A00, A01, A02</option>
+                <select class="form-control" id="tohopxettuyen1"  name="tohopxettuyen1" >
+                      <option value="">---------</option>
                 </select>
               </div>
             </div>
@@ -287,25 +287,22 @@ $data = json_decode($data);
               <div class="col-md-12"><b>Nguyện vọng 2</b></div>
               <div class="col-md-4">
                 <label>Ngành/nhóm ngành/chuyên ngành</label>
-                <select class="form-control" id=""  name="">
-                  <option value="KV1">KV1</option>
-                  <option value="KV2">KV2</option>
-                  <option value="KV2-NT">KV2-NT</option>
-                  <option value="KV3">KV3</option>
+                <select class="form-control" id="nganh2"  name="nganh2">
+                  <option value="">---------</option>
+                  @foreach ($nganhs as $nganh)
+                      <option value="{{ $nganh->id }}">{{ $nganh->ten }}</option>
+                  @endforeach
                 
                 </select>
               </div>
               <div class="col-md-4">
                 <label>Mã xét tuyển</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" id="maxettuyen2" name="maxettuyen2" value="" readonly="readonly">
               </div>
               <div class="col-md-4">
                 <label>Tổ hợp xét tuyển</label>
-                <select class="form-control" id=""  name="lop12tinh">
-                  <option value="KV1">KV1</option>
-                  <option value="KV2">KV2</option>
-                  <option value="KV2-NT">KV2-NT</option>
-                  <option value="KV3">KV3</option>
+                <select class="form-control" id="tohopxettuyen2"  name="tohopxettuyen2">
+                  <option value="">---------</option>
                 
                 </select>
               </div>
@@ -315,25 +312,22 @@ $data = json_decode($data);
               <div class="col-md-12"><b>Nguyện vọng 3</b></div>
               <div class="col-md-4">
                 <label>Ngành/nhóm ngành/chuyên ngành</label>
-                <select class="form-control" id=""  name="">
-                  <option value="KV1">KV1</option>
-                  <option value="KV2">KV2</option>
-                  <option value="KV2-NT">KV2-NT</option>
-                  <option value="KV3">KV3</option>
+                <select class="form-control" id="nganh3"  name="nganh3">
+                  <option value="">---------</option>
+                  @foreach ($nganhs as $nganh)
+                      <option value="{{ $nganh->id }}">{{ $nganh->ten }}</option>
+                  @endforeach
                 
                 </select>
               </div>
               <div class="col-md-4">
                 <label>Mã xét tuyển</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" id="maxettuyen3" name="maxettuyen3" value="" readonly="readonly">
               </div>
               <div class="col-md-4">
                 <label>Tổ hợp xét tuyển</label>
-                <select class="form-control" id=""  name="">
-                  <option value="KV1">KV1</option>
-                  <option value="KV2">KV2</option>
-                  <option value="KV2-NT">KV2-NT</option>
-                  <option value="KV3">KV3</option>
+                <select class="form-control" id="tohopxettuyen3"  name="tohopxettuyen3">
+                  <option value="">---------</option>
                 
                 </select>
               </div>
@@ -346,45 +340,45 @@ $data = json_decode($data);
               <div class="col-md-12">Lớp 10</div>
               <div class="col-md-4">
                 <label>Điểm tb môn 1</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="lop10diemtb1">
               </div>
               <div class="col-md-4">
                 <label>Điểm tb môn 2</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="lop10diemtb2">
               </div>
               <div class="col-md-4">
                 <label>Điểm tb môn 3</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="lop10diemtb3">
               </div>
             </div>
             <div class="form-group">
               <div class="col-md-12">Lớp 11</div>
               <div class="col-md-4">
                 <label>Điểm tb môn 1</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="lop11diemtb1">
               </div>
               <div class="col-md-4">
                 <label>Điểm tb môn 2</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="lop11diemtb2">
               </div>
               <div class="col-md-4">
                 <label>Điểm tb môn 3</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="lop11diemtb3">
               </div>
             </div>
             <div class="form-group">
               <div class="col-md-12">Lớp 12</div>
               <div class="col-md-4">
                 <label>Điểm tb môn 1</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="lop12diemtb1">
               </div>
               <div class="col-md-4">
                 <label>Điểm tb môn 2</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="lop12diemtb2">
               </div>
               <div class="col-md-4">
                 <label>Điểm tb môn 3</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="lop12diemtb3">
               </div>
             </div>
           <div class="col-md-12"><hr></div>
@@ -486,16 +480,51 @@ $data = json_decode($data);
                     }
                     });
             })
-            $('#nganh').change(function(){
+            $('#nganh1').change(function(){
                 $.ajax({
                     url : "./ajax/maxettuyen",
                     type : "get", 
                     dateType:"text", 
                     data : { 
-                      ten : $('#nganh').val()
+                      id_nganh : $('#nganh1').val()
                     },
                     success : function (result){
-                        $('')
+                        console.log(result);
+                        var result = result.split("|");
+                        $('#maxettuyen1').val(result[0]);
+                        $('#tohopxettuyen1').html(result[1]);
+                    }
+                    });
+            })
+            $('#nganh2').change(function(){
+                $.ajax({
+                    url : "./ajax/maxettuyen",
+                    type : "get", 
+                    dateType:"text", 
+                    data : { 
+                      id_nganh : $('#nganh2').val()
+                    },
+                    success : function (result){
+                        console.log(result);
+                        var result = result.split("|");
+                        $('#maxettuyen2').val(result[0]);
+                        $('#tohopxettuyen2').html(result[1]);
+                    }
+                    });
+            })
+            $('#nganh3').change(function(){
+                $.ajax({
+                    url : "./ajax/maxettuyen",
+                    type : "get", 
+                    dateType:"text", 
+                    data : { 
+                      id_nganh : $('#nganh3').val()
+                    },
+                    success : function (result){
+                        console.log(result);
+                        var result = result.split("|");
+                        $('#maxettuyen3').val(result[0]);
+                        $('#tohopxettuyen3').html(result[1]);
                     }
                     });
             })

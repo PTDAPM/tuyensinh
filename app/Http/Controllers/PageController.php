@@ -37,7 +37,26 @@ class PageController extends Controller
 		echo $request->email."<br>";
 		echo $request->diachi."<br>";
 		echo $request->namtotnghiep."<br>";
-		//echo $request->hoten."<br>";
+		echo $request->kvuutien."<br>";
+		echo $request->dtuutien."<br>";
+		echo $request->nganh1."<br>";
+		echo $request->maxettuyen1."<br>";
+		echo $request->tohopxettuyen1."<br>";
+		echo $request->nganh2."<br>";
+		echo $request->maxettuyen2."<br>";
+		echo $request->tohopxettuyen2."<br>";
+		echo $request->nganh3."<br>";
+		echo $request->maxettuyen3."<br>";
+		echo $request->tohopxettuyen3."<br>";
+		echo $request->lop10diemtb1."<br>";
+		echo $request->lop10diemtb2."<br>";
+		echo $request->lop10diemtb3."<br>";
+		echo $request->lop11diemtb1."<br>";
+		echo $request->lop11diemtb2."<br>";
+		echo $request->lop11diemtb3."<br>";
+		echo $request->lop12diemtb1."<br>";
+		echo $request->lop12diemtb2."<br>";
+		echo $request->lop12diemtb3."<br>";
 		//xu lý upload anh
 		$this->validate($request, [
 			'photos'=>'required',]
@@ -108,6 +127,16 @@ class PageController extends Controller
 	public function getNganh() {
 		$nganh = Nganh::all();
 		return view('welcome',['nganhs' => $nganh]);
+	}
+	public function ajaxGetMa(Request $request) {
+		$nganhs = Nganh::where("id", $request->id_nganh)->get();
+		//dd($nganhs);
+		foreach($nganhs as $nganh) {
+			echo $nganh->ma_xet_tuyen."|";
+			foreach ($nganh->Tohop as $tohop) {
+				echo "<option value=".$tohop->id.">".$tohop->ten."</option>";
+			}
+		}
 	}
 
 	
