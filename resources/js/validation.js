@@ -1,36 +1,102 @@
-$().ready(function() {
-	$("#info").validate({
-		onfocusout: false,
-		onkeyup: false,
-		onclick: false,
-		rules: {
-			"user": {
-				required: true,
-				maxlength: 15
-			},
-			"password": {
-				required: true,
-				minlength: 8
-			},
-			"re-password": {
-				equalTo: "#password",
-				minlength: 8
-				
-			}
-		},
-		messages: {
-			"user": {
-				required: "Bắt buộc nhập username",
-				maxlength: "Hãy nhập tối đa 15 ký tự"
-			},
-			"password": {
-				required: "Bắt buộc nhập password",
-				minlength: "Hãy nhập ít nhất 8 ký tự"
-			},
-			"re-password": {
-				equalTo: "Hai password phải giống nhau",
-				minlength: "Hãy nhập ít nhất 8 ký tự"
-			}
-		}
-	});
-});
+console.log('test');
+$(document).ready(function() {
+ 
+        //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
+        $("#info").validate({
+            rules: {
+                hoten: "required",
+                ntns: "required",
+                noisinh: "required",
+                dantoc: "required",
+                cmnd: "required",
+                ngaycap:"required",
+                noicap:"required",
+                hokhau:"required",
+                matinh:"required",
+                mahuyen:"required",
+                maxa:"required",
+                lop10ten:"required",
+                lop10diachi:"required",
+                lop10tinh:"required",
+                lop10truong:"required",
+                lop11ten:"required",
+                lop11diachi:"required",
+                lop11tinh:"required",
+                lop12truong:"required",
+                lop12ten:"required",
+                lop12diachi:"required",
+                lop12tinh:"required",
+                lop12truong:"required",
+                sdt:"required",
+                email:"required",
+                diachi:"required",
+                namtotnghiep:"required",
+                kvuutien:"required",
+                dtuutien:"required",
+                nganh1:"required",
+                nganh2:"required",
+                nganh3:"required",
+                lop10diemtb1:"required",
+                lop10diemtb2:"required",
+                lop10diemtb3:"required",
+                lop11diemtb1:"required",
+                lop11diemtb2:"required",
+                lop11diemtb3:"required",
+                lop12diemtb1:"required",
+                lop12diemtb2:"required",
+                lop120diemtb3:"required",
+
+                // diachi: {
+                //     required: true,
+                //     minlength: 2
+                // }
+            },
+            messages: {
+                hoten: "Trường này không được để trống",
+                ntns: "Trường này không được để trống",
+                noisinh: "Trường này không được để trống",
+                dantoc:"Trường này không được để trống",
+                cmnd:"Trường này không được để trống",
+                ngaycap:"Trường này không được để trống",
+                noicap:"Trường này không được để trống",
+                hokhau:"Trường này không được để trống",
+                matinh:"Trường này không được để trống",
+                mahuyen:"Trường này không được để trống",
+                maxa:"Trường này không được để trống",
+                lop10ten:"Trường này không được để trống",
+                lop10diachi:"Trường này không được để trống",
+                lop10tinh:"Trường này không được để trống",
+                lop10truong:"Trường này không được để trống",
+                lop11ten:"Trường này không được để trống",
+                lop11diachi:"Trường này không được để trống",
+                lop11tinh:"Trường này không được để trống",
+                lop12truong:"Trường này không được để trống",
+                lop12ten:"Trường này không được để trống",
+                lop12diachi:"Trường này không được để trống",
+                lop12tinh:"Trường này không được để trống",
+                lop12truong:"Trường này không được để trống",
+                sdt:"Trường này không được để trống",
+                email:"Trường này không được để trống",
+                diachi:"Trường này không được để trống",
+                namtotnghiep:"Trường này không được để trống",
+                kvuutien:"Trường này không được để trống",
+                dtuutien:"Trường này không được để trống",
+                nganh1:"Trường này không được để trống",
+                nganh2:"Trường này không được để trống",
+                nganh3:"Trường này không được để trống",
+                lop10diemtb1:"Trường này không được để trống",
+                lop10diemtb2:"Trường này không được để trống",
+                lop10diemtb3:"Trường này không được để trống",
+                lop11diemtb1:"Trường này không được để trống",
+                lop11diemtb2:"Trường này không được để trống",
+                lop11diemtb3:"Trường này không được để trống",
+                lop12diemtb1:"Trường này không được để trống",
+                lop12diemtb2:"Trường này không được để trống",
+                lop120diemtb3:"Trường này không được để trống",
+                // diachi: {
+                //     required: "Vui lòng nhập địa chỉ",
+                //     minlength: "Địa chỉ ngắn vậy, chém gió ah?"
+                // }
+            }
+        });
+    });

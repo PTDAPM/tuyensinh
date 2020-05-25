@@ -59,7 +59,9 @@ class PageController extends Controller
 		echo $request->lop12diemtb3."<br>";
 		//xu lý upload anh
 		$this->validate($request, [
-			'photos'=>'required',]
+			'photos'=>'required'],[
+			'photos.required' => 'Bạn chưa chọn file học bạ !'
+			]
 		);
         // kiểm tra có files sẽ xử lý
 		if($request->hasFile('photos')) {

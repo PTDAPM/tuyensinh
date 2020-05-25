@@ -29,6 +29,12 @@ $data = json_decode($data);
         .container {
             margin-top:2%;
         }
+        label.error {
+        display: inline-block;
+        color:red;
+        font-style: italic;
+        width: 200px;
+        }
     </style>
 </head>
 <body>
@@ -50,11 +56,11 @@ $data = json_decode($data);
             <div class="form-group">
                 <div class="col-md-9">
                     <label>Họ Tên</label>
-                    <input type="text" class="form-control" name="hoten">
+                    <input type="text" class="form-control" name="hoten" id="hoten">
                 </div>
                 <div class="col-md-3">
                     <label>Giới tính</label>
-                    <select class="form-control" id="exampleFormControlSelect1" name="gioitinh">
+                    <select class="form-control" id="gioitinh" name="gioitinh">
                       <option value="0">Nam</option>
                       <option value="1">Nữ</option>
                     </select>
@@ -63,35 +69,35 @@ $data = json_decode($data);
           <div class="form-group">
             <div class="col-md-4">
                 <label>Ngày tháng năm sinh</label>
-                <input type="date" class="form-control" name="ntns">
+                <input type="date" class="form-control" name="ntns" id="ntns">
             </div>
             <div class="col-md-4">
                 <label>Nơi sinh</label>
-                <input type="text" class="form-control" name="noisinh">
+                <input type="text" class="form-control" name="noisinh" id="noisinh">
             </div>
             <div class="col-md-4">
                 <label>Dân tộc</label>
-                <input type="text" class="form-control" name="dantoc">
+                <input type="text" class="form-control" name="dantoc" id="dantoc">
             </div>
           </div>
           <div class="form-group">
             <div class="col-md-4">
                 <label>CMND</label>
-                <input type="text" class="form-control" name="cmnd">
+                <input type="number" class="form-control" name="cmnd" id="cmnd">
             </div>
             <div class="col-md-4">
                 <label>Ngày cấp</label>
-                <input type="date" class="form-control" name="ngaycap">
+                <input type="date" class="form-control" name="ngaycap" id="ngaycap">
             </div>
             <div class="col-md-4">
                 <label>Nơi cấp</label>
-                <input type="text" class="form-control" name="noicap">
+                <input type="text" class="form-control" name="noicap" id="noicap">
             </div>
           </div>
           <div class="form-group">
             <div class="col-md-12">
                 <label>Hộ Khẩu</label>
-                <input type="text" class="form-control" name="hokhau">
+                <input type="text" class="form-control" name="hokhau" id="hokhau">
             </div>
             <div class="col-md-4">
                 <label>Mã tỉnh</label>
@@ -110,7 +116,7 @@ $data = json_decode($data);
             </div>
             <div class="col-md-4">
                 <label>Mã xã (phường) (nếu có)</label>
-                <input type="text" class="form-control" name="maxa">
+                <input type="text" class="form-control" name="maxa" id="maxa">
             </div>
           </div>
           <div class="col-md-12">
@@ -219,27 +225,27 @@ $data = json_decode($data);
           <div class="form-group">
             <div class="col-md-6">
                 <label>Điện thoại</label>
-                <input type="number" class="form-control" name="sdt">
+                <input type="number" class="form-control" name="sdt" id="sdt">
             </div>
             <div class="col-md-6">
                 <label>Email</label>
-                <input type="email" class="form-control" name="email">
+                <input type="email" class="form-control" name="email" id="email">
             </div>
           </div>
           <div class="form-group">
             <div class="col-md-12">
                 <label>Địa chỉ liên hệ</label>
-                <input type="text" class="form-control" name="diachi">
+                <input type="text" class="form-control" name="diachi" id="diachi">
             </div>
           </div>
           <div class="form-group">
             <div class="col-md-4">
                 <label>Năm tốt nghệp</label>
-                <input type="number" class="form-control" name="namtotnghiep">
+                <input type="number" class="form-control" name="namtotnghiep" id="namtotnghiep">
             </div>
             <div class="col-md-4">
                 <label>Kv ưu tiên</label>
-                <select class="form-control" id="kvuutien"  name="kvuutien">
+                <select class="form-control" id="kvuutien"  name="kvuutien" id="kvuutien">
                   <option value="KV1">KV1</option>
                   <option value="KV2">KV2</option>
                   <option value="KV2-NT">KV2-NT</option>
@@ -341,45 +347,45 @@ $data = json_decode($data);
               <div class="col-md-12">Lớp 10</div>
               <div class="col-md-4">
                 <label>Điểm tb môn 1</label>
-                <input type="text" class="form-control" name="lop10diemtb1">
+                <input type="number" class="form-control" name="lop10diemtb1" id="lop10diemtb1">
               </div>
               <div class="col-md-4">
                 <label>Điểm tb môn 2</label>
-                <input type="text" class="form-control" name="lop10diemtb2">
+                <input type="number" class="form-control" name="lop10diemtb2" id="lop10diemtb2">
               </div>
               <div class="col-md-4">
                 <label>Điểm tb môn 3</label>
-                <input type="text" class="form-control" name="lop10diemtb3">
+                <input type="number" class="form-control" name="lop10diemtb3" id="lop10diemtb3">
               </div>
             </div>
             <div class="form-group">
               <div class="col-md-12">Lớp 11</div>
               <div class="col-md-4">
                 <label>Điểm tb môn 1</label>
-                <input type="text" class="form-control" name="lop11diemtb1">
+                <input type="number" class="form-control" name="lop11diemtb1" id="lop11diemtb1">
               </div>
               <div class="col-md-4">
                 <label>Điểm tb môn 2</label>
-                <input type="text" class="form-control" name="lop11diemtb2">
+                <input type="number" class="form-control" name="lop11diemtb2" id="lop11diemtb2">
               </div>
               <div class="col-md-4">
                 <label>Điểm tb môn 3</label>
-                <input type="text" class="form-control" name="lop11diemtb3">
+                <input type="number" class="form-control" name="lop11diemtb3" id="lop11diemtb3">
               </div>
             </div>
             <div class="form-group">
               <div class="col-md-12">Lớp 12</div>
               <div class="col-md-4">
                 <label>Điểm tb môn 1</label>
-                <input type="text" class="form-control" name="lop12diemtb1">
+                <input type="number" class="form-control" name="lop12diemtb1" id="lop12diemtb1">
               </div>
               <div class="col-md-4">
                 <label>Điểm tb môn 2</label>
-                <input type="text" class="form-control" name="lop12diemtb2">
+                <input type="number" class="form-control" name="lop12diemtb2" id="lop12diemtb2">
               </div>
               <div class="col-md-4">
                 <label>Điểm tb môn 3</label>
-                <input type="text" class="form-control" name="lop12diemtb3">
+                <input type="number" class="form-control" name="lop12diemtb3" id="lop12diemtb3">
               </div>
             </div>
           <div class="col-md-12"><hr></div>
