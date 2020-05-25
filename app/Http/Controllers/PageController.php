@@ -6,60 +6,15 @@ use Illuminate\Http\Request;
 use App\HoSo;
 use App\Nganh;
 use App\HosoNganh;
+use App\Lop10;
+use App\Lop11;
+use App\Lop12;
 
 class PageController extends Controller
 {
     //
 	public function luuHoso(Request $request) {	
 		$hs_nganh = array($request->nganh1, $request->nganh2, $request->nganh3);
-		//echo $request->hoten."<br>";
-		//echo $request->gioitinh."<br>";
-		//echo $request->ntns."<br>";
-		//echo $request->noisinh."<br>";
-		//echo $request->dantoc."<br>";
-		//echo $request->cmnd."<br>";
-		//echo $request->ngaycap."<br>";
-		//echo $request->noicap."<br>";
-		//echo $request->hokhau."<br>";
-		//echo $request->matinh."<br>";
-		//echo $request->mahuyen."<br>";
-		//echo $request->maxa."<br>";
-		echo $request->lop10ten."<br>";
-		echo $request->lop10diachi."<br>";
-		echo $request->lop10tinh."<br>";
-		echo $request->lop10truong."<br>";
-		echo $request->lop11ten."<br>";
-		echo $request->lop11diachi."<br>";
-		echo $request->lop11tinh."<br>";
-		echo $request->lop11truong."<br>";
-		echo $request->lop12ten."<br>";
-		echo $request->lop12diachi."<br>";
-		echo $request->lop12tinh."<br>";
-		echo $request->lop12truong."<br>";
-		//echo $request->sdt."<br>";
-		//echo $request->email."<br>";
-		//echo $request->diachi."<br>";
-		//echo $request->namtotnghiep."<br>";
-		//echo $request->kvuutien."<br>";
-		//echo $request->dtuutien."<br>";
-		//echo $request->nganh1."<br>";
-		//echo $request->maxettuyen1."<br>";
-		//echo $request->tohopxettuyen1."<br>";
-		//echo $request->nganh2."<br>";
-		//echo $request->maxettuyen2."<br>";
-		//echo $request->tohopxettuyen2."<br>";
-		//echo $request->nganh3."<br>";
-		echo $request->maxettuyen3."<br>";
-		echo $request->tohopxettuyen3."<br>";
-		echo $request->lop10diemtb1."<br>";
-		echo $request->lop10diemtb2."<br>";
-		echo $request->lop10diemtb3."<br>";
-		echo $request->lop11diemtb1."<br>";
-		echo $request->lop11diemtb2."<br>";
-		echo $request->lop11diemtb3."<br>";
-		echo $request->lop12diemtb1."<br>";
-		echo $request->lop12diemtb2."<br>";
-		echo $request->lop12diemtb3."<br>";
 		$hoso = new HoSo;
 		$hoso->ho_ten 				= $request->hoten;
 		$hoso->gioi_tinh 			= $request->gioitinh;
@@ -108,11 +63,10 @@ class PageController extends Controller
 					$filename = $photo->store('photos');
 				//chuyển file vào mục images
 					$photo->move(public_path('photos'),$filename);
-				//Lưu db
 					array_push($arr_link,$filename);
-					////////////////
-					////////////////
+					
 				}
+				// lưu db //
 				$hoso->anh_hoc_ba = json_encode($arr_link);
 			} else {
 				echo "Falied to upload. Only accept jpg, png, jpeg, pdf photos.";
@@ -126,13 +80,37 @@ class PageController extends Controller
 		$hoso_nganh->ma_nganh = $hs_nganh[$i];
 		$hoso_nganh->save();
 		}
+		$lop10 = new Lop10;
+		$lop10->ma_ho_so 	= $hoso->id;
+		$lop10->ten_truong	= $request->lop10ten;
+		$lop10->dia_chi 	= $request->lop10diachi;
+		$lop10->ma_tinh		= $request->lop10tinh;
+		$lop10->ma_truong	= $request->lop10truong;
+		$lop10->diem_mon1	= $request->lop10diemtb1;
+		$lop10->diem_mon2	= $request->lop10diemtb2;
+		$lop10->diem_mon3 	= $request->lop10diemtb3;
+		$lop10->save();
+		$lop11 = new Lop11;
+		$lop11->ma_ho_so 	= $hoso->id;
+		$lop11->ten_truong	= $request->lop11ten;
+		$lop11->dia_chi 	= $request->lop11diachi;
+		$lop11->ma_tinh		= $request->lop11tinh;
+		$lop11->ma_truong	= $request->lop11truong;
+		$lop11->diem_mon1	= $request->lop11diemtb1;
+		$lop11->diem_mon2	= $request->lop11diemtb2;
+		$lop11->diem_mon3 	= $request->lop11diemtb3;
+		$lop11->save();
+		$lop12 = new Lop12;
+		$lop12->ma_ho_so 	= $hoso->id;
+		$lop12->ten_truong	= $request->lop12ten;
+		$lop12->dia_chi 	= $request->lop12diachi;
+		$lop12->ma_tinh		= $request->lop12tinh;
+		$lop12->ma_truong	= $request->lop12truong;
+		$lop12->diem_mon1	= $request->lop12diemtb1;
+		$lop12->diem_mon2	= $request->lop12diemtb2;
+		$lop12->diem_mon3 	= $request->lop12diemtb3;
+		$lop12->save();
 		
-
-
-
-
-
-
 		return redirect()->route('formdk')->with('success','nộp hồ sơ thành công, vui lòng kiểm tra email để xem lại thông tin');
 	}
 	public function getHuyen(Request $request) {

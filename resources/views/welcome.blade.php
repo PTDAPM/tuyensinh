@@ -20,8 +20,12 @@ $data = json_decode($data);
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"       integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
+    <!-- jquery validate -->
     {{-- <script src="/resources/js/validation.js"></script> --}}
     <!-- Fonts -->
+    <!-- select2 import -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <base href="{{asset('')}}">
     <!-- Styles -->
@@ -426,6 +430,7 @@ $data = json_decode($data);
             }
         });
         $( document ).ready(function() {
+            $('.form-control').select2();
             $('#matinh').change(function(){
                 $.ajax({
                     url : "./api/test",
