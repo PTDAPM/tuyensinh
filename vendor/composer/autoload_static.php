@@ -473,6 +473,7 @@ class ComposerStaticInitb861e10d81835415601d3cbcadaee0ac
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\HoSo' => __DIR__ . '/../..' . '/app/HoSo.php',
+        'App\\HosoNganh' => __DIR__ . '/../..' . '/app/HosoNganh.php',
         'App\\HosoNguyenvong' => __DIR__ . '/../..' . '/app/HosoNguyenvong.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\PageController' => __DIR__ . '/../..' . '/app/Http/Controllers/PageController.php',

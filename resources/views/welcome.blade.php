@@ -20,7 +20,7 @@ $data = json_decode($data);
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"       integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
-    <script src="/resources/js/validation.js"></script>
+    {{-- <script src="/resources/js/validation.js"></script> --}}
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <base href="{{asset('')}}">
@@ -50,13 +50,20 @@ $data = json_decode($data);
                 </ul>
             </div>
         @endif
+        @if (\Session::has('success'))
+            <div class="alert alert-success">
+                <ul>
+                    <li>{!! \Session::get('success') !!}</li>
+                </ul>
+            </div>
+        @endif
     </div>
         <form action="./hoso" method="post" enctype="multipart/form-data" id="info">
             @csrf
             <div class="form-group">
                 <div class="col-md-9">
                     <label>Họ Tên</label>
-                    <input type="text" class="form-control" name="hoten" id="hoten">
+                    <input type="text" class="form-control" name="hoten" id="hoten" autocomplete="on">
                 </div>
                 <div class="col-md-3">
                     <label>Giới tính</label>
@@ -69,21 +76,21 @@ $data = json_decode($data);
           <div class="form-group">
             <div class="col-md-4">
                 <label>Ngày tháng năm sinh</label>
-                <input type="date" class="form-control" name="ntns" id="ntns">
+                <input type="date" class="form-control" name="ntns" id="ntns" autocomplete="on">
             </div>
             <div class="col-md-4">
                 <label>Nơi sinh</label>
-                <input type="text" class="form-control" name="noisinh" id="noisinh">
+                <input type="text" class="form-control" name="noisinh" id="noisinh" autocomplete="on">
             </div>
             <div class="col-md-4">
                 <label>Dân tộc</label>
-                <input type="text" class="form-control" name="dantoc" id="dantoc">
+                <input type="text" class="form-control" name="dantoc" id="dantoc" autocomplete="on">
             </div>
           </div>
           <div class="form-group">
             <div class="col-md-4">
                 <label>CMND</label>
-                <input type="number" class="form-control" name="cmnd" id="cmnd">
+                <input type="number" class="form-control" name="cmnd" id="cmnd" autocomplete="on">
             </div>
             <div class="col-md-4">
                 <label>Ngày cấp</label>
@@ -91,13 +98,13 @@ $data = json_decode($data);
             </div>
             <div class="col-md-4">
                 <label>Nơi cấp</label>
-                <input type="text" class="form-control" name="noicap" id="noicap">
+                <input type="text" class="form-control" name="noicap" id="noicap" autocomplete="on">
             </div>
           </div>
           <div class="form-group">
             <div class="col-md-12">
                 <label>Hộ Khẩu</label>
-                <input type="text" class="form-control" name="hokhau" id="hokhau">
+                <input type="text" class="form-control" name="hokhau" id="hokhau" autocomplete="on">
             </div>
             <div class="col-md-4">
                 <label>Mã tỉnh</label>
@@ -225,23 +232,23 @@ $data = json_decode($data);
           <div class="form-group">
             <div class="col-md-6">
                 <label>Điện thoại</label>
-                <input type="number" class="form-control" name="sdt" id="sdt">
+                <input type="number" class="form-control" name="sdt" id="sdt" autocomplete="on">
             </div>
             <div class="col-md-6">
                 <label>Email</label>
-                <input type="email" class="form-control" name="email" id="email">
+                <input type="email" class="form-control" name="email" id="email" autocomplete="on">
             </div>
           </div>
           <div class="form-group">
             <div class="col-md-12">
                 <label>Địa chỉ liên hệ</label>
-                <input type="text" class="form-control" name="diachi" id="diachi">
+                <input type="text" class="form-control" name="diachi" id="diachi" autocomplete="on">
             </div>
           </div>
           <div class="form-group">
             <div class="col-md-4">
                 <label>Năm tốt nghệp</label>
-                <input type="number" class="form-control" name="namtotnghiep" id="namtotnghiep">
+                <input type="number" class="form-control" name="namtotnghiep" id="namtotnghiep" autocomplete="on">
             </div>
             <div class="col-md-4">
                 <label>Kv ưu tiên</label>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class SuaCotBangHoSo extends Migration
+class CreateHosoNganhsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class SuaCotBangHoSo extends Migration
      */
     public function up()
     {
-        //
-        Schema::table('ho_sos', function($table)
-        {
-            $table->integer('ma_xa')->nullable()->change();
+        Schema::create('hoso_nganhs', function (Blueprint $table) {
+            $table->id();
+            $table->integer('ma_ho_so');
+            $table->integer('ma_nganh');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +28,6 @@ class SuaCotBangHoSo extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('hoso_nganhs');
     }
 }

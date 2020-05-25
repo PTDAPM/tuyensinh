@@ -44,7 +44,7 @@ $(document).ready(function() {
                 lop11diemtb3:"required",
                 lop12diemtb1:"required",
                 lop12diemtb2:"required",
-                lop120diemtb3:"required",
+                lop12diemtb3:"required",
 
                 // diachi: {
                 //     required: true,
@@ -92,7 +92,7 @@ $(document).ready(function() {
                 lop11diemtb3:"Trường này không được để trống",
                 lop12diemtb1:"Trường này không được để trống",
                 lop12diemtb2:"Trường này không được để trống",
-                lop120diemtb3:"Trường này không được để trống",
+                lop12diemtb3:"Trường này không được để trống",
                 // diachi: {
                 //     required: "Vui lòng nhập địa chỉ",
                 //     minlength: "Địa chỉ ngắn vậy, chém gió ah?"

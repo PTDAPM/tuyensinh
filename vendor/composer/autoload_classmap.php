@@ -9,6 +9,7 @@ return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\HoSo' => $baseDir . '/app/HoSo.php',
+    'App\\HosoNganh' => $baseDir . '/app/HosoNganh.php',
     'App\\HosoNguyenvong' => $baseDir . '/app/HosoNguyenvong.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\PageController' => $baseDir . '/app/Http/Controllers/PageController.php',

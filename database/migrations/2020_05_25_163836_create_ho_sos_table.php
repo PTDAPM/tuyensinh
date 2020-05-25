@@ -29,7 +29,13 @@ class CreateHoSosTable extends Migration
             $table->integer('ma_huyen');
             $table->integer('ma_xa');
             $table->string('anh_hoc_ba');
-
+            $table->string('std');
+            $table->string('email');
+            $table->string('dia_chi');
+            $table->string('nam_tot_nghiep');
+            $table->string('kv_uu_tien');
+            $table->string('doi_tuong_uu_tien')->nullable();
+            $table->integer('trang_thai')->nullable();
 
 
         });

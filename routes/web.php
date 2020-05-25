@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','PageController@getNganh');
+Route::get('/','PageController@getNganh')->name('formdk');
 Route::post('hoso','PageController@luuHoso');
 Route::get('ajax/maxettuyen','PageController@ajaxGetMa');
 //Route::get('multiuploads','PageController@uploadForm');
