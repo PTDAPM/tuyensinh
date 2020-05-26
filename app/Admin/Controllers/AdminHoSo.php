@@ -27,7 +27,7 @@ class AdminHoSo extends AdminController
     {
         $grid = new Grid(new HoSo());
         $grid->disableCreateButton();
-        $grid->disableActions();
+        //$grid->disableActions();
         $grid->column('id', __('Id'))->sortable();
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));

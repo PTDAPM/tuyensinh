@@ -16,7 +16,11 @@ class HomeController extends Controller
             ->title('Dashboard')
             ->description('Welcome - admin')
             ->row(function (Row $row) {
-                $row->column(12, 'xxxxxxxxxxxxxxxxxxxx');
+                $row->column(12, '<div style="margin:10px auto"><img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/98294224_2723252784615695_2074047085992214528_n.jpg?_nc_cat=101&_nc_sid=8024bb&_nc_ohc=JO0Hcs9oYwsAX9I__Fu&_nc_ht=scontent.fhan2-1.fna&oh=fecbb992bb7ab3328c72e584a60fb583&oe=5EF25332" alt="banner">
+					<h2>-	Hướng Dẫn: ADMIN sử dụng menu bên trái để xem và quản lý bài viết. Sử dụng chức năng user và role để thêm user và phân quyền user</h2>
+					<hr>
+					<h2>-	Team Dev Leader: <span style="color:red"><b>Nguyễn Văn Anh</b><span></h2>
+                	</div>');
                 
             });
     }

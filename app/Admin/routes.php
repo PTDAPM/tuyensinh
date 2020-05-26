@@ -10,7 +10,7 @@ Route::group([
     'middleware'    => config('admin.route.middleware'),
 ], function (Router $router) {
 
-    //$router->get('/', 'HomeController@index')->name('admin.home');
-    $router->resource('/', AdminHoSo::class);
+    $router->get('/', 'HomeController@index')->name('admin.home');
+    $router->resource('ho_sos', AdminHoSo::class);
 
 });
