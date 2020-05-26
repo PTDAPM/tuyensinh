@@ -21,7 +21,7 @@ $data = json_decode($data);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
     <!-- jquery validate -->
-    {{-- <script src="/resources/js/validation.js"></script> --}}
+    <script src="/resources/js/validation.js"></script>
     <!-- Fonts -->
     <!-- select2 import -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
@@ -112,7 +112,7 @@ $data = json_decode($data);
             </div>
             <div class="col-md-4">
                 <label>Mã tỉnh</label>
-                <select class="form-control" id="matinh" name="matinh">
+                <select class="form-control selects2" id="matinh" name="matinh">
                     <option value="">---------</option>
                     @foreach ($data->provinces as $value)
                       <option value="{{ $value->code }}">{{ $value->code }} - {{ $value->name }}</option>
@@ -138,7 +138,7 @@ $data = json_decode($data);
             <div class="col-md-12">Lớp 10</div>
             <div class="col-md-4">
                 <label>Tên trường</label>
-                <select class="form-control" id="lop10ten" name="lop10ten">
+                <select class="form-control selects2" id="lop10ten" name="lop10ten">
                   <option value="">---------</option>
                     @foreach ($data->highSchools as $value)
                       <option value="{{ $value->id }}|{{ $value->name }}">{{ $value->code }} - {{ $value->name }}</option>
@@ -147,14 +147,14 @@ $data = json_decode($data);
             </div>
             <div class="col-md-4">
                 <label>Địa chỉ</label>
-                <select class="form-control" id="lop10diachi" readonly="readonly" name="lop10diachi">
+                <select class="form-control selects2" id="lop10diachi" readonly="readonly" name="lop10diachi">
                   <option value="">---------</option>
                    
                 </select>
             </div>
             <div class="col-md-2">
                 <label>Mã tỉnh</label>
-                <select class="form-control" id="lop10tinh" readonly="readonly" name="lop10tinh">
+                <select class="form-control selects2" id="lop10tinh" readonly="readonly" name="lop10tinh">
                   <option value=""
                   readonly="readonly">---------</option>
                 
@@ -162,7 +162,7 @@ $data = json_decode($data);
             </div>
             <div class="col-md-2">
                 <label>Mã trường</label>
-                <select class="form-control" id="lop10truong" readonly="readonly" name="lop10truong">
+                <select class="form-control selects2" id="lop10truong" readonly="readonly" name="lop10truong">
                   <option value="" readonly="readonly">---------</option>
                 </select>
             </div>
@@ -171,7 +171,7 @@ $data = json_decode($data);
             <div class="col-md-12">Lớp 11</div>
             <div class="col-md-4">
                 <label>Tên trường</label>
-                <select class="form-control" id="lop11ten" name="lop11ten">
+                <select class="form-control selects2" id="lop11ten" name="lop11ten">
                   <option value="">---------</option>
                     @foreach ($data->highSchools as $value)
                       <option value="{{ $value->id }}|{{ $value->name }}">{{ $value->code }} - {{ $value->name }}</option>
@@ -180,14 +180,14 @@ $data = json_decode($data);
             </div>
             <div class="col-md-4">
                 <label>Địa chỉ</label>
-                <select class="form-control" id="lop11diachi" readonly="readonly" name="lop11diachi">
+                <select class="form-control selects2" id="lop11diachi" readonly="readonly" name="lop11diachi">
                   <option value="">---------</option>
                    
                 </select>
             </div>
             <div class="col-md-2">
                 <label>Mã tỉnh</label>
-                <select class="form-control" id="lop11tinh" readonly="readonly" name="lop11tinh">
+                <select class="form-control selects2" id="lop11tinh" readonly="readonly" name="lop11tinh">
                   <option value=""
                   readonly="readonly">---------</option>
                 
@@ -195,7 +195,7 @@ $data = json_decode($data);
             </div>
             <div class="col-md-2">
                 <label>Mã trường</label>
-                <select class="form-control" id="lop11truong" readonly="readonly" name="lop11truong">
+                <select class="form-control selects2" id="lop11truong" readonly="readonly" name="lop11truong">
                   <option value="" readonly="readonly">---------</option>
                 </select>
             </div>
@@ -204,7 +204,7 @@ $data = json_decode($data);
             <div class="col-md-12">Lớp 12</div>
             <div class="col-md-4">
                 <label>Tên trường</label>
-                <select class="form-control" id="lop12ten" name="lop12ten">
+                <select class="form-control selects2" id="lop12ten" name="lop12ten">
                   <option value="">---------</option>
                     @foreach ($data->highSchools as $value)
                       <option value="{{ $value->id }}|{{ $value->name }}">{{ $value->code }} - {{ $value->name }}</option>
@@ -213,14 +213,14 @@ $data = json_decode($data);
             </div>
             <div class="col-md-4">
                 <label>Địa chỉ</label>
-                <select class="form-control" id="lop12diachi" readonly="readonly" name="lop12diachi">
+                <select class="form-control selects2" id="lop12diachi" readonly="readonly" name="lop12diachi">
                   <option value="">---------</option>
                    
                 </select>
             </div>
             <div class="col-md-2">
                 <label>Mã tỉnh</label>
-                <select class="form-control" id="lop12tinh" readonly="readonly" name="lop12tinh">
+                <select class="form-control selects2" id="lop12tinh" readonly="readonly" name="lop12tinh">
                   <option value=""
                   readonly="readonly">---------</option>
                 
@@ -228,7 +228,7 @@ $data = json_decode($data);
             </div>
             <div class="col-md-2">
                 <label>Mã trường</label>
-                <select class="form-control" id="lop12truong" readonly="readonly" name="lop12truong">
+                <select class="form-control selects2" id="lop12truong" readonly="readonly" name="lop12truong">
                   <option value="" readonly="readonly">---------</option>
                 </select>
             </div>
@@ -281,7 +281,7 @@ $data = json_decode($data);
               <div class="col-md-12"><b>Nguyện vọng 1</b></div>
               <div class="col-md-4">
                 <label>Ngành/nhóm ngành/chuyên ngành</label>
-                <select class="form-control" id="nganh1"  name="nganh1">
+                <select class="form-control selects2" id="nganh1"  name="nganh1">
                   <option value="">---------</option>
                   @foreach ($nganhs as $nganh)
                       <option value="{{ $nganh->id }}">{{ $nganh->ten }}</option>
@@ -295,7 +295,7 @@ $data = json_decode($data);
               </div>
               <div class="col-md-4">
                 <label>Tổ hợp xét tuyển</label>
-                <select class="form-control" id="tohopxettuyen1"  name="tohopxettuyen1" >
+                <select class="form-control selects2" id="tohopxettuyen1"  name="tohopxettuyen1" >
                       <option value="">---------</option>
                 </select>
               </div>
@@ -305,7 +305,7 @@ $data = json_decode($data);
               <div class="col-md-12"><b>Nguyện vọng 2</b></div>
               <div class="col-md-4">
                 <label>Ngành/nhóm ngành/chuyên ngành</label>
-                <select class="form-control" id="nganh2"  name="nganh2">
+                <select class="form-control selects2" id="nganh2"  name="nganh2">
                   <option value="">---------</option>
                   @foreach ($nganhs as $nganh)
                       <option value="{{ $nganh->id }}">{{ $nganh->ten }}</option>
@@ -319,7 +319,7 @@ $data = json_decode($data);
               </div>
               <div class="col-md-4">
                 <label>Tổ hợp xét tuyển</label>
-                <select class="form-control" id="tohopxettuyen2"  name="tohopxettuyen2">
+                <select class="form-control selects2" id="tohopxettuyen2"  name="tohopxettuyen2">
                   <option value="">---------</option>
                 
                 </select>
@@ -330,7 +330,7 @@ $data = json_decode($data);
               <div class="col-md-12"><b>Nguyện vọng 3</b></div>
               <div class="col-md-4">
                 <label>Ngành/nhóm ngành/chuyên ngành</label>
-                <select class="form-control" id="nganh3"  name="nganh3">
+                <select class="form-control selects2" id="nganh3"  name="nganh3">
                   <option value="">---------</option>
                   @foreach ($nganhs as $nganh)
                       <option value="{{ $nganh->id }}">{{ $nganh->ten }}</option>
@@ -344,7 +344,7 @@ $data = json_decode($data);
               </div>
               <div class="col-md-4">
                 <label>Tổ hợp xét tuyển</label>
-                <select class="form-control" id="tohopxettuyen3"  name="tohopxettuyen3">
+                <select class="form-control selects2" id="tohopxettuyen3"  name="tohopxettuyen3">
                   <option value="">---------</option>
                 
                 </select>
@@ -430,7 +430,7 @@ $data = json_decode($data);
             }
         });
         $( document ).ready(function() {
-            $('.form-control').select2();
+            $('.selects2').select2();
             $('#matinh').change(function(){
                 $.ajax({
                     url : "./api/test",

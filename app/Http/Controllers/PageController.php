@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\HoSo;
 use App\Nganh;
 use App\HosoNganh;
 use App\Lop10;
 use App\Lop11;
 use App\Lop12;
+use Mail;
 
 class PageController extends Controller
 {
@@ -112,6 +114,10 @@ class PageController extends Controller
 		$lop12->save();
 		
 		return redirect()->route('formdk')->with('success','nộp hồ sơ thành công, vui lòng kiểm tra email để xem lại thông tin');
+		Mail::send('email', array('name'=>$request->hoten, 'link' => 'https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http://ttts.local/public/thongtin/'.$hoso->id.'&choe=UTF-8'), function($message){
+	        $message->to('ngoc98toan@gmail.com')->subject('Đăng Ký Xét Tuyển Online');
+	    });
+        Session::flash('flash_message', 'Send message successfully!');
 	}
 	public function getHuyen(Request $request) {
 		$data = file_get_contents('http://xettuyen.utc.edu.vn/api/districts?province='.$request->maTinh);
@@ -158,6 +164,9 @@ class PageController extends Controller
 				echo "<option value=".$tohop->id.">".$tohop->ten."</option>";
 			}
 		}
+	}
+	public function getThongTin(Request $request) {
+		echo $request->id;
 	}
 
 	
