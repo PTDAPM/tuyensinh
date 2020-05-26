@@ -26,9 +26,9 @@ class ComposerStaticInitb861e10d81835415601d3cbcadaee0ac
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
         'b6ec61354e97f32c0ae683041c78392a' => __DIR__ . '/..' . '/scrivo/highlight.php/HighlightUtilities/functions.php',
+        '4e8671d7be9056dcd04ddd9e8e15f9cc' => __DIR__ . '/..' . '/encore/laravel-admin/src/helpers.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
-        '4e8671d7be9056dcd04ddd9e8e15f9cc' => __DIR__ . '/..' . '/encore/laravel-admin/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -136,6 +136,7 @@ class ComposerStaticInitb861e10d81835415601d3cbcadaee0ac
         ),
         'E' => 
         array (
+            'Encore\\Grid\\Lightbox\\' => 21,
             'Encore\\Admin\\' => 13,
             'Egulias\\EmailValidator\\' => 23,
         ),
@@ -397,6 +398,10 @@ class ComposerStaticInitb861e10d81835415601d3cbcadaee0ac
         array (
             0 => __DIR__ . '/..' . '/facade/flare-client-php/src',
         ),
+        'Encore\\Grid\\Lightbox\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel-admin-ext/grid-lightbox/src',
+        ),
         'Encore\\Admin\\' => 
         array (
             0 => __DIR__ . '/..' . '/encore/laravel-admin/src',
@@ -481,6 +486,10 @@ class ComposerStaticInitb861e10d81835415601d3cbcadaee0ac
     );
 
     public static $classMap = array (
+        'App\\Admin\\Controllers\\AdminHoSo' => __DIR__ . '/../..' . '/app/Admin/Controllers/AdminHoSo.php',
+        'App\\Admin\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Admin/Controllers/AuthController.php',
+        'App\\Admin\\Controllers\\ExampleController' => __DIR__ . '/../..' . '/app/Admin/Controllers/ExampleController.php',
+        'App\\Admin\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Admin/Controllers/HomeController.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\HoSo' => __DIR__ . '/../..' . '/app/HoSo.php',
@@ -499,6 +508,7 @@ class ComposerStaticInitb861e10d81835415601d3cbcadaee0ac
         'App\\Lop10' => __DIR__ . '/../..' . '/app/Lop10.php',
         'App\\Lop11' => __DIR__ . '/../..' . '/app/Lop11.php',
         'App\\Lop12' => __DIR__ . '/../..' . '/app/Lop12.php',
+        'App\\Mail\\MailNotify' => __DIR__ . '/../..' . '/app/Mail/MailNotify.php',
         'App\\Nganh' => __DIR__ . '/../..' . '/app/Nganh.php',
         'App\\NganhTohop' => __DIR__ . '/../..' . '/app/NganhTohop.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
@@ -1322,6 +1332,10 @@ class ComposerStaticInitb861e10d81835415601d3cbcadaee0ac
         'Encore\\Admin\\Widgets\\Tab' => __DIR__ . '/..' . '/encore/laravel-admin/src/Widgets/Tab.php',
         'Encore\\Admin\\Widgets\\Table' => __DIR__ . '/..' . '/encore/laravel-admin/src/Widgets/Table.php',
         'Encore\\Admin\\Widgets\\Widget' => __DIR__ . '/..' . '/encore/laravel-admin/src/Widgets/Widget.php',
+        'Encore\\Grid\\Lightbox\\GalleryDisplayer' => __DIR__ . '/..' . '/laravel-admin-ext/grid-lightbox/src/GalleryDisplayer.php',
+        'Encore\\Grid\\Lightbox\\Lightbox' => __DIR__ . '/..' . '/laravel-admin-ext/grid-lightbox/src/Lightbox.php',
+        'Encore\\Grid\\Lightbox\\LightboxDisplayer' => __DIR__ . '/..' . '/laravel-admin-ext/grid-lightbox/src/LightboxDisplayer.php',
+        'Encore\\Grid\\Lightbox\\LightboxServiceProvider' => __DIR__ . '/..' . '/laravel-admin-ext/grid-lightbox/src/LightboxServiceProvider.php',
         'Facade\\FlareClient\\Api' => __DIR__ . '/..' . '/facade/flare-client-php/src/Api.php',
         'Facade\\FlareClient\\Concerns\\HasContext' => __DIR__ . '/..' . '/facade/flare-client-php/src/Concerns/HasContext.php',
         'Facade\\FlareClient\\Concerns\\UsesTime' => __DIR__ . '/..' . '/facade/flare-client-php/src/Concerns/UsesTime.php',

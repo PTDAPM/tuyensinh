@@ -62,7 +62,7 @@ class PageController extends Controller
 			} 
 			if($exe_flg) {
 				foreach ($request->photos as $photo) {
-					$filename = $photo->store('photos');
+					$filename = $photo->store('');
 				//chuyển file vào mục images
 					$photo->move(public_path('photos'),$filename);
 					array_push($arr_link,$filename);

@@ -8,6 +8,10 @@ class HoSo extends Model
 {
     //
     protected $table = 'ho_sos';
+    const STATUS = [
+        0 => "✘ Chưa Được Duyệt",
+        1 => "✔ Đã Duyệt"
+    ];
     public function lop10() {
     	return $this->belongsTo('App\Lop10','ma_ho_so','id');
     }

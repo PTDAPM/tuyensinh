@@ -6,6 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Admin\\Controllers\\AdminHoSo' => $baseDir . '/app/Admin/Controllers/AdminHoSo.php',
+    'App\\Admin\\Controllers\\AuthController' => $baseDir . '/app/Admin/Controllers/AuthController.php',
+    'App\\Admin\\Controllers\\ExampleController' => $baseDir . '/app/Admin/Controllers/ExampleController.php',
+    'App\\Admin\\Controllers\\HomeController' => $baseDir . '/app/Admin/Controllers/HomeController.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\HoSo' => $baseDir . '/app/HoSo.php',
@@ -24,6 +28,7 @@ return array(
     'App\\Lop10' => $baseDir . '/app/Lop10.php',
     'App\\Lop11' => $baseDir . '/app/Lop11.php',
     'App\\Lop12' => $baseDir . '/app/Lop12.php',
+    'App\\Mail\\MailNotify' => $baseDir . '/app/Mail/MailNotify.php',
     'App\\Nganh' => $baseDir . '/app/Nganh.php',
     'App\\NganhTohop' => $baseDir . '/app/NganhTohop.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
@@ -847,6 +852,10 @@ return array(
     'Encore\\Admin\\Widgets\\Tab' => $vendorDir . '/encore/laravel-admin/src/Widgets/Tab.php',
     'Encore\\Admin\\Widgets\\Table' => $vendorDir . '/encore/laravel-admin/src/Widgets/Table.php',
     'Encore\\Admin\\Widgets\\Widget' => $vendorDir . '/encore/laravel-admin/src/Widgets/Widget.php',
+    'Encore\\Grid\\Lightbox\\GalleryDisplayer' => $vendorDir . '/laravel-admin-ext/grid-lightbox/src/GalleryDisplayer.php',
+    'Encore\\Grid\\Lightbox\\Lightbox' => $vendorDir . '/laravel-admin-ext/grid-lightbox/src/Lightbox.php',
+    'Encore\\Grid\\Lightbox\\LightboxDisplayer' => $vendorDir . '/laravel-admin-ext/grid-lightbox/src/LightboxDisplayer.php',
+    'Encore\\Grid\\Lightbox\\LightboxServiceProvider' => $vendorDir . '/laravel-admin-ext/grid-lightbox/src/LightboxServiceProvider.php',
     'Facade\\FlareClient\\Api' => $vendorDir . '/facade/flare-client-php/src/Api.php',
     'Facade\\FlareClient\\Concerns\\HasContext' => $vendorDir . '/facade/flare-client-php/src/Concerns/HasContext.php',
     'Facade\\FlareClient\\Concerns\\UsesTime' => $vendorDir . '/facade/flare-client-php/src/Concerns/UsesTime.php',
