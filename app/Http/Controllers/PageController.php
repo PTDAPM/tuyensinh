@@ -113,11 +113,11 @@ class PageController extends Controller
 		$lop12->diem_mon3 	= $request->lop12diemtb3;
 		$lop12->save();
 		
-		return redirect()->route('formdk')->with('success','nộp hồ sơ thành công, vui lòng kiểm tra email để xem lại thông tin');
 		Mail::send('email', array('name'=>$request->hoten, 'link' => 'https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http://ttts.local/public/thongtin/'.$hoso->id.'&choe=UTF-8'), function($message){
 	        $message->to('ngoc98toan@gmail.com')->subject('Đăng Ký Xét Tuyển Online');
 	    });
         Session::flash('flash_message', 'Send message successfully!');
+        return redirect()->route('formdk')->with('success','nộp hồ sơ thành công, vui lòng kiểm tra email để xem lại thông tin');
 	}
 	public function getHuyen(Request $request) {
 		$data = file_get_contents('http://xettuyen.utc.edu.vn/api/districts?province='.$request->maTinh);
