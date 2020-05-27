@@ -112,9 +112,9 @@ class PageController extends Controller
 		$lop12->diem_mon2	= $request->lop12diemtb2;
 		$lop12->diem_mon3 	= $request->lop12diemtb3;
 		$lop12->save();
-		
-		Mail::send('email', array('name'=>$request->hoten, 'link' => 'https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http://ttts.local/public/thongtin/'.$hoso->id.'&choe=UTF-8'), function($message){
-	        $message->to('ngoc98toan@gmail.com')->subject('Đăng Ký Xét Tuyển Online');
+		$email = $request->email;
+		Mail::send('email', array('name'=>$request->hoten, 'link' => 'https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http://ttts.local/public/thongtin/'.$hoso->id.'&choe=UTF-8'), function($message) use ($email){
+	        $message->to($email)->subject('Đăng Ký Xét Tuyển Online');
 	    });
         Session::flash('flash_message', 'Send message successfully!');
         return redirect()->route('formdk')->with('success','nộp hồ sơ thành công, vui lòng kiểm tra email để xem lại thông tin');
@@ -166,7 +166,27 @@ class PageController extends Controller
 		}
 	}
 	public function getThongTin(Request $request) {
-		echo $request->id;
+		$id = $request->id;
+		$hoso = HoSo::where('id', $id)->first();
+		echo $hoso->ho_ten 	."<br>"			;
+		echo $hoso->gioi_tinh 		."<br>"	;
+		echo $hoso->ngay_thang_nam_sinh ."<br>"	;
+		echo $hoso->noi_sinh	."<br>"			;
+		echo $hoso->dan_toc		."<br>"		;
+		echo $hoso->cmnd 		."<br>"		;
+		echo $hoso->ngay_cap 	."<br>"		;
+		echo $hoso->noi_cap		."<br>"		;
+		echo $hoso->ho_khau		."<br>"		;
+		echo $hoso->ma_tinh			."<br>"	;
+		echo $hoso->ma_huyen		."<br>"		;
+		echo $hoso->ma_xa 			."<br>"	;
+		echo $hoso->sdt  			."<br>"	;
+		echo $hoso->email 			."<br>"	;
+		echo $hoso->dia_chi 			."<br>"	;
+		echo $hoso->nam_tot_nghiep	."<br>"	;
+		echo $hoso->kv_uu_tien 			."<br>";
+		echo $hoso->doi_tuong_uu_tien	."<br>";
+		echo $hoso->trang_thai			."<br>";
 	}
 
 	

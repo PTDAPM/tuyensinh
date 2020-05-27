@@ -8,4 +8,5 @@ class HosoNganh extends Model
 {
     //
     protected $table = 'hoso_nganhs';
+  
 }
