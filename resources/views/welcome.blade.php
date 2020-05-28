@@ -1,6 +1,6 @@
 <?php
 $data = file_get_contents("http://xettuyen.utc.edu.vn/api/enrollment");
-$data = json_decode($data);
+isset($data) ? $data = json_decode($data) : $data = "";
 {{-- foreach ($data->provinces as $value) {
     echo $value->code;
 } --}}

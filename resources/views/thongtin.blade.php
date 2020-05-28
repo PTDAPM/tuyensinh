@@ -21,53 +21,55 @@
           <thead>
             <tr>
               <th scope="row">Họ Tên:</th>
-              <td>Nguyễn Văn A</td>
+              <td>{{ $hoso->ho_ten }}</td>
               <th scope="row">Giới Tính:</th>
-              <td>Mark</td>
+              @if($hoso->gioi_tinh === 0)
+              <td>Nam</td>
+              @elseif($hoso->gioi_tinh === 1)
+              <td>Nữ</td>
+              @endif
               <th scope="row">Ngày Tháng Năm Sinh:</th>
-              <td>Jacob</td>
+              <td>{{ $hoso->ngay_thang_nam_sinh }}</td>
               <th scope="row">Nơi Sinh:</th>
-              <td>Larry</td>
+              <td>{{ $hoso->noi_sinh }}</td>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th scope="row">Dân Tộc:</th>
-              <td>Mark</td>
+              <td>{{ $hoso->dan_toc }}</td>
               <th scope="row">CMND:</th>
-              <td>Jacob</td>
+              <td>{{ $hoso->cmnd }}</td>
               <th scope="row">Ngày Cấp:</th>
-              <td>Larry</td>
+              <td>{{ $hoso->ngay_cap }}</td>
               <th scope="row">Nơi Cấp:</th>
-              <td>Mark</td>
+              <td>{{ $hoso->noi_cap }}</td>
             </tr>
             <tr>
               <th scope="row">Hộ Khẩu:</th>
-              <td>Jacob</td>
+              <td>{{ $hoso->ho_khau }}</td>
               <th scope="row">Mã Tỉnh:</th>
-              <td>Larry</td>
+              <td>{{ $hoso->ma_tinh }}</td>
               <th scope="row">Mã Huyện:</th>
-              <td>Mark</td>
+              <td>{{ $hoso->ma_huyen }}</td>
               <th scope="row">Mã Xã:</th>
-              <td>Jacob</td>
+              <td>{{ $hoso->ma_xa }}</td>
            </tr>
             <tr>
               <th scope="row">SĐT:</th>
-              <td>Larry</td>
+              <td>{{ $hoso->sdt }}</td>
               <th scope="row">Email:</th>
-              <td>Mark</td>
+              <td>{{ $hoso->email }}</td>
               <th scope="row">Địa Chỉ:</th>
-              <td>Jacob</td>
+              <td>{{ $hoso->dia_chi }}</td>
               <th scope="row">Năm Tốt Nghiệp:</th>
-              <td>Larry</td>
+              <td>{{ $hoso->doi_tuong_uu_tien }}</td>
             </tr>
             <tr>
               <th scope="row">KV Ưu Tiên:</th>
-              <td>Mark</td>
+              <td>{{ $hoso->kv_uu_tien }}</td>
               <th scope="row">Đối Tượng Ưu Tiên:</th>
-              <td>Jacob</td>
-              <th scope="row">Ảnh Học Bạ:</th>
-              <td colspan="2">Larry the Bird aaaaaaaaaaaaaaaaaaa</td>
+              <td>{{ $hoso->nam_tot_nghiep }}</td>
             </tr>
             <tr>
               <th scope="row">Lớp 10</th>
@@ -159,6 +161,14 @@
               <th scope="row">Tổ Hợp:</th>
               <td>Larry</td>
             </tr>
+            <tr>
+              <th scope="row">Ảnh Học Bạ:</th>
+            </tr>                        
+              @foreach($anhs = json_decode($hoso->anh_hoc_ba) as $anh)
+              <tr>
+              <td colspan="4"><img src="../photos/{{ $anh }}" width="1200px"></td>
+              </tr>
+              @endforeach            
           </tbody>
         </table>
         <div class="col-md-12">Trạng thái hồ sơ:</div>
