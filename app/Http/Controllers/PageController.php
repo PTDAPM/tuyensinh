@@ -166,27 +166,12 @@ class PageController extends Controller
 		}
 	}
 	public function getThongTin(Request $request) {
-		$id = $request->id;
-		$hoso = HoSo::where('id', $id)->first();
-		echo $hoso->ho_ten 	."<br>"			;
-		echo $hoso->gioi_tinh 		."<br>"	;
-		echo $hoso->ngay_thang_nam_sinh ."<br>"	;
-		echo $hoso->noi_sinh	."<br>"			;
-		echo $hoso->dan_toc		."<br>"		;
-		echo $hoso->cmnd 		."<br>"		;
-		echo $hoso->ngay_cap 	."<br>"		;
-		echo $hoso->noi_cap		."<br>"		;
-		echo $hoso->ho_khau		."<br>"		;
-		echo $hoso->ma_tinh			."<br>"	;
-		echo $hoso->ma_huyen		."<br>"		;
-		echo $hoso->ma_xa 			."<br>"	;
-		echo $hoso->sdt  			."<br>"	;
-		echo $hoso->email 			."<br>"	;
-		echo $hoso->dia_chi 			."<br>"	;
-		echo $hoso->nam_tot_nghiep	."<br>"	;
-		echo $hoso->kv_uu_tien 			."<br>";
-		echo $hoso->doi_tuong_uu_tien	."<br>";
-		echo $hoso->trang_thai			."<br>";
+		$id 	= $request->id;
+		$hoso 	= HoSo::where('id', $id)->first();
+		$lop10 	= Lop10::where('ma_ho_so', $id)->first();
+		$lop11 	= Lop11::where('ma_ho_so', $id)->first();
+		$lop12 	= Lop12::where('ma_ho_so', $id)->first();
+		return view('thongtin', ['hoso' => $hoso, 'lop10' => $lop10, 'lop11' => $lop11, 'lop12' => $lop12]);
 	}
 
 	
