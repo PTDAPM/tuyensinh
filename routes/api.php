@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('test','PageController@getHuyen');
 Route::get('test1','PageController@getTruong');
+Route::get('nganh','PageController@getApiNganh');

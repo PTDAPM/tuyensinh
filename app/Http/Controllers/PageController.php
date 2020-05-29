@@ -10,6 +10,7 @@ use App\HosoNganh;
 use App\Lop10;
 use App\Lop11;
 use App\Lop12;
+use App\Tohop;
 use Mail;
 
 class PageController extends Controller
@@ -177,6 +178,11 @@ class PageController extends Controller
 		// 	}
 		//echo $hoso->to_hop;
 		return view('thongtin', ['hoso' => $hoso, 'lop10' => $lop10, 'lop11' => $lop11, 'lop12' => $lop12]);
+	}
+	public function getApiNganh() {
+		$nganh = Nganh::all();
+		$tohop = Tohop::all();
+		return response()->json(['nganh' => $nganh, 'tohop' => $tohop]);
 	}
 
 	
