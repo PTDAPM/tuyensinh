@@ -12,5 +12,9 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('admin.home');
     $router->resource('ho_sos', AdminHoSo::class);
+    $router->resource('nganhs', AdminNganhController::class);
+    $router->resource('hoso-nganhs', AdminHosoNganh::class);
+    $router->resource('tohops', AdminTohopController::class);
+
 
 });
