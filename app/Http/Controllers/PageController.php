@@ -171,6 +171,11 @@ class PageController extends Controller
 		$lop10 	= Lop10::where('ma_ho_so', $id)->first();
 		$lop11 	= Lop11::where('ma_ho_so', $id)->first();
 		$lop12 	= Lop12::where('ma_ho_so', $id)->first();
+		// foreach ($hoso->nganh as $nganh) {
+		// 	echo $nganh->ten."<br>";
+		// 	echo $nganh->ma_xet_tuyen."<br>";
+		// 	}
+		//echo $hoso->to_hop;
 		return view('thongtin', ['hoso' => $hoso, 'lop10' => $lop10, 'lop11' => $lop11, 'lop12' => $lop12]);
 	}
 
