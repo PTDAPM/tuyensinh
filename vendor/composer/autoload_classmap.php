@@ -7,6 +7,9 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Admin\\Controllers\\AdminHoSo' => $baseDir . '/app/Admin/Controllers/AdminHoSo.php',
+    'App\\Admin\\Controllers\\AdminHosoNganh' => $baseDir . '/app/Admin/Controllers/AdminHosoNganh.php',
+    'App\\Admin\\Controllers\\AdminNganhController' => $baseDir . '/app/Admin/Controllers/AdminNganhController.php',
+    'App\\Admin\\Controllers\\AdminTohopController' => $baseDir . '/app/Admin/Controllers/AdminTohopController.php',
     'App\\Admin\\Controllers\\AuthController' => $baseDir . '/app/Admin/Controllers/AuthController.php',
     'App\\Admin\\Controllers\\ExampleController' => $baseDir . '/app/Admin/Controllers/ExampleController.php',
     'App\\Admin\\Controllers\\HomeController' => $baseDir . '/app/Admin/Controllers/HomeController.php',
@@ -36,6 +39,8 @@ return array(
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
+    'App\\ThongTin' => $baseDir . '/app/ThongTin.php',
+    'App\\TinTuc' => $baseDir . '/app/TinTuc.php',
     'App\\Tohop' => $baseDir . '/app/Tohop.php',
     'App\\User' => $baseDir . '/app/User.php',
     'Asm89\\Stack\\Cors' => $vendorDir . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',

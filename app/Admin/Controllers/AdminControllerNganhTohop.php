@@ -2,22 +2,22 @@
 
 namespace App\Admin\Controllers;
 
-use App\HosoNganh;
-use App\HoSo;
+use App\NganhTohop;
 use App\Nganh;
+use App\Tohop;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class AdminHosoNganh extends AdminController
+class AdminControllerNganhTohop extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'HoSo_Nganh';
+    protected $title = 'NganhTohop';
 
     /**
      * Make a grid builder.
@@ -26,21 +26,21 @@ class AdminHosoNganh extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new HosoNganh());
+        $grid = new Grid(new NganhTohop());
 
         $grid->column('id', __('Id'));
-        $grid->column('ma_ho_so', __('Ma ho so'))->display(function($id) {
-            return isset($id) ? "<b style='color:red'>".$id."</b>"." - ".HoSo::find($id)->ho_ten : "N/A";
-        });
         $grid->column('ma_nganh', __('Ma nganh'))->display(function($id) {
-            return isset($id) ? "<b style='color:red'>".$id."</b>"." - ".Nganh::find($id)->ten : "N/A";
+            return isset($id) ? "<b style='color:red'>".$id."</b>"." - ".Nganh::find($id)->ten." - ".Nganh::find($id)->ma_xet_tuyen : "N/A";
+        });
+        $grid->column('ma_to_hop', __('Ma to hop'))->display(function($id) {
+            return isset($id) ? "<b style='color:red'>".$id."</b>"." - ".ToHop::find($id)->ten : "N/A";
         });
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
         $grid->filter(function($filter){
 
-            $filter->equal('ma_ho_so', 'Mã Hồ Sơ');
-            $filter->equal('ma_nganh', 'Mã Ngành');
+            $filter->equal('ma_nganh', 'Mã Ngành ');
+            $filter->equal('ma_to_hop', 'Mã Tổ Hợp');
         });
         return $grid;
     }
@@ -53,11 +53,11 @@ class AdminHosoNganh extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(HosoNganh::findOrFail($id));
+        $show = new Show(NganhTohop::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('ma_ho_so', __('Ma ho so'));
         $show->field('ma_nganh', __('Ma nganh'));
+        $show->field('ma_to_hop', __('Ma to hop'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -71,9 +71,10 @@ class AdminHosoNganh extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new HosoNganh());
-        $form->number('ma_ho_so', __('Ma ho so'));
+        $form = new Form(new NganhTohop());
+
         $form->number('ma_nganh', __('Ma nganh'));
+        $form->number('ma_to_hop', __('Ma to hop'));
 
         return $form;
     }

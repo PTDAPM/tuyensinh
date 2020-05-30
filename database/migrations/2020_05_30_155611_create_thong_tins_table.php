@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTinTucsTable extends Migration
+class CreateThongTinsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateTinTucsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tin_tucs', function (Blueprint $table) {
+        Schema::create('thong_tins', function (Blueprint $table) {
             $table->id();
-            $table->string('tieude');
-            $table->string('mota');
-            $table->string('noidung');
-            $table->string('anh');
+            $table->longText('thong_tin_ts');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateTinTucsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tin_tucs');
+        Schema::dropIfExists('thong_tins');
     }
 }

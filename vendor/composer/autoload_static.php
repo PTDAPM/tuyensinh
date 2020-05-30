@@ -487,6 +487,9 @@ class ComposerStaticInitb861e10d81835415601d3cbcadaee0ac
 
     public static $classMap = array (
         'App\\Admin\\Controllers\\AdminHoSo' => __DIR__ . '/../..' . '/app/Admin/Controllers/AdminHoSo.php',
+        'App\\Admin\\Controllers\\AdminHosoNganh' => __DIR__ . '/../..' . '/app/Admin/Controllers/AdminHosoNganh.php',
+        'App\\Admin\\Controllers\\AdminNganhController' => __DIR__ . '/../..' . '/app/Admin/Controllers/AdminNganhController.php',
+        'App\\Admin\\Controllers\\AdminTohopController' => __DIR__ . '/../..' . '/app/Admin/Controllers/AdminTohopController.php',
         'App\\Admin\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Admin/Controllers/AuthController.php',
         'App\\Admin\\Controllers\\ExampleController' => __DIR__ . '/../..' . '/app/Admin/Controllers/ExampleController.php',
         'App\\Admin\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Admin/Controllers/HomeController.php',
@@ -516,6 +519,8 @@ class ComposerStaticInitb861e10d81835415601d3cbcadaee0ac
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\ThongTin' => __DIR__ . '/../..' . '/app/ThongTin.php',
+        'App\\TinTuc' => __DIR__ . '/../..' . '/app/TinTuc.php',
         'App\\Tohop' => __DIR__ . '/../..' . '/app/Tohop.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',

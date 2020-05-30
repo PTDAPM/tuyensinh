@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TinTuc extends Model
+class ThongTin extends Model
 {
     //
-    protected $table = 'tin_tucs';
+    protected $table = 'thong_tins';
 }
