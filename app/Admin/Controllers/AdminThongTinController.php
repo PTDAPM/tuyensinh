@@ -15,7 +15,7 @@ class AdminThongTinController extends AdminController
      *
      * @var string
      */
-    protected $title = 'App\ThongTin';
+    protected $title = 'QL Thông Tin';
 
     /**
      * Make a grid builder.

@@ -15,7 +15,7 @@ class AdminTohopController extends AdminController
      *
      * @var string
      */
-    protected $title = 'App\Tohop';
+    protected $title = 'QL Tổ Hợp';
 
     /**
      * Make a grid builder.

@@ -15,7 +15,7 @@ class AdminNganhController extends AdminController
      *
      * @var string
      */
-    protected $title = 'App\Nganh';
+    protected $title = 'QL Ngành';
 
     /**
      * Make a grid builder.
