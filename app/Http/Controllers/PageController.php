@@ -11,6 +11,7 @@ use App\Lop10;
 use App\Lop11;
 use App\Lop12;
 use App\Tohop;
+use App\NganhTohop;
 use Mail;
 
 class PageController extends Controller
@@ -182,7 +183,8 @@ class PageController extends Controller
 	public function getApiNganh() {
 		$nganh = Nganh::all();
 		$tohop = Tohop::all();
-		return response()->json(['nganh' => $nganh, 'tohop' => $tohop]);
+		$temp = NganhTohop::all();
+		return response()->json(['nganh' => $nganh, 'tohop' => $tohop, 'nganh_tohop' => $temp]);
 	}
 
 	
