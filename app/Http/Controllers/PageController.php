@@ -30,7 +30,7 @@ class PageController extends Controller
 				array_push($arr_link, $filename);
 			}
 		}
-		return response()->json($request->file('photos')->getClientOriginalName());
+		return response()->json($request->body['infoStudent']['contactAddress']);
 		// return response()->json($request->body['infoStudent']['contactAddress']);
 		//dd($request);
 		//echo "aaaaaaaaaaaaaaaaaaaa";
