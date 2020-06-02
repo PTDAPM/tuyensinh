@@ -15,10 +15,11 @@ class CreateTinTucsTable extends Migration
     {
         Schema::create('tin_tucs', function (Blueprint $table) {
             $table->id();
-            $table->string('tieude');
-            $table->string('mota');
-            $table->string('noidung');
+            $table->string('tieu_de');
+            $table->string('mo_ta');
+            $table->string('noi_dung');
             $table->string('anh');
+            $table->integer('trang_thai');
             $table->timestamps();
         });
     }

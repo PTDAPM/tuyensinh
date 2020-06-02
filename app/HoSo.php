@@ -12,15 +12,6 @@ class HoSo extends Model
         0 => "✘ Chưa Được Duyệt",
         1 => "✔ Đã Duyệt"
     ];
-    public function lop10() {
-    	return $this->belongsTo('App\Lop10','ma_ho_so','id');
-    }
-    public function lop11() {
-    	return $this->belongsTo('App\Lop11','ma_ho_so','id');
-    }
-    public function lop12() {
-    	return $this->belongsTo('App\Lop12','ma_ho_so','id');
-    }
     public function nganh() {
     	return $this->belongsToMany('App\Nganh','hoso_nganhs','ma_ho_so','ma_nganh');
     }

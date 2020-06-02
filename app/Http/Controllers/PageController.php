@@ -21,20 +21,12 @@ class PageController extends Controller
     	echo "<h1>Hello World</h1>";
     }
 	public function luuHoso(Request $request) {	
-		$arr_link = array();
-		if($request->hasFile('photos')) {
-			$files = $request->file('photos');
-			foreach ($request->photos as $photo) {
-				$filename = $photo->store('');
-				$photo->move(public_path('photos'),$filename);
-				array_push($arr_link, $filename);
-			}
-		}
-		return response()->json($request->body['infoStudent']['contactAddress']);
-		// return response()->json($request->body['infoStudent']['contactAddress']);
-		//dd($request);
-		//echo "aaaaaaaaaaaaaaaaaaaa";
-		// $hs_nganh = array($request->nganh1, $request->nganh2, $request->nganh3);
+		// $hs_nganh = array($request->admissionsRecords[''], $request->nganh2, $request->nganh3);
+		// $link_img = array();
+
+
+		return response()->json($request->admissionsRecords);
+		
 		// $hoso = new HoSo;
 		// $hoso->ho_ten 				= $request->hoten;
 		// $hoso->gioi_tinh 			= $request->gioitinh;
