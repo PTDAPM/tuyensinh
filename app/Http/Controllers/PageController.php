@@ -62,9 +62,49 @@ class PageController extends Controller
 
 		$flag = true;
 		if($flag === true) {
-			return response()->json($ten_tinh);
+			return response()->json(['message' => 'mission complete !!!']);
 		}
 		else return response()->json(['message' => 'mission false !!!']);
+		// for($i = 0; $i < count($hs_nganh); $i ++) {
+		// $hoso_nganh = new HosoNganh;
+		// $hoso_nganh->ma_ho_so = $hoso->id;
+		// $hoso_nganh->ma_nganh = $hs_nganh[$i];
+		// $hoso_nganh->save();
+		// }
+		// $lop10 = new Lop10;
+		// $lop10->ma_ho_so 	= $hoso->id;
+		// $lop10->ten_truong	= $request->lop10ten;
+		// $lop10->dia_chi 	= $request->lop10diachi;
+		// $lop10->ma_tinh		= $request->lop10tinh;
+		// $lop10->ma_truong	= $request->lop10truong;
+		// $lop10->diem_mon1	= $request->lop10diemtb1;
+		// $lop10->diem_mon2	= $request->lop10diemtb2;
+		// $lop10->diem_mon3 	= $request->lop10diemtb3;
+		// $lop10->save();
+		// $lop11 = new Lop11;
+		// $lop11->ma_ho_so 	= $hoso->id;
+		// $lop11->ten_truong	= $request->lop11ten;
+		// $lop11->dia_chi 	= $request->lop11diachi;
+		// $lop11->ma_tinh		= $request->lop11tinh;
+		// $lop11->ma_truong	= $request->lop11truong;
+		// $lop11->diem_mon1	= $request->lop11diemtb1;
+		// $lop11->diem_mon2	= $request->lop11diemtb2;
+		// $lop11->diem_mon3 	= $request->lop11diemtb3;
+		// $lop11->save();
+		// $lop12 = new Lop12;
+		// $lop12->ma_ho_so 	= $hoso->id;
+		// $lop12->ten_truong	= $request->lop12ten;
+		// $lop12->dia_chi 	= $request->lop12diachi;
+		// $lop12->ma_tinh		= $request->lop12tinh;
+		// $lop12->ma_truong	= $request->lop12truong;
+		// $lop12->diem_mon1	= $request->lop12diemtb1;
+		// $lop12->diem_mon2	= $request->lop12diemtb2;
+		// $lop12->diem_mon3 	= $request->lop12diemtb3;
+		// $lop12->save();
+		//$nguyenvong = new nguyenvong
+
+		//giu email
+
 		
 
 		//return response()->json($request->infoStudent['fullNameStudent']);
