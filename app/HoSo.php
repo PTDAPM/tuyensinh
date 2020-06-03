@@ -15,6 +15,15 @@ class HoSo extends Model
     public function nganh() {
     	return $this->belongsToMany('App\Nganh','hoso_nganhs','ma_ho_so','ma_nganh');
     }
+    public function lop10() {
+    	return $this->hasOne('App\Lop10');
+    }
+    public function lop11() {
+    	return $this->hasOne('App\Lop11');
+    }
+    public function lop12() {
+    	return $this->hasOne('App\Lop12');
+    }
 
 
 }

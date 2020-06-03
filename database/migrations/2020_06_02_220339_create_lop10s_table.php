@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTruongThptsTable extends Migration
+class CreateLop10sTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,17 @@ class CreateTruongThptsTable extends Migration
      */
     public function up()
     {
-        Schema::create('truong_thpts', function (Blueprint $table) {
+        Schema::create('lop10s', function (Blueprint $table) {
             $table->id();
             $table->integer('ma_ho_so');
-            $table->integer('ma_truong');
             $table->string('ten_truong');
             $table->string('dia_chi');
             $table->integer('ma_tinh');
-            
+            $table->integer('ma_truong');
+            $table->float('diem_mon1');
+            $table->float('diem_mon2');
+            $table->float('diem_mon3');
+
             $table->timestamps();
         });
     }
@@ -32,6 +35,6 @@ class CreateTruongThptsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('truong_thpts');
+        Schema::dropIfExists('lop10s');
     }
 }

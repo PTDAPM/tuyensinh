@@ -21,11 +21,54 @@ class PageController extends Controller
     	echo "<h1>Hello World</h1>";
     }
 	public function luuHoso(Request $request) {	
-		// $hs_nganh = array($request->admissionsRecords[''], $request->nganh2, $request->nganh3);
-		// $link_img = array();
+		$nganh = array();
+		$link = array();
+		$ma_tinh = explode("|",$request->infoStudent['province'])[0];
+		$ten_tinh = explode("|",$request->infoStudent['province'])[1];
+		$flag = false;
+		// foreach($request->infoRecords['idMajors'] as $ng) {
+		// 	array_push($nganh, $ng);
+		// }
+		//fotmat date
+		$ngay_sinh = strtotime($request->infoStudent['dateOfBirth']);
+		$ngay_sinh_format = date('Y-m-d',$ngay_sinh);
+		$ngay_cap = strtotime($request->infoStudent['dateForCMND']);
+		$ngay_cap_format = date('Y-m-d',$ngay_cap);
+		foreach($request->linkImage as $lk) {
+			array_push($link, $lk);
+		}
+		$hoso = new HoSo;
+		$hoso->ho_ten 				= $request->infoStudent['fullNameStudent'];
+		$hoso->gioi_tinh 			= $request->infoStudent['sex'];
+		$hoso->ngay_thang_nam_sinh	= $ngay_sinh_format;
+		$hoso->noi_sinh 			= $request->infoStudent['placeOfBirth'];
+		$hoso->dan_toc 				= $request->infoStudent['nation'];
+		$hoso->cmnd 				= $request->infoStudent['numberCMND'];
+		$hoso->ngay_cap   			= $ngay_cap_format;
+		$hoso->noi_cap 				= $request->infoStudent['locationForCMDN'];
+		$hoso->ho_khau 				= $request->infoStudent['location'];
+		$hoso->ma_tinh 				= $ma_tinh;
+		$hoso->ma_huyen 			= $request->infoStudent['district']; 
+		$hoso->ma_xa 				= $request->infoStudent['town'];
+		$hoso->sdt 					= $request->infoStudent['phoneNumber'];
+		$hoso->email 				= $request->infoStudent['email'];
+		$hoso->dia_chi 				= $request->infoStudent['contactAddress'];
+		$hoso->nam_tot_nghiep 		= $request->infoStudent['graduationYear'];
+		$hoso->kv_uu_tien 			= $request->infoStudent['khuVucUuTien'];
+		$hoso->doi_tuong_uu_tien 	= $request->infoStudent['doiTuongUuTien'];
+		$hoso->trang_thai = 0;
+		//$hoso->anh_hoc_ba = json_encode($link);
+		//$hoso->save();
 
+		$flag = true;
+		if($flag === true) {
+			return response()->json($ten_tinh);
+		}
+		else return response()->json(['message' => 'mission false !!!']);
+		
 
-		return response()->json($request->admissionsRecords);
+		//return response()->json($request->infoStudent['fullNameStudent']);
+		
 		
 		// $hoso = new HoSo;
 		// $hoso->ho_ten 				= $request->hoten;

@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Khoa extends Model
+class Lop10 extends Model
 {
     //
-    protected $table = 'khoas';
+    protected $table = "lop10s";
 }

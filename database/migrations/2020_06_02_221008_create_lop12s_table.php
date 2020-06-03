@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNguyenVongsTable extends Migration
+class CreateLop12sTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,17 @@ class CreateNguyenVongsTable extends Migration
      */
     public function up()
     {
-        Schema::create('nguyen_vongs', function (Blueprint $table) {
+        Schema::create('lop12s', function (Blueprint $table) {
             $table->id();
             $table->integer('ma_ho_so');
-            $table->integer('ma_to_hop');
+            $table->string('ten_truong');
+            $table->string('dia_chi');
+            $table->integer('ma_tinh');
+            $table->integer('ma_truong');
+            $table->float('diem_mon1');
+            $table->float('diem_mon2');
+            $table->float('diem_mon3');
+
             $table->timestamps();
         });
     }
@@ -28,6 +35,6 @@ class CreateNguyenVongsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nguyen_vongs');
+        Schema::dropIfExists('lop12s');
     }
 }
