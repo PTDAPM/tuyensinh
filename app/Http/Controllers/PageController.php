@@ -112,6 +112,11 @@ class PageController extends Controller
 			$lop12->ma_tinh 	= $request->infoStudent['class12']['idProvince'];
 			$lop12->ma_truong 	= $request->infoStudent['class12']['idSchool'];
 			$lop12->save();
+			$email = $request->infoStudent['email'];
+			Mail::send('email', array('name'=>$request->hoten, 'link' => 'https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http://ttts.local/public/thongtin/'.$hoso->id.'&choe=UTF-8'), function($message) use ($email){
+		        $message->to($email)->subject('Đăng Ký Xét Tuyển Online');
+		    });
+	        Session::flash('flash_message', 'Send message successfully!');
 			$flag = true;
 					
 		if($flag === true) {

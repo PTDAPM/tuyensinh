@@ -75,13 +75,38 @@ class adminTinTuc extends AdminController
     protected function form()
     {
         $form = new Form(new TinTuc());
-
         $form->text('tieu_de', __('Tieu de'));
         $form->text('mo_ta', __('Mo ta'));
         $form->text('noi_dung', __('Noi dung'));
         $form->image('anh', __('Anh'));
         $form->number('trang_thai', __('Trang thai'));
+        //$form->setAction('editnew');
+        $form->saved(function ($form) {
+            $id         = $form->model()->id;
+            $tieude     = $form->model()->tieu_de;
+            $mota       = $form->model()->mo_ta;
+            $noidung    = $form->model()->noi_dung;
+            $anh        = request()->anh;
+            if(isset($anh)) {
+                $imageUrl = ImgurService::uploadImage($anh->getRealPath());
+                TinTuc::where('id', $id)
 
+              ->update(['tieu_de' => $tieude, 'mo_ta' => $mota, 'noi_dung' => $noidung, 'anh' => $imageUrl]);
+              admin_toastr('Sửa thành công', 'success');
+                return redirect('admin/tin-tucs');
+
+            }
+            else {
+                TinTuc::where('id', $id)
+              ->update(['tieu_de' => $tieude, 'mo_ta' => $mota, 'noi_dung' => $noidung]);
+              admin_toastr('Sửa thành công', 'success');
+                return redirect('admin/tin-tucs'); 
+            }
+            
+            
+
+                
+        });
         return $form;
     }
     public function createNews() {
@@ -106,9 +131,10 @@ class adminTinTuc extends AdminController
         return redirect()->back()->with('status', 'Thêm Tin Thành Công!');
 
     }
-    // public function editNews(Request $request) {
-    //     return view('formedit');
-    // }
+    public function editNews(Request $request) {
+        echo "ahihihih";
+        
+    }
 
     
 }
