@@ -486,6 +486,7 @@ class ComposerStaticInitb861e10d81835415601d3cbcadaee0ac
     );
 
     public static $classMap = array (
+        'App\\Admin\\Actions\\Post\\Replicate' => __DIR__ . '/../..' . '/app/Admin/Actions/Post/Replicate.php',
         'App\\Admin\\Controllers\\AdminControllerNganhTohop' => __DIR__ . '/../..' . '/app/Admin/Controllers/AdminControllerNganhTohop.php',
         'App\\Admin\\Controllers\\AdminHoSo' => __DIR__ . '/../..' . '/app/Admin/Controllers/AdminHoSo.php',
         'App\\Admin\\Controllers\\AdminHosoNganh' => __DIR__ . '/../..' . '/app/Admin/Controllers/AdminHosoNganh.php',
@@ -496,7 +497,9 @@ class ComposerStaticInitb861e10d81835415601d3cbcadaee0ac
         'App\\Admin\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Admin/Controllers/AuthController.php',
         'App\\Admin\\Controllers\\ExampleController' => __DIR__ . '/../..' . '/app/Admin/Controllers/ExampleController.php',
         'App\\Admin\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Admin/Controllers/HomeController.php',
+        'App\\Admin\\Controllers\\adminTinTuc' => __DIR__ . '/../..' . '/app/Admin/Controllers/adminTinTuc.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Diem' => __DIR__ . '/../..' . '/app/Diem.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\HoSo' => __DIR__ . '/../..' . '/app/HoSo.php',
         'App\\HosoNganh' => __DIR__ . '/../..' . '/app/HosoNganh.php',
@@ -523,6 +526,7 @@ class ComposerStaticInitb861e10d81835415601d3cbcadaee0ac
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\Services\\ImgurService' => __DIR__ . '/../..' . '/app/Services/ImgurService.php',
         'App\\ThongTin' => __DIR__ . '/../..' . '/app/ThongTin.php',
         'App\\TinTuc' => __DIR__ . '/../..' . '/app/TinTuc.php',
         'App\\Tohop' => __DIR__ . '/../..' . '/app/Tohop.php',

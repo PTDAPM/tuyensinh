@@ -12,6 +12,8 @@ use App\Lop11;
 use App\Lop12;
 use App\Tohop;
 use App\NganhTohop;
+use App\NguyenVong;
+use App\Diem;
 use Mail;
 
 class PageController extends Controller
@@ -23,86 +25,101 @@ class PageController extends Controller
 	public function luuHoso(Request $request) {	
 		$nganh = array();
 		$link = array();
+		$lop10 = array();
+		$lop11 = array();
+		$lop12 = array();
 		$ma_tinh = explode("|",$request->infoStudent['province'])[0];
 		$ten_tinh = explode("|",$request->infoStudent['province'])[1];
+		$ma_xa = isset($request->infoStudent['town']) ? $request->infoStudent['town'] : NULL;
 		$flag = false;
 		// foreach($request->infoRecords['idMajors'] as $ng) {
 		// 	array_push($nganh, $ng);
 		// }
-		//fotmat date
-		$ngay_sinh = strtotime($request->infoStudent['dateOfBirth']);
-		$ngay_sinh_format = date('Y-m-d',$ngay_sinh);
-		$ngay_cap = strtotime($request->infoStudent['dateForCMND']);
-		$ngay_cap_format = date('Y-m-d',$ngay_cap);
-		foreach($request->linkImage as $lk) {
-			array_push($link, $lk);
-		}
-		$hoso = new HoSo;
-		$hoso->ho_ten 				= $request->infoStudent['fullNameStudent'];
-		$hoso->gioi_tinh 			= $request->infoStudent['sex'];
-		$hoso->ngay_thang_nam_sinh	= $ngay_sinh_format;
-		$hoso->noi_sinh 			= $request->infoStudent['placeOfBirth'];
-		$hoso->dan_toc 				= $request->infoStudent['nation'];
-		$hoso->cmnd 				= $request->infoStudent['numberCMND'];
-		$hoso->ngay_cap   			= $ngay_cap_format;
-		$hoso->noi_cap 				= $request->infoStudent['locationForCMDN'];
-		$hoso->ho_khau 				= $request->infoStudent['location'];
-		$hoso->ma_tinh 				= $ma_tinh;
-		$hoso->ma_huyen 			= $request->infoStudent['district']; 
-		$hoso->ma_xa 				= $request->infoStudent['town'];
-		$hoso->sdt 					= $request->infoStudent['phoneNumber'];
-		$hoso->email 				= $request->infoStudent['email'];
-		$hoso->dia_chi 				= $request->infoStudent['contactAddress'];
-		$hoso->nam_tot_nghiep 		= $request->infoStudent['graduationYear'];
-		$hoso->kv_uu_tien 			= $request->infoStudent['khuVucUuTien'];
-		$hoso->doi_tuong_uu_tien 	= $request->infoStudent['doiTuongUuTien'];
-		$hoso->trang_thai = 0;
-		//$hoso->anh_hoc_ba = json_encode($link);
-		//$hoso->save();
-
-		$flag = true;
+		
+			for($i = 0; $i < count($request->infoRecords); $i++) {
+				array_push($nganh, $request->infoRecords[$i]['idMajors']);
+			}
+			//fotmat date
+			$ngay_sinh = strtotime($request->infoStudent['dateOfBirth']);
+			$ngay_sinh_format = date('Y-m-d',$ngay_sinh);
+			$ngay_cap = strtotime($request->infoStudent['dateForCMND']);
+			$ngay_cap_format = date('Y-m-d',$ngay_cap);
+			foreach($request->linkImage as $lk) {
+				array_push($link, $lk);
+			}
+			$hoso = new HoSo;
+			$hoso->ho_ten 				= $request->infoStudent['fullNameStudent'];
+			$hoso->gioi_tinh 			= $request->infoStudent['sex'];
+			$hoso->ngay_thang_nam_sinh	= $ngay_sinh_format;
+			$hoso->noi_sinh 			= $request->infoStudent['placeOfBirth'];
+			$hoso->dan_toc 				= $request->infoStudent['nation'];
+			$hoso->cmnd 				= $request->infoStudent['numberCMND'];
+			$hoso->ngay_cap   			= $ngay_cap_format;
+			$hoso->noi_cap 				= $request->infoStudent['locationForCMDN'];
+			$hoso->ho_khau 				= $request->infoStudent['location'];
+			$hoso->ma_tinh 				= $ma_tinh;
+			$hoso->ma_huyen 			= $request->infoStudent['district']; 
+			$hoso->ma_xa 				= $ma_xa;
+			$hoso->sdt 					= $request->infoStudent['phoneNumber'];
+			$hoso->email 				= $request->infoStudent['email'];
+			$hoso->dia_chi 				= $request->infoStudent['contactAddress'];
+			$hoso->nam_tot_nghiep 		= $request->infoStudent['graduationYear'];
+			$hoso->kv_uu_tien 			= $request->infoStudent['khuVucUuTien'];
+			$hoso->doi_tuong_uu_tien 	= $request->infoStudent['doiTuongUuTien'];
+			$hoso->trang_thai = 0;
+			$hoso->anh_hoc_ba = json_encode($link);
+			$hoso->save();
+			for($i = 0; $i < count($nganh); $i ++) {
+			$hoso_nganh = new HosoNganh;
+			$hoso_nganh->ma_ho_so = $hoso->id;
+			$hoso_nganh->ma_nganh = $nganh[$i];
+			$hoso_nganh->save();
+			$nguyenvong = new NguyenVong;
+			$nguyenvong->ma_to_hop 	= $request->infoRecords[$i]['tohop'];
+			$nguyenvong->ma_ho_so 	= $hoso->id;
+			$nguyenvong->save();
+			$diem = new Diem;
+			$diem->ma_nguyen_vong = $nguyenvong->id;
+			$diem->lop10_m1 = $request->infoRecords[$i]['lop10_mon1'];
+			$diem->lop10_m2 = $request->infoRecords[$i]['lop10_mon2'];
+			$diem->lop10_m3 = $request->infoRecords[$i]['lop10_mon3'];
+			$diem->lop11_m1 = $request->infoRecords[$i]['lop11_mon1'];
+			$diem->lop11_m2 = $request->infoRecords[$i]['lop11_mon2'];
+			$diem->lop11_m3 = $request->infoRecords[$i]['lop11_mon3'];
+			$diem->lop12_m1 = $request->infoRecords[$i]['lop12_mon1'];
+			$diem->lop12_m2 = $request->infoRecords[$i]['lop12_mon2'];
+			$diem->lop12_m3 = $request->infoRecords[$i]['lop12_mon3'];
+			$diem->save();
+			}
+			$lop10 = new Lop10;
+			$lop10->ma_ho_so 	= $hoso->id;
+			$lop10->ten_truong 	= $request->infoStudent['class10']['nameSchool'];
+			$lop10->dia_chi 	= $request->infoStudent['class10']['location'];
+			$lop10->ma_tinh 	= $request->infoStudent['class10']['idProvince'];
+			$lop10->ma_truong 	= $request->infoStudent['class10']['idSchool'];
+			$lop10->save();
+			$lop11 = new Lop11;
+			$lop11->ma_ho_so 	= $hoso->id;
+			$lop11->ten_truong 	= $request->infoStudent['class11']['nameSchool'];
+			$lop11->dia_chi 	= $request->infoStudent['class11']['location'];
+			$lop11->ma_tinh 	= $request->infoStudent['class11']['idProvince'];
+			$lop11->ma_truong 	= $request->infoStudent['class11']['idSchool'];
+			$lop11->save();
+			$lop12 = new Lop12;
+			$lop12->ma_ho_so 	= $hoso->id;
+			$lop12->ten_truong 	= $request->infoStudent['class12']['nameSchool'];
+			$lop12->dia_chi 	= $request->infoStudent['class12']['location'];
+			$lop12->ma_tinh 	= $request->infoStudent['class12']['idProvince'];
+			$lop12->ma_truong 	= $request->infoStudent['class12']['idSchool'];
+			$lop12->save();
+			$flag = true;
+					
 		if($flag === true) {
 			return response()->json(['message' => 'mission complete !!!']);
 		}
 		else return response()->json(['message' => 'mission false !!!']);
-		// for($i = 0; $i < count($hs_nganh); $i ++) {
-		// $hoso_nganh = new HosoNganh;
-		// $hoso_nganh->ma_ho_so = $hoso->id;
-		// $hoso_nganh->ma_nganh = $hs_nganh[$i];
-		// $hoso_nganh->save();
-		// }
-		// $lop10 = new Lop10;
-		// $lop10->ma_ho_so 	= $hoso->id;
-		// $lop10->ten_truong	= $request->lop10ten;
-		// $lop10->dia_chi 	= $request->lop10diachi;
-		// $lop10->ma_tinh		= $request->lop10tinh;
-		// $lop10->ma_truong	= $request->lop10truong;
-		// $lop10->diem_mon1	= $request->lop10diemtb1;
-		// $lop10->diem_mon2	= $request->lop10diemtb2;
-		// $lop10->diem_mon3 	= $request->lop10diemtb3;
-		// $lop10->save();
-		// $lop11 = new Lop11;
-		// $lop11->ma_ho_so 	= $hoso->id;
-		// $lop11->ten_truong	= $request->lop11ten;
-		// $lop11->dia_chi 	= $request->lop11diachi;
-		// $lop11->ma_tinh		= $request->lop11tinh;
-		// $lop11->ma_truong	= $request->lop11truong;
-		// $lop11->diem_mon1	= $request->lop11diemtb1;
-		// $lop11->diem_mon2	= $request->lop11diemtb2;
-		// $lop11->diem_mon3 	= $request->lop11diemtb3;
-		// $lop11->save();
-		// $lop12 = new Lop12;
-		// $lop12->ma_ho_so 	= $hoso->id;
-		// $lop12->ten_truong	= $request->lop12ten;
-		// $lop12->dia_chi 	= $request->lop12diachi;
-		// $lop12->ma_tinh		= $request->lop12tinh;
-		// $lop12->ma_truong	= $request->lop12truong;
-		// $lop12->diem_mon1	= $request->lop12diemtb1;
-		// $lop12->diem_mon2	= $request->lop12diemtb2;
-		// $lop12->diem_mon3 	= $request->lop12diemtb3;
-		// $lop12->save();
-		//$nguyenvong = new nguyenvong
-
+		
+		
 		//giu email
 
 		

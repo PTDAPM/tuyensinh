@@ -18,6 +18,11 @@ Route::group([
     $router->resource('nganh-tohops', AdminControllerNganhTohop::class);
     $router->resource('tin-tucs', AdminTinTucController::class);
     $router->resource('thong-tins', AdminThongTinController::class);
+    $router->resource('tin-tucs', adminTinTuc::class);
+    $router->get('tin-tucs/create', 'adminTinTuc@createNews');
+    $router->post('tin-tucs/create', 'adminTinTuc@saveNews')->name('save');
+    // $router->get('tin-tucs/sua-tin/{id}', 'adminTinTuc@editNews');
+    // $router->post('tin-tucs/sua-tin/{id}', 'adminTinTuc@saveEditNews')->name('save');
 
 
 

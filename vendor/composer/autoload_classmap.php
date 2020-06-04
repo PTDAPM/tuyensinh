@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Admin\\Actions\\Post\\Replicate' => $baseDir . '/app/Admin/Actions/Post/Replicate.php',
     'App\\Admin\\Controllers\\AdminControllerNganhTohop' => $baseDir . '/app/Admin/Controllers/AdminControllerNganhTohop.php',
     'App\\Admin\\Controllers\\AdminHoSo' => $baseDir . '/app/Admin/Controllers/AdminHoSo.php',
     'App\\Admin\\Controllers\\AdminHosoNganh' => $baseDir . '/app/Admin/Controllers/AdminHosoNganh.php',
@@ -16,7 +17,9 @@ return array(
     'App\\Admin\\Controllers\\AuthController' => $baseDir . '/app/Admin/Controllers/AuthController.php',
     'App\\Admin\\Controllers\\ExampleController' => $baseDir . '/app/Admin/Controllers/ExampleController.php',
     'App\\Admin\\Controllers\\HomeController' => $baseDir . '/app/Admin/Controllers/HomeController.php',
+    'App\\Admin\\Controllers\\adminTinTuc' => $baseDir . '/app/Admin/Controllers/adminTinTuc.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
+    'App\\Diem' => $baseDir . '/app/Diem.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\HoSo' => $baseDir . '/app/HoSo.php',
     'App\\HosoNganh' => $baseDir . '/app/HosoNganh.php',
@@ -43,6 +46,7 @@ return array(
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
+    'App\\Services\\ImgurService' => $baseDir . '/app/Services/ImgurService.php',
     'App\\ThongTin' => $baseDir . '/app/ThongTin.php',
     'App\\TinTuc' => $baseDir . '/app/TinTuc.php',
     'App\\Tohop' => $baseDir . '/app/Tohop.php',
