@@ -14,7 +14,7 @@ Route::group([
     $router->resource('ho-sos', AdminHoSo::class);
     $router->resource('nganhs', AdminNganhController::class);
     $router->resource('hoso-nganhs', AdminHosoNganh::class);
-    $router->resource('tohops', AdminTohopController::class);
+    $router->resource('to-hops', AdminTohopController::class);
     $router->resource('nganh-tohops', AdminControllerNganhTohop::class);
     $router->resource('tin-tucs', AdminTinTucController::class);
     $router->resource('thong-tins', AdminThongTinController::class);

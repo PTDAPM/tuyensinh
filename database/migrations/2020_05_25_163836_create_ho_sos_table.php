@@ -29,7 +29,7 @@ class CreateHoSosTable extends Migration
             $table->integer('ma_huyen');
             $table->integer('ma_xa');
             $table->string('anh_hoc_ba');
-            $table->string('std');
+            $table->string('sdt');
             $table->string('email');
             $table->string('dia_chi');
             $table->string('nam_tot_nghiep');

@@ -59,7 +59,7 @@ class AdminHoSo extends AdminController
 
         $grid->column('anh_hoc_ba', __('Anh hoc ba'))->display(function($text) {
                 return json_decode($text, true);
-            })->image('/public/photos', 50, 50);
+            })->image(50, 50);
         
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
@@ -136,9 +136,12 @@ class AdminHoSo extends AdminController
         $show->field('noi_cap', __('Noi cap'));
         $show->field('ho_khau', __('Ho khau'));
         $show->field('ma_tinh', __('Ma tinh'));
+        $show->field('ten_tinh', __('Ten tinh'));
         $show->field('ma_huyen', __('Ma huyen'));
         $show->field('ma_xa', __('Ma xa'));
-        $show->field('anh_hoc_ba', __('Anh hoc ba'));
+        $show->field('anh_hoc_ba', __('Anh hoc ba'))->as(function($text) {
+                return json_decode($text, true);
+            })->image(250, 250);
         $show->field('sdt', __('Sdt'));
         $show->field('email', __('Email'));
         $show->field('dia_chi', __('Dia chi'));
@@ -169,6 +172,7 @@ class AdminHoSo extends AdminController
         $form->text('noi_cap', __('Noi cap'));
         $form->text('ho_khau', __('Ho khau'));
         $form->number('ma_tinh', __('Ma tinh'));
+
         $form->number('ma_huyen', __('Ma huyen'));
         $form->number('ma_xa', __('Ma xa'));
         $form->textarea('anh_hoc_ba', __('Anh hoc ba'));

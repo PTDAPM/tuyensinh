@@ -89,7 +89,7 @@ class adminTinTuc extends AdminController
         $form = new Form(new TinTuc());
         $form->text('tieu_de', __('Tieu de'));
         $form->text('mo_ta', __('Mo ta'));
-        $form->text('noi_dung', __('Noi dung'));
+        $form->textarea('noi_dung', __('Noi dung'));
         $form->image('anh', __('Anh'));
         $form->number('trang_thai', __('Trang thai'));
         //$form->setAction('editnew');
@@ -143,10 +143,7 @@ class adminTinTuc extends AdminController
         return redirect()->back()->with('status', 'Thêm Tin Thành Công!');
 
     }
-    public function editNews(Request $request) {
-        echo "ahihihih";
-        
-    }
+
 
     
 }

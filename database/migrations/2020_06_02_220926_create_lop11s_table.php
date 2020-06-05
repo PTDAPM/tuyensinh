@@ -20,9 +20,7 @@ class CreateLop11sTable extends Migration
             $table->string('dia_chi');
             $table->integer('ma_tinh');
             $table->integer('ma_truong');
-            $table->float('diem_mon1');
-            $table->float('diem_mon2');
-            $table->float('diem_mon3');
+           
 
             $table->timestamps();
         });
