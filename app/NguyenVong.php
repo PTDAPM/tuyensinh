@@ -8,4 +8,7 @@ class NguyenVong extends Model
 {
     //
     protected $table = 'nguyen_vongs';
+    public function toHop() {
+    	return $this->hasOne('App\ToHop', 'ma_to_hop', 'id');
+    }
 }
