@@ -41,6 +41,18 @@ class adminTinTuc extends AdminController
         //     $actions->disableEdit();
         //     $actions->add(new Replicate);
         // });
+        /////////////////
+        /// tìm kiếm ///
+        ////////////////
+        $grid->quickSearch('tieu_de', 'mo_ta', 'noi_dung', 'created_at', 'updated_at');
+        $grid->filter(function($filter){
+            $filter->like('tieu_de','Tiêu Đề');
+            $filter->between('created_at','Ngày Tạo')->datetime();
+            $filter->equal('trang_thai','Trạng Thái')->radio([
+                    0 => 'Chưa Duyệt',
+                    1 => 'Đã Duyệt',
+                ]);
+        });
 
         return $grid;
     }

@@ -66,8 +66,10 @@ class PageController extends Controller
 			$hoso->nam_tot_nghiep 		= $request->infoStudent['graduationYear'];
 			$hoso->kv_uu_tien 			= $request->infoStudent['khuVucUuTien'];
 			$hoso->doi_tuong_uu_tien 	= $request->infoStudent['doiTuongUuTien'];
+			$hoso->ten_tinh 			= $ten_tinh;
 			$hoso->trang_thai = 0;
 			$hoso->anh_hoc_ba = json_encode($link);
+
 			$hoso->save();
 			for($i = 0; $i < count($nganh); $i ++) {
 			$hoso_nganh = new HosoNganh;

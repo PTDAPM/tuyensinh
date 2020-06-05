@@ -28,20 +28,26 @@ class AdminHoSo extends AdminController
         $grid = new Grid(new HoSo());
         $grid->disableCreateButton();
         //$grid->disableActions();
+        // $grid->column('actions', 'Actions')->display(function () {
+        //     return '<a href="actions">Xem</a>';
+        // });
+
         $grid->model()->orderBy('id', 'desc');
         $grid->column('id', __('Id'))->sortable();
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
-        $grid->column('ho_ten', __('Ho ten'));
-        $grid->column('gioi_tinh', __('Gioi tinh'));
+        $grid->column('ho_ten', __('Ho ten'))->style('max-width:100px;word-wrap: break-word;');
+        $grid->column('gioi_tinh', __('Gioi tinh'))->display(function() {
+            return HoSo::GIOITINH[$this->gioi_tinh];
+
+        });
         $grid->column('ngay_thang_nam_sinh', __('Ngay thang nam sinh'));
         $grid->column('noi_sinh', __('Noi sinh'));
-        $grid->column('dan_toc', __('Dan toc'));
+        $grid->column('dan_toc', __('Dan toc'))->style('max-width:100px;word-wrap: break-word;');
         $grid->column('cmnd', __('Cmnd'));
         $grid->column('ngay_cap', __('Ngay cap'));
         $grid->column('noi_cap', __('Noi cap'));
         $grid->column('ho_khau', __('Ho khau'));
         $grid->column('ma_tinh', __('Ma tinh'));
+        $grid->column('ten_tinh', __('Ten tinh'));
         $grid->column('ma_huyen', __('Ma huyen'));
         $grid->column('ma_xa', __('Ma xa'));
         $grid->column('sdt', __('Sdt'));
@@ -50,10 +56,52 @@ class AdminHoSo extends AdminController
         $grid->column('nam_tot_nghiep', __('Nam tot nghiep'));
         $grid->column('kv_uu_tien', __('Kv uu tien'));
         $grid->column('doi_tuong_uu_tien', __('Doi tuong uu tien'));
+
         $grid->column('anh_hoc_ba', __('Anh hoc ba'))->display(function($text) {
                 return json_decode($text, true);
             })->image('/public/photos', 50, 50);
+        
+        $grid->column('created_at', __('Created at'));
+        $grid->column('updated_at', __('Updated at'));
         $grid->column('trang_thai', __('Trang thai'))->editable('select', HoSo::STATUS);
+        $grid->actions(function ($actions) {
+            $actions->disableEdit();
+            //$actions->add(new Replicate);
+        });
+        /////////////////
+        /// tìm kiếm ///
+        ////////////////
+        $grid->quickSearch('ho_ten', 'gioi_tinh', 'noi_sinh', 'dan_toc', 'sdt', 'email');
+        $grid->filter(function($filter){
+            $filter->column(1/2, function ($filter) {
+                $filter->like('ho_ten','Họ Tên');
+                $filter->like('ngay_thang_nam_sinh','Năm Sinh');
+                $filter->like('noi_sinh','Nơi Sinh');
+                $filter->like('dan_toc','Dân Tộc');
+                $filter->equal('cmnd','CMND');
+                $filter->like('sdt','Số Điện Thoại');
+                $filter->like('email','Email');
+
+            });
+
+            $filter->column(1/2, function ($filter) {
+                //$filter->equal('created_at')->datetime();              
+
+                $filter->like('dia_chi','Địa Chỉ');
+                $filter->like('nam_tot_nghiep','Năm Tốt Ngiệp');
+                $filter->like('kv_uu_tien','Khu Vực ƯT');
+                $filter->like('doi_tuong_uu_tien','Đối Tượng ƯT');
+                $filter->between('created_at','Ngày Tạo')->datetime();
+                $filter->equal('gioi_tinh','Giới Tính')->radio([
+                    0 => 'Nam',
+                    1 => 'Nữ',
+                ]);
+                $filter->equal('trang_thai','Trạng Thái')->radio([
+                    0 => 'Chưa Duyệt',
+                    1 => 'Đã Duyệt',
+                ]);
+            });
+        });
         Admin::script("$('img').click(function(e) {
             var link = $(this).attr('src');
             e.preventDefault();
