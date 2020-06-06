@@ -14,5 +14,5 @@
 
     </div>
     <!-- Default to the left -->
-    <strong>Powered by <a href="https://github.com/z-song/laravel-admin" target="_blank">laravel-admin</a></strong>
+    <strong><b><a href="https://www.facebook.com/npm.install.node.sass">Leader: <span style="color:red">Nguyễn Văn Anh</span></a></b></strong>
 </footer>

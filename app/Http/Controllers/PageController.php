@@ -139,9 +139,25 @@ class PageController extends Controller
 		$nguyenvong = NguyenVong::where('ma_ho_so', $id)->get();
 		foreach ($nguyenvong as $key => $nv) {
 			$tohop 		= ToHop::find($nv->ma_to_hop);
-			$diem 		= Diem::find($nv->id);
+			$diem 		= Diem::where('ma_nguyen_vong', $nv->id)->first();
 			$nganh 		= Nganh::find($nv->ma_nganh);
-			$data[$key] = array('nganh' => array('manganh' => $nganh->id, 'tennganh' => $nganh->ten, 'maxettuyen' => $nganh->ma_xet_tuyen,'makhoa' => $nganh->ma_khoa), 'matohop' => $tohop->id, 'tentohop' => $tohop->ten, 'diem' => array('lop10_m1' => $diem->lop10_m1,'lop10_m2' => $diem->lop10_m2,'lop10_m3' => $diem->lop10_m3,'lop11_m1' => $diem->lop11_m1,'lop11_m2' => $diem->lop11_m2,'lop11_m3' => $diem->lop11_m3,'lop12_m1' => $diem->lop12_m1,'lop12_m2' => $diem->lop12_m2,'lop12_m3' => $diem->lop12_m3,));
+			if(isset($diem) && $diem != '') {
+				$lop10_m1 = $diem->lop10_m1;
+				$lop10_m2 = $diem->lop10_m2;
+				$lop10_m3 = $diem->lop10_m3;
+				$lop11_m1 = $diem->lop11_m1;
+				$lop11_m2 = $diem->lop11_m2;
+				$lop11_m3 = $diem->lop11_m3;
+				$lop12_m1 = $diem->lop12_m1;
+				$lop12_m2 = $diem->lop12_m2;
+				$lop12_m3 = $diem->lop12_m3;
+			}
+			else {
+				$lop10_m1 = '';$lop10_m2 =''; $lop10_m3 ='';
+				$lop11_m1 =''; $lop11_m2 =''; $lop11_m3 ='';
+				$lop12_m1 =''; $lop12_m2 =''; $lop12_m3 ='';
+			}
+			$data[$key] = array('nganh' => array('manganh' => $nganh->id, 'tennganh' => $nganh->ten, 'maxettuyen' => $nganh->ma_xet_tuyen,'makhoa' => $nganh->ma_khoa), 'matohop' => $tohop->id, 'tentohop' => $tohop->ten, 'diem' => array('lop10_m1' => $lop10_m1,'lop10_m2' => $lop10_m2,'lop10_m3' => $lop10_m3,'lop11_m1' => $lop11_m1,'lop11_m2' => $lop11_m2,'lop11_m3' => $lop11_m3,'lop12_m1' => $lop12_m1,'lop12_m2' => $lop12_m2,'lop12_m3' => $lop12_m3,));
 
 		}
 		return response()->json(['hoso' => $hoso, 'lop10' => $lop10, 'lop11' => $lop11, 'lop12' => $lop12, 'nguyenvong' => $data]);

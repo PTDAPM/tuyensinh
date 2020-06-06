@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\HoSo;
+Use Encore\Admin\Widgets\Table;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -27,10 +28,11 @@ class AdminHoSo extends AdminController
     {
         $grid = new Grid(new HoSo());
         $grid->disableCreateButton();
-        //$grid->disableActions();
-        // $grid->column('actions', 'Actions')->display(function () {
-        //     return '<a href="actions">Xem</a>';
-        // });
+        $grid->actions(function ($actions) {
+            $actions->disableDelete();
+            $actions->disableEdit();
+            //$actions->disableView();
+        });
 
         $grid->model()->orderBy('id', 'desc');
         $grid->column('id', __('Id'))->sortable();
