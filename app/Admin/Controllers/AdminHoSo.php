@@ -3,12 +3,14 @@
 namespace App\Admin\Controllers;
 
 use App\HoSo;
+use App\NguyenVong;
 Use Encore\Admin\Widgets\Table;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use Encore\Admin\Admin;
+use Illuminate\Http\Request;
 
 class AdminHoSo extends AdminController
 {
@@ -36,7 +38,7 @@ class AdminHoSo extends AdminController
 
         $grid->model()->orderBy('id', 'desc');
         $grid->column('id', __('Id'))->sortable();
-        $grid->column('ho_ten', __('Ho ten'))->style('max-width:100px;word-wrap: break-word;');
+        $grid->column('ho_ten', __('Ho ten'));
         $grid->column('gioi_tinh', __('Gioi tinh'))->display(function() {
             return HoSo::GIOITINH[$this->gioi_tinh];
 
@@ -62,7 +64,12 @@ class AdminHoSo extends AdminController
         $grid->column('anh_hoc_ba', __('Anh hoc ba'))->display(function($text) {
                 return json_decode($text, true);
             })->image(50, 50);
-        
+        $grid->column('Ngành Đăng Ký')->display(function(){
+            return "<a href='hoso-nganhs?ma_ho_so=".$this->id."'>CLICK TO VIEW</a>";
+        });
+        $grid->column('Nguyện Vọng ĐK')->display(function(){
+            return "<a href=nguyen-vongs?ma_ho_so=".$this->id."'>CLICK TO VIEW</a>";
+        });
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
         $grid->column('trang_thai', __('Trang thai'))->editable('select', HoSo::STATUS);
@@ -88,7 +95,7 @@ class AdminHoSo extends AdminController
 
             $filter->column(1/2, function ($filter) {
                 //$filter->equal('created_at')->datetime();              
-
+                $filter->disableIdFilter();
                 $filter->like('dia_chi','Địa Chỉ');
                 $filter->like('nam_tot_nghiep','Năm Tốt Ngiệp');
                 $filter->like('kv_uu_tien','Khu Vực ƯT');
@@ -188,4 +195,5 @@ class AdminHoSo extends AdminController
 
         return $form;
     }
+    
 }

@@ -2,22 +2,22 @@
 
 namespace App\Admin\Controllers;
 
-use App\HosoNganh;
-use App\HoSo;
+use App\NguyenVong;
+use App\ToHop;
 use App\Nganh;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class AdminHosoNganh extends AdminController
+class NguyenVongController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'HoSo_Nganh';
+    protected $title = 'QL Nguyện Vọng';
 
     /**
      * Make a grid builder.
@@ -26,22 +26,28 @@ class AdminHosoNganh extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new HosoNganh());
+        $grid = new Grid(new NguyenVong());
 
         $grid->column('id', __('Id'));
-        $grid->column('ma_ho_so', __('Ma ho so'))->display(function($id) {
-            return isset($id) ? "<b style='color:red'>".$id."</b>"." - ".HoSo::find($id)->ho_ten : "N/A";
+        
+        $grid->column('ma_ho_so', __('Ma ho so'));
+        $grid->column('ma_to_hop', __('Ma to hop'))->display(function($id){
+            return isset($id) ? ToHop::find($id)->ten : "NULL";
         });
-        $grid->column('ma_nganh', __('Ma nganh'))->display(function($id) {
-            return isset($id) ? "<b style='color:red'>".$id."</b>"." - "."<a href='nganh-tohops?ma_nganh=".$id."'>".Nganh::find($id)->ten."</a>" : "N/A";
+       
+        $grid->column('ma_nganh', __('Ma nganh'))->display(function($id){
+            return isset($id) ? Nganh::find($id)->ten : "NULL";
+        });
+        $grid->column('XEM ĐIỂM')->display(function(){
+            return "<a href='diems?ma_nguyen_vong=".$this->id."'>XEM ĐIỂM</a>";
         });
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
         $grid->filter(function($filter){
-
-            $filter->equal('ma_ho_so', 'Mã Hồ Sơ');
-            $filter->equal('ma_nganh', 'Mã Ngành');
+            //$filter->disableIdFilter();
+            $filter->equal('ma_ho_so','Mã Hồ Sơ');
         });
+
         return $grid;
     }
 
@@ -53,11 +59,15 @@ class AdminHosoNganh extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(HosoNganh::findOrFail($id));
+        $show = new Show(NguyenVong::findOrFail($id));
 
         $show->field('id', __('Id'));
         $show->field('ma_ho_so', __('Ma ho so'));
+        $show->field('ma_to_hop', __('Ma to hop'));
+        
+        
         $show->field('ma_nganh', __('Ma nganh'));
+        $show->field('thu_tu', __('Thu tu'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -71,8 +81,11 @@ class AdminHosoNganh extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new HosoNganh());
+        $form = new Form(new NguyenVong());
+
+        $form->number('ma_to_hop', __('Ma to hop'));
         $form->number('ma_ho_so', __('Ma ho so'));
+        $form->number('thu_tu', __('Thu tu'));
         $form->number('ma_nganh', __('Ma nganh'));
 
         return $form;

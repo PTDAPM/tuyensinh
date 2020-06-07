@@ -22,7 +22,9 @@ Route::group([
     $router->get('tin-tucs/create', 'adminTinTuc@createNews');
     $router->post('tin-tucs/create', 'adminTinTuc@saveNews')->name('save');
     $router->get('tin-tucs/{id}/editnew', 'adminTinTuc@editNews');
-    // $router->post('tin-tucs/sua-tin/{id}', 'adminTinTuc@saveEditNews')->name('save');
+    $router->resource('diems', DiemController::class);
+    $router->resource('nguyen-vongs', NguyenVongController::class);
+
 
 
 

@@ -15,6 +15,7 @@ return array(
     'App\\Admin\\Controllers\\AdminTinTucController' => $baseDir . '/app/Admin/Controllers/AdminTinTucController.php',
     'App\\Admin\\Controllers\\AdminTohopController' => $baseDir . '/app/Admin/Controllers/AdminTohopController.php',
     'App\\Admin\\Controllers\\AuthController' => $baseDir . '/app/Admin/Controllers/AuthController.php',
+    'App\\Admin\\Controllers\\DiemController' => $baseDir . '/app/Admin/Controllers/DiemController.php',
     'App\\Admin\\Controllers\\ExampleController' => $baseDir . '/app/Admin/Controllers/ExampleController.php',
     'App\\Admin\\Controllers\\HomeController' => $baseDir . '/app/Admin/Controllers/HomeController.php',
     'App\\Admin\\Controllers\\adminTinTuc' => $baseDir . '/app/Admin/Controllers/adminTinTuc.php',

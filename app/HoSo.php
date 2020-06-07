@@ -28,6 +28,9 @@ class HoSo extends Model
     public function lop12() {
     	return $this->hasOne('App\Lop12');
     }
+    public function nguyenvong() {
+        return $this->hasMany('App\NguyenVong','ma_ho_so','id');
+    }
 
 
 }

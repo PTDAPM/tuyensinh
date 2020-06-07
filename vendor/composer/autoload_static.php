@@ -495,6 +495,7 @@ class ComposerStaticInitb861e10d81835415601d3cbcadaee0ac
         'App\\Admin\\Controllers\\AdminTinTucController' => __DIR__ . '/../..' . '/app/Admin/Controllers/AdminTinTucController.php',
         'App\\Admin\\Controllers\\AdminTohopController' => __DIR__ . '/../..' . '/app/Admin/Controllers/AdminTohopController.php',
         'App\\Admin\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Admin/Controllers/AuthController.php',
+        'App\\Admin\\Controllers\\DiemController' => __DIR__ . '/../..' . '/app/Admin/Controllers/DiemController.php',
         'App\\Admin\\Controllers\\ExampleController' => __DIR__ . '/../..' . '/app/Admin/Controllers/ExampleController.php',
         'App\\Admin\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Admin/Controllers/HomeController.php',
         'App\\Admin\\Controllers\\adminTinTuc' => __DIR__ . '/../..' . '/app/Admin/Controllers/adminTinTuc.php',
