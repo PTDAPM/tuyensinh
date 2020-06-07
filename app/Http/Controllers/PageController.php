@@ -15,6 +15,7 @@ use App\Tohop;
 use App\NganhTohop;
 use App\NguyenVong;
 use App\Diem;
+use App\TinTuc;
 use Mail;
 
 class PageController extends Controller
@@ -168,6 +169,10 @@ class PageController extends Controller
 		$tohop = Tohop::all();
 		$temp = NganhTohop::all();
 		return response()->json(['nganh' => $nganh, 'tohop' => $tohop, 'nganh_tohop' => $temp]);
+	}
+	public function getTinTuc() {
+		$tintuc = TinTuc::where('trang_thai',0)->orderBy('created_at','desc')->paginate(5);
+		return response()->json($tintuc);
 	}
 
 	

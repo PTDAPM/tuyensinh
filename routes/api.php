@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('nganh','PageController@getApiNganh');
 Route::post('luuhoso','PageController@luuHoSo');
 Route::get('thongtin/{id}','PageController@getThongTin')->name('thongtin');
+Route::get('tintuc','PageController@getTinTuc');
