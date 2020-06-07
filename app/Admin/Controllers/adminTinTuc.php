@@ -34,7 +34,7 @@ class adminTinTuc extends AdminController
         $grid->column('mo_ta', __('Mo ta'));
         $grid->column('noi_dung', __('Noi dung'));
         $grid->column('anh', __('Anh'))->image();
-        $grid->column('trang_thai', __('Trang thai'));
+        $grid->column('trang_thai', __('Trang thai'))->editable('select',TinTuc::STATUS);
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
         // $grid->actions(function ($actions) {
