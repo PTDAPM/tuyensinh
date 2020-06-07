@@ -34,6 +34,7 @@ return array(
     'App\\Http\\Middleware\\TrustHosts' => $baseDir . '/app/Http/Middleware/TrustHosts.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Khoa' => $baseDir . '/app/Khoa.php',
     'App\\Lop10' => $baseDir . '/app/Lop10.php',
     'App\\Lop11' => $baseDir . '/app/Lop11.php',
     'App\\Lop12' => $baseDir . '/app/Lop12.php',

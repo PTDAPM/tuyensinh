@@ -514,6 +514,7 @@ class ComposerStaticInitb861e10d81835415601d3cbcadaee0ac
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Khoa' => __DIR__ . '/../..' . '/app/Khoa.php',
         'App\\Lop10' => __DIR__ . '/../..' . '/app/Lop10.php',
         'App\\Lop11' => __DIR__ . '/../..' . '/app/Lop11.php',
         'App\\Lop12' => __DIR__ . '/../..' . '/app/Lop12.php',
