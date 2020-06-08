@@ -7,6 +7,8 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use Encore\Admin\Auth\Permission;
+use Encore\Admin\Facades\Admin;
 
 class AdminTohopController extends AdminController
 {
@@ -30,6 +32,13 @@ class AdminTohopController extends AdminController
         $grid->column('ten', __('Ten'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
+        $grid->actions(function ($actions) {
+            //$actions->disableEdit();
+            if (!Admin::user()->can('delete-image')) {
+                $actions->disableDelete();
+            }
+            //$actions->add(new Replicate);
+        });
 
         return $grid;
     }

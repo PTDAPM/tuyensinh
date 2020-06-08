@@ -9,8 +9,10 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
-use Encore\Admin\Admin;
+//use Encore\Admin\Admin;
 use Illuminate\Http\Request;
+use Encore\Admin\Auth\Permission;
+use Encore\Admin\Facades\Admin;
 
 class AdminHoSo extends AdminController
 {
@@ -75,6 +77,9 @@ class AdminHoSo extends AdminController
         $grid->column('trang_thai', __('Trang thai'))->editable('select', HoSo::STATUS);
         $grid->actions(function ($actions) {
             $actions->disableEdit();
+            if (!Admin::user()->can('delete-image')) {
+                $actions->disableDelete();
+            }
             //$actions->add(new Replicate);
         });
         /////////////////

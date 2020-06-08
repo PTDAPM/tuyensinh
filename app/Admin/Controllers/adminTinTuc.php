@@ -10,6 +10,8 @@ use Encore\Admin\Show;
 use Illuminate\Http\Request;
 use App\Services\ImgurService;
 use App\Admin\Actions\Post\Replicate;
+use Encore\Admin\Auth\Permission;
+use Encore\Admin\Facades\Admin;
 
 class adminTinTuc extends AdminController
 {
@@ -37,10 +39,13 @@ class adminTinTuc extends AdminController
         $grid->column('trang_thai', __('Trang thai'))->editable('select',TinTuc::STATUS);
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
-        // $grid->actions(function ($actions) {
-        //     $actions->disableEdit();
-        //     $actions->add(new Replicate);
-        // });
+        $grid->actions(function ($actions) {
+            //$actions->disableEdit();
+            if (!Admin::user()->can('delete-image')) {
+                $actions->disableDelete();
+            }
+            //$actions->add(new Replicate);
+        });
         /////////////////
         /// tìm kiếm ///
         ////////////////

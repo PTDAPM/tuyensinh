@@ -10,6 +10,8 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use Encore\Admin\Auth\Permission;
+use Encore\Admin\Facades\Admin;
 
 class DiemController extends AdminController
 {
@@ -47,6 +49,13 @@ class DiemController extends AdminController
             $filter->like('ma_nguyen_vong','Mã Nguyện Vọng');
             
          });
+        $grid->actions(function ($actions) {
+            //$actions->disableEdit();
+            if (!Admin::user()->can('delete-image')) {
+                $actions->disableDelete();
+            }
+            //$actions->add(new Replicate);
+        });
         return $grid;
     }
 

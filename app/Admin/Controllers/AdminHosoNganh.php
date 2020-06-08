@@ -9,6 +9,8 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use Encore\Admin\Auth\Permission;
+use Encore\Admin\Facades\Admin;
 
 class AdminHosoNganh extends AdminController
 {
@@ -41,6 +43,13 @@ class AdminHosoNganh extends AdminController
 
             $filter->equal('ma_ho_so', 'Mã Hồ Sơ');
             $filter->equal('ma_nganh', 'Mã Ngành');
+        });
+        $grid->actions(function ($actions) {
+            //$actions->disableEdit();
+            if (!Admin::user()->can('delete-image')) {
+                $actions->disableDelete();
+            }
+            //$actions->add(new Replicate);
         });
         return $grid;
     }

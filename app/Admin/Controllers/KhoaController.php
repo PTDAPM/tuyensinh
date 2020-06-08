@@ -7,7 +7,8 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
-
+use Encore\Admin\Auth\Permission;
+use Encore\Admin\Facades\Admin;
 class KhoaController extends AdminController
 {
     /**
@@ -33,7 +34,13 @@ class KhoaController extends AdminController
         $grid->column('so_sv', __('So sv'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
-
+        $grid->actions(function ($actions) {
+            //$actions->disableEdit();
+            if (!Admin::user()->can('delete-image')) {
+                $actions->disableDelete();
+            }
+            //$actions->add(new Replicate);
+        });
         return $grid;
     }
 
