@@ -24,6 +24,8 @@ Route::group([
     $router->get('tin-tucs/{id}/editnew', 'adminTinTuc@editNews');
     $router->resource('diems', DiemController::class);
     $router->resource('nguyen-vongs', NguyenVongController::class);
+    $router->resource('khoas', KhoaController::class);
+
 
 
 
