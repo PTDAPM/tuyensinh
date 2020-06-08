@@ -21,3 +21,5 @@ Route::get('nganh','PageController@getApiNganh');
 Route::post('luuhoso','PageController@luuHoSo');
 Route::get('thongtin/{id}','PageController@getThongTin')->name('thongtin');
 Route::get('tintuc','PageController@getTinTuc');
+Route::get('cmnd','PageController@getCmnd');
+Route::get('info','PageController@getInfo');

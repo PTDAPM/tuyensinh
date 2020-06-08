@@ -16,6 +16,7 @@ use App\NganhTohop;
 use App\NguyenVong;
 use App\Diem;
 use App\TinTuc;
+use App\Khoa;
 use Mail;
 
 class PageController extends Controller
@@ -173,6 +174,19 @@ class PageController extends Controller
 	public function getTinTuc() {
 		$tintuc = TinTuc::where('trang_thai',0)->orderBy('created_at','desc')->paginate(5);
 		return response()->json($tintuc);
+	}
+	public function getCmnd() {
+		$cmnd = HoSo::select('cmnd')->get();
+		return response()->json($cmnd);
+	}
+	public function getInfo() {
+		$khoa = Khoa::all();
+		foreach($khoa as $key => $k) {
+			$nganh = Nganh::where('id_khoa', $k->id)->get();
+			$data[$key] = ['id' =>$k->id, 'ten' => $k->ten_khoa, 'anh' =>$k->anh, 'gioithieu' =>$k->gioi_thieu, 'sosv' =>$k->so_sc, 'data' => $nganh];
+		}
+		return response()->json($data);
+		
 	}
 
 	
