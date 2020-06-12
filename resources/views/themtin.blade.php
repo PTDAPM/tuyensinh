@@ -49,6 +49,6 @@
 		  <button type="button" class="btn btn-danger" onclick="window.location='./'">Quay Lại</button>
 		</form>
 	</div>
-	<script type="text/javascript" language="javascript" src="/public/ckeditor/ckeditor.js" ></script>
+	<script type="text/javascript" language="javascript" src="/ttts.local/public/ckeditor/ckeditor.js" ></script>
 </body>
 </html>
