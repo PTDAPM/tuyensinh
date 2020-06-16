@@ -78,6 +78,7 @@ class AdminNganhController extends AdminController
 
         $form->text('ten', __('Ten'));
         $form->text('ma_xet_tuyen', __('Ma xet tuyen'));
+        $form->text('tin_tuc', __('Tin Tuc'));
         $form->number('id_khoa', 'Mã Khoa');
 
         return $form;
