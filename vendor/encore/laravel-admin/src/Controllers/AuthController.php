@@ -64,9 +64,12 @@ class AuthController extends Controller
      */
     protected function loginValidator(array $data)
     {
+        
         return Validator::make($data, [
             $this->username()   => 'required',
-            'password'          => 'required',
+            'password'          => 'required'],[
+            'password.required' => 'Mật Khẩu Không Được Để Trống',
+            'username.required' => 'Tên Tài Khoản Không Được Để Trống'
         ]);
     }
 
@@ -161,9 +164,7 @@ class AuthController extends Controller
      */
     protected function getFailedLoginMessage()
     {
-        return Lang::has('auth.failed')
-            ? trans('auth.failed')
-            : 'These credentials do not match our records.';
+        return 'Nhập sai tên tài khoản hoặc mật khẩu';
     }
 
     /**

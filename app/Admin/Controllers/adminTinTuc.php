@@ -92,11 +92,11 @@ class adminTinTuc extends AdminController
     protected function form()
     {
         $form = new Form(new TinTuc());
-        $form->text('tieu_de', __('Tieu de'));
-        $form->text('mo_ta', __('Mo ta'));
-        $form->textarea('noi_dung', __('Noi dung'));
-        $form->image('anh', __('Anh'));
-        $form->number('trang_thai', __('Trang thai'));
+        $form->text('tieu_de', __('Tieu de'))->rules('required|min:10',['required' => 'Tiêu đề k đc để trống', 'min' => 'Tiêu đề tối thiểu 10 kí tự']);
+        $form->text('mo_ta', __('Mo ta'))->rules('required|min:10',['required' => 'Mô tả k đc để trống', 'min' => 'Mô tả tối thiểu 10 kí tự']);
+        $form->textarea('noi_dung', __('Noi dung'))->rules('required|min:10',['required' => 'Nội dung k đc để trống', 'min' => 'Nội dung tối thiểu 10 kí tự']);
+        $form->image('anh', __('Anh'))->rules('required');
+        $form->number('trang_thai', __('Trang thai'))->rules('required',['required' => 'Trạng thái k đc để trống']);
         //$form->setAction('editnew');
         $form->saved(function ($form) {
             $id         = $form->model()->id;
@@ -132,9 +132,13 @@ class adminTinTuc extends AdminController
     public function saveNews(Request $request) {
         $request->validate([
                 'tieude' => 'required',
-                'sosv' => 'required',
+                'mota' => 'required',
                 'noidung' => 'required',
-                'anh' => 'required',
+                'anh' => 'required'], [
+                'tieude.required' => 'Tiêu Đề Không Được Bỏ Trống',
+                'mota.required'    => 'Mô Tả Không Được Bỏ Trống',
+                'noidung.required' => 'Nội Dung Không Được Bỏ Trống',
+                'anh.required' => 'Ảnh Không Được Bỏ Trống',
                 ]);
         $image = $request->anh;
         $imageUrl = ImgurService::uploadImage($image->getRealPath());

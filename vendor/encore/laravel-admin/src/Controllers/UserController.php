@@ -95,13 +95,13 @@ class UserController extends AdminController
 
         $form->display('id', 'ID');
         $form->text('username', trans('admin.username'))
-            ->creationRules(['required', "unique:{$connection}.{$userTable}"])
+            ->creationRules(['required', "unique:{$connection}.{$userTable}"],['required' => 'Tên tk không đươc để trống', 'unique' => 'Tên tk đã tồn tại'])
             ->updateRules(['required', "unique:{$connection}.{$userTable},username,{{id}}"]);
 
-        $form->text('name', trans('admin.name'))->rules('required');
+        $form->text('name', trans('admin.name'))->rules('required', ['required' => 'Tên admin k đc để trống']);
         $form->image('avatar', trans('admin.avatar'));
-        $form->password('password', trans('admin.password'))->rules('required|confirmed');
-        $form->password('password_confirmation', trans('admin.password_confirmation'))->rules('required')
+        $form->password('password', trans('admin.password'))->rules('required|confirmed', ['required' => 'mk ko dc de trong', 'confirmed' => 'mk nhap lai ko dung']);
+        $form->password('password_confirmation', trans('admin.password_confirmation'))->rules('required', ['required' => 'mk k dc de trong'])
             ->default(function ($form) {
                 return $form->model()->password;
             });

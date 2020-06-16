@@ -17,7 +17,7 @@
 		    <div class="alert alert-danger">
 		        <ul>
 		            @foreach ($errors->all() as $error)
-		                <li>Vui lòng nhập đầy đủ thông tin</li>
+		                <li>{{ $error }}</li>
 		            @endforeach
 		        </ul>
 		    </div>
