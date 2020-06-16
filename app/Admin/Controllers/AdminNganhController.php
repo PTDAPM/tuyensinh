@@ -33,6 +33,7 @@ class AdminNganhController extends AdminController
         $grid->column('ten', __('Ten'));
         $grid->column('ma_xet_tuyen', __('Ma xet tuyen'));
         $grid->column('id_khoa', __('Ma Khoa'));
+        $grid->column('tin_tuc', __('Tin Tuc'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
         $grid->actions(function ($actions) {
@@ -58,7 +59,8 @@ class AdminNganhController extends AdminController
         $show->field('id', __('Id'));
         $show->field('ten', __('Ten'));
         $show->field('ma_xet_tuyen', __('Ma xet tuyen'));
-        $grid->column('id_khoa', __('Ma Khoa'));
+        $show->field('id_khoa', __('Ma Khoa'));
+        $show->field('tin_tuc', __('Tin Tuc'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 

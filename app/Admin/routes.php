@@ -25,6 +25,8 @@ Route::group([
     $router->resource('diems', DiemController::class);
     $router->resource('nguyen-vongs', NguyenVongController::class);
     $router->resource('khoas', KhoaController::class);
+    $router->get('khoas/create', 'KhoaController@createKhoa');
+    $router->post('khoas/create', 'KhoaController@saveKhoa')->name('savek');
 
 
 

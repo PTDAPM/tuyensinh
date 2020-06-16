@@ -76,7 +76,7 @@ class adminTinTuc extends AdminController
         $show->field('tieu_de', __('Tieu de'));
         $show->field('mo_ta', __('Mo ta'));
         $show->field('noi_dung', __('Noi dung'));
-        $show->field('anh', __('Anh'));
+        $show->field('anh', __('Anh'))->image();
         $show->field('trang_thai', __('Trang thai'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
@@ -132,7 +132,7 @@ class adminTinTuc extends AdminController
     public function saveNews(Request $request) {
         $request->validate([
                 'tieude' => 'required',
-                'mota' => 'required',
+                'sosv' => 'required',
                 'noidung' => 'required',
                 'anh' => 'required',
                 ]);

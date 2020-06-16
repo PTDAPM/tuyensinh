@@ -12,6 +12,10 @@ class HoSo extends Model
         0 => "✘ Chưa Được Duyệt",
         1 => "✔ Đã Duyệt"
     ];
+    const KQ = [
+        0 => "✘ Không Đạt",
+        1 => "✔ Đạt"
+    ];
     const GIOITINH = [
         0 => "♂️ NAM",
         1 => "♀️ NỮ"

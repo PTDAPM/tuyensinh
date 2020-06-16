@@ -72,9 +72,11 @@ class AdminHoSo extends AdminController
         $grid->column('Nguyện Vọng ĐK')->display(function(){
             return "<a href=nguyen-vongs?ma_ho_so=".$this->id."'>CLICK TO VIEW</a>";
         });
+        
+        $grid->column('trang_thai', __('Trang thai'))->editable('select', HoSo::STATUS);
+        $grid->column('ket_qua', __('Ket Qua'))->editable('select', HoSo::KQ);
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
-        $grid->column('trang_thai', __('Trang thai'))->editable('select', HoSo::STATUS);
         $grid->actions(function ($actions) {
             $actions->disableEdit();
             if (!Admin::user()->can('delete-image')) {
@@ -141,7 +143,16 @@ class AdminHoSo extends AdminController
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
         $show->field('ho_ten', __('Ho ten'));
-        $show->field('gioi_tinh', __('Gioi tinh'));
+        $show->field('gioi_tinh', __('Gioi tinh'))->as(function ($status){
+            if($status == 0)
+            {
+                return HoSo::GIOITINH[0];
+            }
+            else
+            {
+                return HoSo::GIOITINH[1];
+            }
+        });
         $show->field('ngay_thang_nam_sinh', __('Ngay thang nam sinh'));
         $show->field('noi_sinh', __('Noi sinh'));
         $show->field('dan_toc', __('Dan toc'));
@@ -162,7 +173,26 @@ class AdminHoSo extends AdminController
         $show->field('nam_tot_nghiep', __('Nam tot nghiep'));
         $show->field('kv_uu_tien', __('Kv uu tien'));
         $show->field('doi_tuong_uu_tien', __('Doi tuong uu tien'));
-        $show->field('trang_thai', __('Trang thai'));
+        $show->field('trang_thai', __('Trang thai'))->as(function ($status){
+            if($status == 0)
+            {
+                return 'Chưa Duyệt';
+            }
+            else
+            {
+                return 'Đã Duyệt';
+            }
+        });
+        $show->field('ket_qua', __('Ket qua'))->as(function ($status){
+            if($status == 0)
+            {
+                return 'Không Đạt';
+            }
+            else
+            {
+                return 'Đạt';
+            }
+        });
 
         return $show;
     }
