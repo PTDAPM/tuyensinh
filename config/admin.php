@@ -22,7 +22,7 @@ return [
     | `img` tag, eg '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo' => '<img src="http://www.tlu.edu.vn/Portals/0/2014/Logo-WRU.png" alt="Admin logo">',
+    'logo' => 'MENU',
 
     /*
     |--------------------------------------------------------------------------

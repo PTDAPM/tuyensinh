@@ -31,6 +31,10 @@ class AdminHoSo extends AdminController
     protected function grid()
     {
         $grid = new Grid(new HoSo());
+        $grid->column('actions', 'Actions')->display(function(){
+            $token  = md5("toan".$this->id."toan1");
+            return "<a href='ho-sos/$this->id'>Show</a><br><a href='ho-sos/$this->id/edit'>Edit</a><br><a href='ho-sos/delete/$this->id?token=$token'>Delete</a><br>";
+        });
         $grid->disableCreateButton();
         $grid->actions(function ($actions) {
             $actions->disableDelete();
@@ -228,6 +232,24 @@ class AdminHoSo extends AdminController
         // $form->text('doi_tuong_uu_tien', __('Doi tuong uu tien'));
         $form->select('trang_thai', __('Trang thai'))->options([0 => 'Chưa Duyệt', 1 => 'Đã Duyệt']);
         $form->select('ket_qua', __('Ket Qua'))->options([0 => 'Chưa Đạt', 1 => 'Đạt']);
+        $form->footer(function ($footer) {
+
+            // disable reset btn
+            $footer->disableReset();
+
+            // disable submit btn
+            $footer->disableSubmit();
+
+            // disable `View` checkbox
+            $footer->disableViewCheck();
+
+            // disable `Continue editing` checkbox
+            $footer->disableEditingCheck();
+
+            // disable `Continue Creating` checkbox
+            $footer->disableCreatingCheck();
+
+        });
 
         return $form;
     }

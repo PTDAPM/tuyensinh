@@ -13,6 +13,8 @@ use App\Admin\Actions\Post\Replicate;
 use Encore\Admin\Auth\Permission;
 use Encore\Admin\Facades\Admin;
 
+
+
 class adminTinTuc extends AdminController
 {
     /**
@@ -29,16 +31,28 @@ class adminTinTuc extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new TinTuc());
+
+        $grid   = new Grid(new TinTuc());
+        
+        $grid->column('actions', 'Actions')->display(function(){
+            $token  = md5("toan".$this->id."toan1");
+            //$text = 'Bạn có muốn xoá ?';
+            return "<a href='tin-tucs/$this->id'>Show</a><br><a href='tin-tucs/$this->id/edit'>Edit</a><br><a href='tin-tucs/delete/$this->id?token=$token' Onclick='return confirm();'>Delete</a><br>";
+        });
         $grid->model()->orderBy('id', 'desc');
         $grid->column('id', __('Id'))->sortable();
         $grid->column('tieu_de', __('Tieu de'));
-        $grid->column('mo_ta', __('Mo ta'));
-        $grid->column('noi_dung', __('Noi dung'));
+        $grid->column('mo_ta', __('Mo ta'))->display(function(){
+            return mb_substr(strip_tags($this->noi_dung), 0, 150);
+        });
+        $grid->column('noi_dung', __('Noi dung'))->display(function(){
+            return mb_substr(strip_tags($this->noi_dung), 0, 250);
+        });
         $grid->column('anh', __('Anh'))->image();
         $grid->column('trang_thai', __('Trang thai'))->editable('select',TinTuc::STATUS);
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
+        $grid->disableActions();
         $grid->actions(function ($actions) {
             //$actions->disableEdit();
             if (!Admin::user()->can('delete-image')) {
@@ -54,10 +68,11 @@ class adminTinTuc extends AdminController
             $filter->like('tieu_de','Tiêu Đề');
             $filter->between('created_at','Ngày Tạo')->datetime();
             $filter->equal('trang_thai','Trạng Thái')->radio([
-                    0 => 'Chưa Duyệt',
-                    1 => 'Đã Duyệt',
+                    0 => 'Đã Duyệt',
+                    1 => 'Chưa Duyệt',
                 ]);
         });
+        
 
         return $grid;
     }
@@ -77,7 +92,16 @@ class adminTinTuc extends AdminController
         $show->field('mo_ta', __('Mo ta'));
         $show->field('noi_dung', __('Noi dung'));
         $show->field('anh', __('Anh'))->image();
-        $show->field('trang_thai', __('Trang thai'));
+        $show->field('trang_thai', __('Trang thai'))->as(function ($status){
+            if($status == 0)
+            {
+                return 'Đang Hiển Thị';
+            }
+            else
+            {
+                return 'Đang Ẩn';
+            }
+        });
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -124,6 +148,24 @@ class adminTinTuc extends AdminController
 
                 
         });
+        $form->footer(function ($footer) {
+
+            // disable reset btn
+            $footer->disableReset();
+
+            // disable submit btn
+            $footer->disableSubmit();
+
+            // disable `View` checkbox
+            $footer->disableViewCheck();
+
+            // disable `Continue editing` checkbox
+            $footer->disableEditingCheck();
+
+            // disable `Continue Creating` checkbox
+            $footer->disableCreatingCheck();
+
+        });
         return $form;
     }
     public function createNews() {
@@ -151,6 +193,19 @@ class adminTinTuc extends AdminController
         $tintuc->save();
         return redirect()->back()->with('status', 'Thêm Tin Thành Công!');
 
+    }
+    public function delete(Request $request) {
+        if(md5("toan".$request->id."toan1") === $request->token) {
+            $delete = TinTuc::find($request->id);
+            $delete->delete();
+            admin_toastr('Xoá thành công', 'success', ['timeOut' => 5000]);
+            return redirect()->back();
+        }
+        else {
+            admin_toastr('Có lỗi!!!', 'error', ['timeOut' => 5000]);
+            return redirect()->back();
+        }
+        
     }
 
 

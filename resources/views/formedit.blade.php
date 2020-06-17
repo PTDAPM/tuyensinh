@@ -39,10 +39,10 @@
 		  </div>
 		  <div class="form-group">
   			<label for="comment">Nội dung bài viết</label>
-  			<textarea class="form-control ckeditor" rows="5" id="comment" placeholder="Nhập nội dung bài viết" name="noidung"></textarea>
+  			<textarea class="form-control" rows="5" id="comment" placeholder="Nhập nội dung bài viết" name="noidung"></textarea>
 			</div>
 		  <div class="form-group">
-		    <label for="">Example file input</label>
+		    <label for="">Vui lòng chọn file</label>
 		    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="anh">
 		  </div>
 		  <button type="submit" class="btn btn-primary">Submit</button>

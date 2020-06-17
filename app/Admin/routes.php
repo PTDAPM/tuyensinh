@@ -27,6 +27,7 @@ Route::group([
     $router->resource('khoas', KhoaController::class);
     $router->get('khoas/create', 'KhoaController@createKhoa');
     $router->post('khoas/create', 'KhoaController@saveKhoa')->name('savek');
+    $router->get('tin-tucs/delete/{id}', 'adminTinTuc@delete');
 
 
 
