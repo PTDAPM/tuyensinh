@@ -126,8 +126,8 @@ class PermissionController extends AdminController
 
         $form->display('id', 'ID');
 
-        $form->text('slug', trans('admin.slug'))->rules('required');
-        $form->text('name', trans('admin.name'))->rules('required');
+        $form->text('slug', trans('admin.slug'))->rules('required',['required' => 'Ký tự không đc để trống']);
+        $form->text('name', trans('admin.name'))->rules('required',['required' => 'Tên không đc để trống']);
 
         $form->multipleSelect('http_method', trans('admin.http.method'))
             ->options($this->getHttpMethodsOptions())

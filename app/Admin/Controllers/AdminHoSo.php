@@ -206,27 +206,28 @@ class AdminHoSo extends AdminController
     {
         $form = new Form(new HoSo());
 
-        $form->text('ho_ten', __('Ho ten'));
-        $form->number('gioi_tinh', __('Gioi tinh'));
-        $form->datetime('ngay_thang_nam_sinh', __('Ngay thang nam sinh'))->default(date('Y-m-d H:i:s'));
-        $form->text('noi_sinh', __('Noi sinh'));
-        $form->text('dan_toc', __('Dan toc'));
-        $form->text('cmnd', __('Cmnd'));
-        $form->datetime('ngay_cap', __('Ngay cap'))->default(date('Y-m-d H:i:s'));
-        $form->text('noi_cap', __('Noi cap'));
-        $form->text('ho_khau', __('Ho khau'));
-        $form->number('ma_tinh', __('Ma tinh'));
+        // $form->text('ho_ten', __('Ho ten'));
+        // $form->number('gioi_tinh', __('Gioi tinh'));
+        // $form->datetime('ngay_thang_nam_sinh', __('Ngay thang nam sinh'))->default(date('Y-m-d H:i:s'));
+        // $form->text('noi_sinh', __('Noi sinh'));
+        // $form->text('dan_toc', __('Dan toc'));
+        // $form->text('cmnd', __('Cmnd'));
+        // $form->datetime('ngay_cap', __('Ngay cap'))->default(date('Y-m-d H:i:s'));
+        // $form->text('noi_cap', __('Noi cap'));
+        // $form->text('ho_khau', __('Ho khau'));
+        // $form->number('ma_tinh', __('Ma tinh'));
 
-        $form->number('ma_huyen', __('Ma huyen'));
-        $form->number('ma_xa', __('Ma xa'));
-        $form->textarea('anh_hoc_ba', __('Anh hoc ba'));
-        $form->text('sdt', __('Sdt'));
-        $form->email('email', __('Email'));
-        $form->text('dia_chi', __('Dia chi'));
-        $form->text('nam_tot_nghiep', __('Nam tot nghiep'));
-        $form->text('kv_uu_tien', __('Kv uu tien'));
-        $form->text('doi_tuong_uu_tien', __('Doi tuong uu tien'));
-        $form->number('trang_thai', __('Trang thai'));
+        // $form->number('ma_huyen', __('Ma huyen'));
+        // $form->number('ma_xa', __('Ma xa'));
+        // $form->textarea('anh_hoc_ba', __('Anh hoc ba'));
+        // $form->text('sdt', __('Sdt'));
+        // $form->email('email', __('Email'));
+        // $form->text('dia_chi', __('Dia chi'));
+        // $form->text('nam_tot_nghiep', __('Nam tot nghiep'));
+        // $form->text('kv_uu_tien', __('Kv uu tien'));
+        // $form->text('doi_tuong_uu_tien', __('Doi tuong uu tien'));
+        $form->select('trang_thai', __('Trang thai'))->options([0 => 'Chưa Duyệt', 1 => 'Đã Duyệt']);
+        $form->select('ket_qua', __('Ket Qua'))->options([0 => 'Chưa Đạt', 1 => 'Đạt']);
 
         return $form;
     }
