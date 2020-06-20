@@ -13,6 +13,7 @@ use Encore\Admin\Show;
 use Illuminate\Http\Request;
 use Encore\Admin\Auth\Permission;
 use Encore\Admin\Facades\Admin;
+use Encore\Admin\Layout\Content;
 
 class AdminHoSo extends AdminController
 {
@@ -28,12 +29,19 @@ class AdminHoSo extends AdminController
      *
      * @return Grid
      */
+    public function edit($id, Content $content)
+    {
+    return $content
+        ->title($this->title())
+        ->description($this->description['edit'] ?? trans('admin.edit'))
+        ->body($this->form($id)->edit($id));
+    }
     protected function grid()
     {
         $grid = new Grid(new HoSo());
         $grid->column('actions', 'Actions')->display(function(){
             $token  = md5("toan".$this->id."toan1");
-            return "<a href='ho-sos/$this->id'>Show</a><br><a href='ho-sos/$this->id/edit'>Edit</a><br><a href='ho-sos/delete/$this->id?token=$token'>Delete</a><br>";
+            return "<a href='ho-sos/$this->id'>Show</a><br><a href='ho-sos/$this->id/edit'>Edit</a><br><a href='ho-sos/delete/$this->id?token=$token' Onclick='return ConfirmDelete();'>Delete</a><br>";
         });
         $grid->disableCreateButton();
         $grid->actions(function ($actions) {
@@ -81,6 +89,7 @@ class AdminHoSo extends AdminController
         $grid->column('ket_qua', __('Ket Qua'))->editable('select', HoSo::KQ);
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
+        $grid->disableActions();
         $grid->actions(function ($actions) {
             $actions->disableEdit();
             if (!Admin::user()->can('delete-image')) {
@@ -206,7 +215,7 @@ class AdminHoSo extends AdminController
      *
      * @return Form
      */
-    protected function form()
+    protected function form($id = null)
     {
         $form = new Form(new HoSo());
 
@@ -250,8 +259,41 @@ class AdminHoSo extends AdminController
             $footer->disableCreatingCheck();
 
         });
+        $form->tools(function (Form\Tools $tools) use($id) {
 
+            // Disable `List` btn.
+            //$tools->disableList();
+            //dd($id);
+            // Disable `Delete` btn.
+            $tools->disableDelete();
+            // Disable `Veiw` btn.
+            //$tools->disableView();
+            // Add a button, the argument can be a string, or an instance of the object that implements the Renderable or Htmlable interface
+            $token  = md5("toan".$id."toan1");
+            $tools->add("<a class='btn btn-sm btn-danger' href='../delete/$id?token=$token' Onclick='return ConfirmDelete();'><i class='fa fa-trash'></i>&nbsp;&nbsp;delete &nbsp;</a>");
+        });
         return $form;
+    }
+    public function delete(Request $request) {
+        if(md5("toan".$request->id."toan1") === $request->token) {
+            $delete = HoSo::find($request->id);
+            if($delete != null) {
+                try {
+                $delete->delete();
+                }
+                catch(\Illuminate\Database\QueryException $ex) {
+                    admin_toastr('Có lỗi!!!', 'error', ['timeOut' => 5000]);
+                    return redirect('admin/ho-sos');
+                }
+            }
+            admin_toastr('Xoá Thành Công', 'success', ['timeOut' => 5000]);
+            return redirect('admin/ho-sos');
+        }
+        else {
+            admin_toastr('Có lỗi!!!', 'error', ['timeOut' => 5000]);
+            return redirect()->back();
+        }
+        
     }
     
 }

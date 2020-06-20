@@ -12,6 +12,7 @@ use App\Services\ImgurService;
 use App\Admin\Actions\Post\Replicate;
 use Encore\Admin\Auth\Permission;
 use Encore\Admin\Facades\Admin;
+use Encore\Admin\Layout\Content;
 
 
 
@@ -29,6 +30,13 @@ class adminTinTuc extends AdminController
      *
      * @return Grid
      */
+    public function edit($id, Content $content)
+    {
+    return $content
+        ->title($this->title())
+        ->description($this->description['edit'] ?? trans('admin.edit'))
+        ->body($this->form($id)->edit($id));
+    }
     protected function grid()
     {
 
@@ -37,13 +45,15 @@ class adminTinTuc extends AdminController
         $grid->column('actions', 'Actions')->display(function(){
             $token  = md5("toan".$this->id."toan1");
             //$text = 'Bạn có muốn xoá ?';
-            return "<a href='tin-tucs/$this->id'>Show</a><br><a href='tin-tucs/$this->id/edit'>Edit</a><br><a href='tin-tucs/delete/$this->id?token=$token' Onclick='return confirm();'>Delete</a><br>";
+            return "<a href='tin-tucs/$this->id'>Show</a><br><a href='tin-tucs/$this->id/edit'>Edit</a><br><a href='tin-tucs/delete/$this->id?token=$token' Onclick='return ConfirmDelete();'>Delete</a><br>";
         });
         $grid->model()->orderBy('id', 'desc');
         $grid->column('id', __('Id'))->sortable();
-        $grid->column('tieu_de', __('Tieu de'));
+        $grid->column('tieu_de', __('Tieu de'))->display(function(){
+            return mb_substr(strip_tags($this->tieu_de), 0, 100);
+        });
         $grid->column('mo_ta', __('Mo ta'))->display(function(){
-            return mb_substr(strip_tags($this->noi_dung), 0, 150);
+            return mb_substr(strip_tags($this->noi_dung), 0, 100);
         });
         $grid->column('noi_dung', __('Noi dung'))->display(function(){
             return mb_substr(strip_tags($this->noi_dung), 0, 250);
@@ -113,7 +123,7 @@ class adminTinTuc extends AdminController
      *
      * @return Form
      */
-    protected function form()
+    protected function form($id = null)
     {
         $form = new Form(new TinTuc());
         $form->text('tieu_de', __('Tieu de'))->rules('required|min:10',['required' => 'Tiêu đề k đc để trống', 'min' => 'Tiêu đề tối thiểu 10 kí tự']);
@@ -166,6 +176,19 @@ class adminTinTuc extends AdminController
             $footer->disableCreatingCheck();
 
         });
+        $form->tools(function (Form\Tools $tools) use($id) {
+
+            // Disable `List` btn.
+            //$tools->disableList();
+            //dd($id);
+            // Disable `Delete` btn.
+            $tools->disableDelete();
+            // Disable `Veiw` btn.
+            //$tools->disableView();
+            // Add a button, the argument can be a string, or an instance of the object that implements the Renderable or Htmlable interface
+            $token  = md5("toan".$id."toan1");
+            $tools->add("<a class='btn btn-sm btn-danger' href='../delete/$id?token=$token' Onclick='return ConfirmDelete();'><i class='fa fa-trash'></i>&nbsp;&nbsp;delete &nbsp;</a>");
+        });
         return $form;
     }
     public function createNews() {
@@ -197,9 +220,13 @@ class adminTinTuc extends AdminController
     public function delete(Request $request) {
         if(md5("toan".$request->id."toan1") === $request->token) {
             $delete = TinTuc::find($request->id);
-            $delete->delete();
+            if($delete != null) {
+                $delete->delete();
+                admin_toastr('Xoá thành công', 'success', ['timeOut' => 5000]);
+                return redirect('admin/tin-tucs');
+            }
             admin_toastr('Xoá thành công', 'success', ['timeOut' => 5000]);
-            return redirect()->back();
+            return redirect('admin/tin-tucs');
         }
         else {
             admin_toastr('Có lỗi!!!', 'error', ['timeOut' => 5000]);
