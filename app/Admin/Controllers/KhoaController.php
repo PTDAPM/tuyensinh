@@ -31,7 +31,7 @@ class KhoaController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('ten_khoa', __('Ten khoa'));
-        $grid->column('anh', __('Anh'));
+        $grid->column('anh', __('Anh'))->image();
         $grid->column('gioi_thieu', __('Gioi thieu'));
         $grid->column('so_sv', __('So sv'));
         $grid->column('created_at', __('Created at'));

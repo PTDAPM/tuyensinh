@@ -27,6 +27,8 @@
 	?>
 <div class="chart-container" style="position: relative; height:40vh; width:70vw">
     <canvas id="myChart"></canvas>
+    <hr>
+
 </div>
 <hr>
 <script>
@@ -38,7 +40,7 @@ var myChart = new Chart(ctx, {
 		echo "'$i',";
 	}  ?>],
         datasets: [{
-            label: 'Số Lượng Hồ Sơ Trong Ngày',
+            label: "Số Lượng Hồ Sơ Trong Ngay",
             data: [<?php for($i = 1; $i <= daysInMonth($year, $month); $i++) {
             	if(isset($data[$i])) {
             		echo "'$data[$i]',";
@@ -120,6 +122,10 @@ var myChart = new Chart(ctx, {
                     beginAtZero: true
                 }
             }]
+        },
+        title: {
+            display: true,
+            text: 'Hồ sơ đăng ký xét tuyển online'
         }
     }
 });
