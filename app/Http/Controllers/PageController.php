@@ -183,7 +183,7 @@ class PageController extends Controller
 		$khoa = Khoa::all();
 		foreach($khoa as $key => $k) {
 			$nganh = Nganh::where('id_khoa', $k->id)->get();
-			$data[$key] = ['id' =>$k->id, 'ten' => $k->ten_khoa, 'anh' =>$k->anh, 'gioithieu' =>$k->gioi_thieu, 'sosv' =>$k->so_sc, 'data' => $nganh];
+			$data[$key] = ['id' =>$k->id, 'ten' => $k->ten_khoa, 'anh' =>$k->anh, 'gioithieu' =>$k->gioi_thieu, 'sosv' =>$k->so_sv, 'data' => $nganh];
 		}
 		return response()->json($data);
 		
