@@ -33,7 +33,7 @@ class AdminNganhController extends AdminController
         $grid->column('ten', __('Ten'));
         $grid->column('ma_xet_tuyen', __('Ma xet tuyen'));
         $grid->column('id_khoa', __('Ma Khoa'));
-        $grid->column('tin_tuc', __('Tin Tuc'));
+        //$grid->column('tin_tuc', __('Tin Tuc'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
         $grid->actions(function ($actions) {
@@ -60,7 +60,7 @@ class AdminNganhController extends AdminController
         $show->field('ten', __('Ten'));
         $show->field('ma_xet_tuyen', __('Ma xet tuyen'));
         $show->field('id_khoa', __('Ma Khoa'));
-        $show->field('tin_tuc', __('Tin Tuc'));
+        //$show->field('tin_tuc', __('Tin Tuc'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -78,8 +78,26 @@ class AdminNganhController extends AdminController
 
         $form->text('ten', __('Ten'));
         $form->text('ma_xet_tuyen', __('Ma xet tuyen'));
-        $form->text('tin_tuc', __('Tin Tuc'));
+        //$form->text('tin_tuc', __('Tin Tuc'));
         $form->number('id_khoa', 'Mã Khoa');
+        $form->footer(function ($footer) {
+
+            // disable reset btn
+            $footer->disableReset();
+
+            // disable submit btn
+            //$footer->disableSubmit();
+
+            // disable `View` checkbox
+            $footer->disableViewCheck();
+
+            // disable `Continue editing` checkbox
+            $footer->disableEditingCheck();
+
+            // disable `Continue Creating` checkbox
+            $footer->disableCreatingCheck();
+
+        });
 
         return $form;
     }

@@ -119,7 +119,24 @@ class UserController extends AdminController
                 $form->password = bcrypt($form->password);
             }
         });
+        $form->footer(function ($footer) {
 
+            // disable reset btn
+            $footer->disableReset();
+
+            // disable submit btn
+            //$footer->disableSubmit();
+
+            // disable `View` checkbox
+            $footer->disableViewCheck();
+
+            // disable `Continue editing` checkbox
+            $footer->disableEditingCheck();
+
+            // disable `Continue Creating` checkbox
+            $footer->disableCreatingCheck();
+
+        });
         return $form;
     }
 }
