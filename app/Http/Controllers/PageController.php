@@ -83,6 +83,7 @@ class PageController extends Controller
 			$nguyenvong->ma_to_hop 	= $request->infoRecords[$i]['tohop'];
 			$nguyenvong->ma_ho_so 	= $hoso->id;
 			$nguyenvong->ma_nganh   = $nganh[$i];
+			$nguyenvong->trang_thai = 2;
 			$nguyenvong->save();
 			$diem = new Diem;
 			$diem->ma_nguyen_vong = $nguyenvong->id;

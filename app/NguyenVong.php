@@ -12,7 +12,8 @@ class NguyenVong extends Model
     
     const TT = [
         0 => "✘ Không trúng tuyển",
-        1 => "✔ Trúng tuyển"
+        1 => "✔ Trúng tuyển",
+        2 => "Đang chờ duyệt"
     ];
     public function toHop() {
     	return $this->hasOne('App\ToHop', 'ma_to_hop', 'id');
