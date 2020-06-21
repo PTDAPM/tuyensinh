@@ -7,7 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class NguyenVong extends Model
 {
     //
+    
     protected $table = 'nguyen_vongs';
+    
+    const TT = [
+        0 => "✘ Không trúng tuyển",
+        1 => "✔ Trúng tuyển"
+    ];
     public function toHop() {
     	return $this->hasOne('App\ToHop', 'ma_to_hop', 'id');
     }

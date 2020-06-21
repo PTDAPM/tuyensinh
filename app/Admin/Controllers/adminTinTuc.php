@@ -60,8 +60,12 @@ class adminTinTuc extends AdminController
         });
         $grid->column('anh', __('Anh'))->image();
         $grid->column('trang_thai', __('Trang thai'))->editable('select',TinTuc::STATUS);
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('created_at', __('Created at'))->display(function ($created_at) {
+            return date("Y-m-d", strtotime($created_at));
+        });
+        $grid->column('updated_at', __('Updated at'))->display(function ($updated_at) {
+            return date("Y-m-d", strtotime($updated_at));
+        });
         $grid->disableActions();
         $grid->actions(function ($actions) {
             //$actions->disableEdit();
@@ -73,7 +77,7 @@ class adminTinTuc extends AdminController
         /////////////////
         /// tìm kiếm ///
         ////////////////
-        $grid->quickSearch('tieu_de', 'mo_ta', 'noi_dung', 'created_at', 'updated_at');
+        $grid->quickSearch('id', 'tieu_de', 'mo_ta', 'noi_dung', 'created_at', 'updated_at');
         $grid->filter(function($filter){
             $filter->like('tieu_de','Tiêu Đề');
             $filter->between('created_at','Ngày Tạo')->datetime();
@@ -130,7 +134,7 @@ class adminTinTuc extends AdminController
         $form->text('mo_ta', __('Mo ta'))->rules('required|min:10',['required' => 'Mô tả k đc để trống', 'min' => 'Mô tả tối thiểu 10 kí tự']);
         $form->textarea('noi_dung', __('Noi dung'))->rules('required|min:10',['required' => 'Nội dung k đc để trống', 'min' => 'Nội dung tối thiểu 10 kí tự']);
         $form->image('anh', __('Anh'))->rules('required');
-        $form->number('trang_thai', __('Trang thai'))->rules('required',['required' => 'Trạng thái k đc để trống']);
+        $form->select('trang_thai', __('Trang thai'))->options([0 => 'Đang hiển thị', 1 => 'Đang ẩn']);
         //$form->setAction('editnew');
         $form->saved(function ($form) {
             $id         = $form->model()->id;
@@ -164,7 +168,7 @@ class adminTinTuc extends AdminController
             $footer->disableReset();
 
             // disable submit btn
-            $footer->disableSubmit();
+            //$footer->disableSubmit();
 
             // disable `View` checkbox
             $footer->disableViewCheck();

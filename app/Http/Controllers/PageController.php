@@ -159,7 +159,7 @@ class PageController extends Controller
 				$lop11_m1 =''; $lop11_m2 =''; $lop11_m3 ='';
 				$lop12_m1 =''; $lop12_m2 =''; $lop12_m3 ='';
 			}
-			$data[$key] = array('nganh' => array('manganh' => $nganh->id, 'tennganh' => $nganh->ten, 'maxettuyen' => $nganh->ma_xet_tuyen,'makhoa' => $nganh->ma_khoa), 'matohop' => $tohop->id, 'tentohop' => $tohop->ten, 'diem' => array('lop10_m1' => $lop10_m1,'lop10_m2' => $lop10_m2,'lop10_m3' => $lop10_m3,'lop11_m1' => $lop11_m1,'lop11_m2' => $lop11_m2,'lop11_m3' => $lop11_m3,'lop12_m1' => $lop12_m1,'lop12_m2' => $lop12_m2,'lop12_m3' => $lop12_m3,));
+			$data[$key] = array('nganh' => array('manganh' => $nganh->id, 'tennganh' => $nganh->ten, 'maxettuyen' => $nganh->ma_xet_tuyen,'makhoa' => $nganh->ma_khoa), 'matohop' => $tohop->id, 'tentohop' => $tohop->ten, 'diem' => array('lop10_m1' => $lop10_m1,'lop10_m2' => $lop10_m2,'lop10_m3' => $lop10_m3,'lop11_m1' => $lop11_m1,'lop11_m2' => $lop11_m2,'lop11_m3' => $lop11_m3,'lop12_m1' => $lop12_m1,'lop12_m2' => $lop12_m2,'lop12_m3' => $lop12_m3,), 'trangthai' => $nv->trang_thai);
 
 		}
 		return response()->json(['hoso' => $hoso, 'lop10' => $lop10, 'lop11' => $lop11, 'lop12' => $lop12, 'nguyenvong' => $data]);

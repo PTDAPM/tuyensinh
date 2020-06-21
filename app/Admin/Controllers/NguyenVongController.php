@@ -40,11 +40,12 @@ class NguyenVongController extends AdminController
         $grid->column('ma_nganh', __('Ma nganh'))->display(function($id){
             return isset($id) ? Nganh::find($id)->ten : "NULL";
         });
-        $grid->column('XEM ĐIỂM')->display(function(){
+        $grid->column('Xem diem')->display(function(){
             return "<a href='diems?ma_nguyen_vong=".$this->id."'>XEM ĐIỂM</a>";
         });
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('trang_thai', __('Trang thai'))->editable('select', NguyenVong::TT);
+        //$grid->column('created_at', __('Created at'));
+        //$grid->column('updated_at', __('Updated at'));
         $grid->filter(function($filter){
             //$filter->disableIdFilter();
             $filter->equal('ma_ho_so','Mã Hồ Sơ');
@@ -54,6 +55,14 @@ class NguyenVongController extends AdminController
             if (!Admin::user()->can('delete-image')) {
                 $actions->disableDelete();
             }
+            //$actions->add(new Replicate);
+        });
+        $grid->disableCreateButton();
+        $grid->actions(function ($actions) {
+            //$actions->disableEdit();
+            // if (!Admin::user()->can('delete-image')) {
+            //     $actions->disableDelete();
+            // }
             //$actions->add(new Replicate);
         });
 
@@ -76,7 +85,8 @@ class NguyenVongController extends AdminController
         
         
         $show->field('ma_nganh', __('Ma nganh'));
-        $show->field('thu_tu', __('Thu tu'));
+        $show->field('trang_thai', __('Trang thai'));
+        //$show->field('thu_tu', __('Thu tu'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -92,10 +102,38 @@ class NguyenVongController extends AdminController
     {
         $form = new Form(new NguyenVong());
 
-        $form->number('ma_to_hop', __('Ma to hop'));
-        $form->number('ma_ho_so', __('Ma ho so'));
-        $form->number('thu_tu', __('Thu tu'));
-        $form->number('ma_nganh', __('Ma nganh'));
+        //$form->number('ma_to_hop', __('Ma to hop'));
+        //$form->number('ma_ho_so', __('Ma ho so'));
+        //$form->number('thu_tu', __('Thu tu'));
+        //$form->number('ma_nganh', __('Ma nganh'));
+        $form->select('trang_thai', __('Trang thai'))->options([0 => 'Không trúng tuyển', 1 => 'Trúng tuyển']);
+        $form->tools(function (Form\Tools $tools) {
+
+            $tools->disableList();
+            //dd($id);
+            // Disable `Delete` btn.
+            //$tools->disableDelete();
+            // Disable `Veiw` btn.
+            //$tools->disableView();
+        });
+        $form->footer(function ($footer) {
+
+            // disable reset btn
+            $footer->disableReset();
+
+            // disable submit btn
+            //$footer->disableSubmit();
+
+            // disable `View` checkbox
+            $footer->disableViewCheck();
+
+            // disable `Continue editing` checkbox
+            $footer->disableEditingCheck();
+
+            // disable `Continue Creating` checkbox
+            $footer->disableCreatingCheck();
+
+        });
 
         return $form;
     }

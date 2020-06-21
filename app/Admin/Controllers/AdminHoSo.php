@@ -57,11 +57,15 @@ class AdminHoSo extends AdminController
             return HoSo::GIOITINH[$this->gioi_tinh];
 
         });
-        $grid->column('ngay_thang_nam_sinh', __('Ngay thang nam sinh'));
+        $grid->column('ngay_thang_nam_sinh', __('Ngày sinh'))->display(function ($created_at) {
+            return date("Y-m-d", strtotime($created_at));
+        });
         $grid->column('noi_sinh', __('Noi sinh'));
         $grid->column('dan_toc', __('Dan toc'))->style('max-width:100px;word-wrap: break-word;');
         $grid->column('cmnd', __('Cmnd'));
-        $grid->column('ngay_cap', __('Ngay cap'));
+        $grid->column('ngay_cap', __('Ngay cap'))->display(function ($created_at) {
+            return date("Y-m-d", strtotime($created_at));
+        });
         $grid->column('noi_cap', __('Noi cap'));
         $grid->column('ho_khau', __('Ho khau'));
         $grid->column('ma_tinh', __('Ma tinh'));
@@ -86,9 +90,9 @@ class AdminHoSo extends AdminController
         });
         
         $grid->column('trang_thai', __('Trang thai'))->editable('select', HoSo::STATUS);
-        $grid->column('ket_qua', __('Ket Qua'))->editable('select', HoSo::KQ);
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        //$grid->column('ket_qua', __('Ket Qua'))->editable('select', HoSo::KQ);
+        //$grid->column('created_at', __('Created at'));
+        //$grid->column('updated_at', __('Updated at'));
         $grid->disableActions();
         $grid->actions(function ($actions) {
             $actions->disableEdit();
@@ -100,7 +104,7 @@ class AdminHoSo extends AdminController
         /////////////////
         /// tìm kiếm ///
         ////////////////
-        $grid->quickSearch('ho_ten', 'gioi_tinh', 'noi_sinh', 'dan_toc', 'sdt', 'email');
+        $grid->quickSearch('id', 'ho_ten', 'gioi_tinh', 'noi_sinh', 'dan_toc', 'sdt', 'email');
         $grid->filter(function($filter){
             $filter->column(1/2, function ($filter) {
                 $filter->like('ho_ten','Họ Tên');
@@ -115,7 +119,7 @@ class AdminHoSo extends AdminController
 
             $filter->column(1/2, function ($filter) {
                 //$filter->equal('created_at')->datetime();              
-                $filter->disableIdFilter();
+                //$filter->disableIdFilter();
                 $filter->like('dia_chi','Địa Chỉ');
                 $filter->like('nam_tot_nghiep','Năm Tốt Ngiệp');
                 $filter->like('kv_uu_tien','Khu Vực ƯT');
@@ -136,6 +140,16 @@ class AdminHoSo extends AdminController
             e.preventDefault();
             window.open(link);
             });
+        ");
+        Admin::script(" $('body').keydown(function(e) {
+        if(e.keyCode == 37) { // left key down
+            $('#left_scroll').click();
+            console.log('click');
+        } else if(e.keyCode == 39) { // right key down
+            $('#right_scroll').click();
+            console.log('click');
+        }
+        });
         ");
         Admin::style('img:hover {cursor: pointer}');
         return $grid;
@@ -196,16 +210,16 @@ class AdminHoSo extends AdminController
                 return 'Đã Duyệt';
             }
         });
-        $show->field('ket_qua', __('Ket qua'))->as(function ($status){
-            if($status == 0)
-            {
-                return 'Không Đạt';
-            }
-            else
-            {
-                return 'Đạt';
-            }
-        });
+        // $show->field('ket_qua', __('Ket qua'))->as(function ($status){
+        //     if($status == 0)
+        //     {
+        //         return 'Không Đạt';
+        //     }
+        //     else
+        //     {
+        //         return 'Đạt';
+        //     }
+        // });
 
         return $show;
     }
@@ -240,14 +254,14 @@ class AdminHoSo extends AdminController
         // $form->text('kv_uu_tien', __('Kv uu tien'));
         // $form->text('doi_tuong_uu_tien', __('Doi tuong uu tien'));
         $form->select('trang_thai', __('Trang thai'))->options([0 => 'Chưa Duyệt', 1 => 'Đã Duyệt']);
-        $form->select('ket_qua', __('Ket Qua'))->options([0 => 'Chưa Đạt', 1 => 'Đạt']);
+        //$form->select('ket_qua', __('Ket Qua'))->options([0 => 'Chưa Đạt', 1 => 'Đạt']);
         $form->footer(function ($footer) {
 
             // disable reset btn
             $footer->disableReset();
 
             // disable submit btn
-            $footer->disableSubmit();
+            //$footer->disableSubmit();
 
             // disable `View` checkbox
             $footer->disableViewCheck();
