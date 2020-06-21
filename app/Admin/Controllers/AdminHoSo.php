@@ -104,7 +104,7 @@ class AdminHoSo extends AdminController
         /////////////////
         /// tìm kiếm ///
         ////////////////
-        $grid->quickSearch('id', 'ho_ten', 'gioi_tinh', 'noi_sinh', 'dan_toc', 'sdt', 'email');
+        $grid->quickSearch('id', 'ho_ten', 'gioi_tinh', 'noi_sinh', 'dan_toc', 'sdt', 'email', 'cmnd');
         $grid->filter(function($filter){
             $filter->column(1/2, function ($filter) {
                 $filter->like('ho_ten','Họ Tên');

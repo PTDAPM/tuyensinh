@@ -125,7 +125,7 @@ var myChart = new Chart(ctx, {
         },
         title: {
             display: true,
-            text: 'Hồ sơ đăng ký xét tuyển online'
+            text: 'Ho so dang ky xet tuyen online'
         }
     }
 });
